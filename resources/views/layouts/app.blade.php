@@ -15,6 +15,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -23,8 +25,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a href="{{ url('/') }}" class="navbar-brand">
+                    <img src="{{asset('plasmaH.png')}}" alt="" class="img-fluid" width="30">
+                </a>
+                <a class="navbar-brand font-weight-bold" href="{{ url('/') }}">
+                    {{ "Plasmahero.id" }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -33,7 +38,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('welcome') }}">Beranda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('welcome') }}">Bantuan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('welcome') }}">Tentang</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -41,14 +54,18 @@
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <li class="nav-item mr-2">
+                                    <a class="" href="{{ route('login') }}">
+                                        <button type="button" class="btn btn-secondary rounded-pill pt-1 pb-1">Masuk</button>
+                                    </a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <li class="nav-item mr-2">
+                                    <a class="" href="{{ route('register') }}">
+                                        <button type="button" class="btn btn-danger rounded-pill pt-1 pb-1">Daftar</button>
+                                    </a>
                                 </li>
                             @endif
                         @else
