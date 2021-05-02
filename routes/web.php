@@ -24,3 +24,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::view('/admin/dasbor', 'layouts.admin.dashboard');
+Route::view('/admin/pendonor', 'layouts.admin.donor.pendonor');
+Route::view('/admin/pemohon', 'layouts.admin.donor.pemohon');
+Route::view('/admin/pendonoran', 'layouts.admin.donor.pendonoran');
+Route::view('/admin/chat', 'layouts.admin.komunikasi.chat');
+Route::view('/admin/konsultasi', 'layouts.admin.komunikasi.konsultasi');
+Route::view('/admin/akun', 'layouts.admin.lainnya.akun');
+Route::view('/admin/pengaturan', 'layouts.admin.lainnya.pengaturan');

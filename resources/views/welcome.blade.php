@@ -10,7 +10,7 @@
 </div>
 @endsection --}}
 
-<x-app-layout>
+{{-- <x-app-layout>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 text-center ">
@@ -18,8 +18,8 @@
             </div>
         </div>
     </div>
-</x-app-layout>
-{{-- @extends('adminlte::page')
+</x-app-layout> --}}
+@extends('adminlte::page')
 
 @section('title', 'Dashboard')
 
@@ -42,4 +42,4 @@ Welcome to this beautiful admin panel.
 
 @section('js')
     
-@stop --}}
+@stop
