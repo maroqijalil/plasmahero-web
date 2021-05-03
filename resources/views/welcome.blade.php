@@ -8,13 +8,19 @@
         </div>
     </div>
 
-    <div class="row justify-content-center">
-        <div class="col-md-12 text-center">
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-6 text-center">
             <a href="{{ route('berita-acara.index') }}">
                 <div class="btn btn-primary">Tambah Berita Acara</div>
             </a>
         </div>
+        <div class="col-md-6 text-center">
+            <a href="{{ route('berita-acara.show') }}">
+                <div class="btn btn-primary">Daftar Berita Acara</div>
+            </a>
+        </div>
     </div>
+
 
 </div>
 @endsection

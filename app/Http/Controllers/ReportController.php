@@ -7,6 +7,12 @@ use App\Models\Report;
 
 class ReportController extends Controller
 {
+    public function show()
+    {
+        $reports = \App\Models\Report::all();
+        return view('show-reports', compact('reports'));
+    }
+
     public function index(Request $request)
     {
         return view('berita-acara');

@@ -49,14 +49,14 @@
             </div>
           </div>
 
-          <div class="form-group row mb-3">
+          {{-- <div class="form-group row mb-3">
             <label for="foto" class="col-2 col-form-label">Foto Kegiatan</label>
             <div class="col-10">
               <input class="form-control" type="text" placeholder="Nama Foto Kegiatan" id="foto" name="foto">
             </div>
-          </div>
+          </div> --}}
 
-          {{-- <div class="form-group row mb-3">
+          <div class="form-group row mb-3">
             <label for="foto" class="col-2 col-form-label">Foto Kegiatan</label>
             <div class="col-10">
               <div class="custom-file">
@@ -64,7 +64,7 @@
                 <label class="custom-file-label" for="inputGroupFile03">Pilih file</label>
               </div>
             </div>
-          </div> --}}
+          </div>
 
           <input type="submit" name="send" value="Submit" class="btn btn-primary ml-50">
         </form>
