@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\DonorGiverController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,11 +25,14 @@ Route::post('/berita-acara', [ReportController::class, 'store'])->name('berita-a
 Route::get('/show-reports', [ReportController::class, 'show'])->name('berita-acara.show');
 
 
+Route::get('/isi-detail-pendonor', [DonorGiverController::class, 'index'])->name('fill-detail-giver.index');
+Route::post('/isi-detail-pendonor', [DonorGiverController::class, 'store'])->name('fill-detail-giver.store');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -40,4 +45,9 @@ Route::middleware(['admin'])->group(function () {
     Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
     Route::view('/admin/akun', 'layouts.admin.others.account');
     Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
+    
 });
+
+Route::get('/galeri', [GalleryController::class, 'index']);
+Route::get('/admin/galeri', [GalleryController::class, 'adminIndex']);
+Route::post('/admin/galeri', [GalleryController::class, 'store']);
