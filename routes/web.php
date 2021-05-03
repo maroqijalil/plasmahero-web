@@ -25,11 +25,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::view('/admin/dasbor', 'layouts.admin.dashboard');
-Route::view('/admin/pendonor', 'layouts.admin.donor.pendonor');
-Route::view('/admin/pemohon', 'layouts.admin.donor.pemohon');
-Route::view('/admin/pendonoran', 'layouts.admin.donor.pendonoran');
-Route::view('/admin/chat', 'layouts.admin.komunikasi.chat');
-Route::view('/admin/konsultasi', 'layouts.admin.komunikasi.konsultasi');
-Route::view('/admin/akun', 'layouts.admin.lainnya.akun');
-Route::view('/admin/pengaturan', 'layouts.admin.lainnya.pengaturan');
+Route::middleware(['admin'])->group(function () {
+    Route::view('/admin', 'layouts.admin.dashboard');
+    Route::view('/admin/pendonor', 'layouts.admin.donor.donor-giver');
+    Route::view('/admin/pemohon', 'layouts.admin.donor.donor-recipient');
+    Route::view('/admin/pendonoran', 'layouts.admin.donor.donation');
+    Route::view('/admin/chat', 'layouts.admin.communication.chat');
+    Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
+    Route::view('/admin/akun', 'layouts.admin.others.account');
+    Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
+});

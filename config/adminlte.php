@@ -236,7 +236,7 @@ return [
         ],
         [
             'text' => 'dasbor',
-            'url'  => 'admin/dasbor',
+            'url'  => 'admin',
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
