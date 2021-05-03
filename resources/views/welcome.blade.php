@@ -1,4 +1,4 @@
-{{-- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -7,8 +7,17 @@
             <img src="{{asset('plasmaH2png.png')}}" alt="" class="img-fluid" width="45%">
         </div>
     </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-12 text-center">
+            <a href="{{ route('berita-acara.index') }}">
+                <div class="btn btn-primary">Tambah Berita Acara</div>
+            </a>
+        </div>
+    </div>
+
 </div>
-@endsection --}}
+@endsection
 
 {{-- <x-app-layout>
     <div class="container">
@@ -19,6 +28,8 @@
         </div>
     </div>
 </x-app-layout> --}}
+
+{{-- 
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
@@ -42,4 +53,4 @@ Welcome to this beautiful admin panel.
 
 @section('js')
     
-@stop
+@stop --}}
