@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UserDetail;
+use App\Models\User;
 use Auth;
 
 class DonorGiverController extends Controller
@@ -35,6 +36,11 @@ class DonorGiverController extends Controller
         ]);
 
         // 
-        return back()->with('success', 'Berita acara ditambahkan !');
+        return back()->with('success', 'Detail data berhasil diisi!');
+    }
+
+    public function show() {
+        $users = User::get();
+        return view('layouts.admin.donor.donor-giver', ['users' => $users]);
     }
 }
