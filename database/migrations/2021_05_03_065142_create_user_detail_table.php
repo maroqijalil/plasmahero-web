@@ -13,7 +13,7 @@ class CreateUserDetailTable extends Migration
      */
     public function up()
     {
-        Schema::table('user_details', function (Blueprint $table) {
+        Schema::create('user_detail', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('user_id')->nullable();
             $table->integer('usia')->nullable();
@@ -33,8 +33,6 @@ class CreateUserDetailTable extends Migration
      */
     public function down()
     {
-        Schema::table('user_detail', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('user_detail');
     }
 }

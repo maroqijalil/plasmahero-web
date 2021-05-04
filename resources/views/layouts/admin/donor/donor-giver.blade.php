@@ -41,18 +41,8 @@
       <tbody>
         <tr>
           <th scope="row">1</th>
-          <td>Maroqi Jalil</td>
-          <td>Ds. Pisang, Patianrowo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Maroqi Jalil</td>
-          <td>Ds. Pisang, Patianrowo</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Maroqi Jalil</td>
-          <td>Ds. Pisang, Patianrowo</td>
+          <td>USer Coba</td>
+          <td>Surabaya</td>
         </tr>
       </tbody>
     </table>
