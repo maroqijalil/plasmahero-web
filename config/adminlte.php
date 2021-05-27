@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Plasmahero',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>Plasmahero</b> Admin',
+    'logo_img' => 'plasmaH2png.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'Plasmahero',
 
     /*
     |--------------------------------------------------------------------------
@@ -88,7 +88,6 @@ return [
     'layout_fixed_sidebar' => null,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
-    'layout_dark_mode' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -225,21 +224,10 @@ return [
     */
 
     'menu' => [
-        // Navbar items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
-        [
-            'type'         => 'fullscreen-widget',
-            'topnav_right' => true,
-        ],
-
-        // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
             'text' => 'search',
+            'search' => true,
+            'topnav' => true,
         ],
         [
             'text' => 'blog',
@@ -247,76 +235,58 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'dasbor',
+            'url'  => 'admin',
+            'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text' => 'donor',
+            'url'  => '#',
+            'icon' => 'fas fa-fw fa-tint',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'pendonor',
+                    'url' => 'admin/pendonor'
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'pemohon_donor',
+                    'url' => 'admin/pemohon'
                 ],
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'pendonoran',
+                    'url' => 'admin/pendonoran'
+                ],
+            ]
+        ],
+        [
+            'text'    => 'komunikasi',
+            'icon'    => 'fas fa-fw fa-comments',
+            'url'        => '#',
+            'submenu' => [
+                [
+                    'text' => 'chat',
+                    'url'  => 'admin/chat',
+                ],
+                [
+                    'text' => 'konsultasi',
+                    'url'  => 'admin/konsultasi',
                 ],
             ],
         ],
-        ['header' => 'labels'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
+            'text'       => 'lainnya',
+            'icon'       => 'fas fa-fw fa-arrow-alt-circle-right',
             'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'submenu' => [
+                [
+                    'text' => 'akun',
+                    'url'  => 'admin/akun',
+                ],
+                [
+                    'text' => 'pengaturan',
+                    'url'  => 'admin/pengaturan',
+                ],
+            ]
         ],
     ],
 
@@ -350,7 +320,7 @@ return [
     | Here we can modify the plugins used inside the admin panel.
     |
     | For detailed instructions you can look the plugins section here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Plugins-Configuration
+    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
     |
     */
 
