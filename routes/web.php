@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,5 +30,8 @@ Route::view('/admin/chat', 'layouts.admin.communication.chat');
 Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
 Route::view('/admin/akun', 'layouts.admin.others.account');
 Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
+Route::view('/admin/galeri', 'admin.galeri');
+
+Route::post('/admin/galeri', [GalleryController::class, 'store']);
 
 require __DIR__.'/auth.php';
