@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DonorGiverController;
 
@@ -32,6 +33,9 @@ Route::view('/admin/chat', 'layouts.admin.communication.chat');
 Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
 Route::view('/admin/akun', 'layouts.admin.others.account');
 Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
+Route::view('/admin/galeri', 'admin.galeri');
+
+Route::post('/admin/galeri', [GalleryController::class, 'store']);
 
 Route::get('/isi-detail-pendonor', [DonorGiverController::class, 'index'])->name('fill-detail-giver.index');
 Route::post('/isi-detail-pendonor', [DonorGiverController::class, 'store'])->name('fill-detail-giver.store');
