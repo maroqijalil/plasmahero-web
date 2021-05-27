@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DonorGiverController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+require __DIR__.'/auth.php';
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,4 +33,5 @@ Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
 Route::view('/admin/akun', 'layouts.admin.others.account');
 Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
 
-require __DIR__.'/auth.php';
+Route::get('/isi-detail-pendonor', [DonorGiverController::class, 'index'])->name('fill-detail-giver.index');
+Route::post('/isi-detail-pendonor', [DonorGiverController::class, 'store'])->name('fill-detail-giver.store');
