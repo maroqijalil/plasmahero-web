@@ -46,7 +46,7 @@ return [
     */
 
     'logo' => '<b>Plasmahero</b> Admin',
-    'logo_img' => 'plasmaH2png.png',
+    'logo_img' => 'img/plasmaH2png.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -408,5 +408,5 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
     */
 
-    'livewire' => true,
+    'livewire' => false,
 ];

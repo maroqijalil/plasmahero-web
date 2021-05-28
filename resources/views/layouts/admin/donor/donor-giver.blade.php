@@ -39,11 +39,13 @@
         </tr>
       </thead>
       <tbody>
+        @foreach ($users as $user)
         <tr>
           <th scope="row">1</th>
           <td>USer Coba</td>
           <td>Surabaya</td>
         </tr>
+        @endforeach
       </tbody>
     </table>
     <div></div>

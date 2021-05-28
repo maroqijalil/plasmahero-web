@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GalleryStoreRequest;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,10 @@ class GalleryController extends Controller
     public function adminIndex()
     {
         $galleries = Gallery::get();
-        return view('layouts.admin.others.gallery', compact(['galleries']));
+        return view('admin.gallery', compact(['galleries']));
     }
 
-    public function store(Request $request)
+    public function store(GalleryStoreRequest $request)
     {
         $title = $request->title;
         $description = $request->description;
@@ -36,7 +37,7 @@ class GalleryController extends Controller
             'urlToImage' => '/gallery/images/' . $imageName
         ]);
 
-        return redirect('/admin/galeri');
+        return back()->with('success', 'Foto berhasil dimasukkan');
     }
 
     protected function generateRandomString($length)
