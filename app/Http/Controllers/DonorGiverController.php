@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\UserDetail;
+use App\Models\Pengguna;
 use App\Models\User;
 use Auth;
 
@@ -23,7 +23,7 @@ class DonorGiverController extends Controller
             'tgl_swab' => 'required',
         ]);
 
-        UserDetail::create([
+        Pengguna::create([
             'user_id' => Auth::user()->id,
             'usia' => $request->usia,
             'jenis_kelamin' => $request->jenis_kelamin,
