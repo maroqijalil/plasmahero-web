@@ -28,11 +28,12 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'no_hp',
-        'alamat',
-        'kelurahan',
-        'kecamatan',
-        'kota',
+
+        // 'no_hp',
+        // 'alamat',
+        // 'kelurahan',
+        // 'kecamatan',
+        // 'kota',
     ];
 
     /**
@@ -42,9 +43,9 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
+        // 'remember_token',
+        // 'two_factor_recovery_codes',
+        // 'two_factor_secret',
     ];
 
     /**

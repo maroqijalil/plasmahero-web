@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/admin_dashboard', 'Admin\DashboardController@index');
+Route::get('/seller_dashboard', 'Seller\DashboardController@index');
+
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -39,15 +42,15 @@ Route::get('/admin/pendonor', [DonorGiverController::class, 'show'])->name('fill
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::middleware(['admin'])->group(function () {
-    Route::view('/admin', 'layouts.admin.dashboard');
-    Route::view('/admin/pendonor', 'layouts.admin.donor.donor-giver');
-    Route::view('/admin/pemohon', 'layouts.admin.donor.donor-recipient');
-    Route::view('/admin/pendonoran', 'layouts.admin.donor.donation');
-    Route::view('/admin/chat', 'layouts.admin.communication.chat');
-    Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
-    Route::view('/admin/akun', 'layouts.admin.others.account');
-    Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
-    
+Route::view('/admin', 'layouts.admin.dashboard');
+Route::view('/admin/pendonor', 'layouts.admin.donor.donor-giver');
+Route::view('/admin/pemohon', 'layouts.admin.donor.donor-recipient');
+Route::view('/admin/pendonoran', 'layouts.admin.donor.donation');
+Route::view('/admin/chat', 'layouts.admin.communication.chat');
+Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
+Route::view('/admin/akun', 'layouts.admin.others.account');
+Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
+
 // });
 
 Route::get('/galeri', [GalleryController::class, 'index']);
