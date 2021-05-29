@@ -3,6 +3,7 @@
 use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DonorGiverController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,6 @@ Route::post('/admin/galeri', [GalleryController::class, 'store']);
 
 Route::get('/isi-detail-pendonor', [DonorGiverController::class, 'index'])->name('fill-detail-giver.index');
 Route::post('/isi-detail-pendonor', [DonorGiverController::class, 'store'])->name('fill-detail-giver.store');
+
+Route::get('/berita-acara', [ReportController::class, 'index'])->name('berita-acara.index');
+Route::post('/berita-acara', [ReportController::class, 'store'])->name('berita-acara.store');
