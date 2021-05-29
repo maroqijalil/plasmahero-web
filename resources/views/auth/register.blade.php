@@ -12,6 +12,16 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
+            <!-- Role -->
+            <div>
+                <x-label for="role" :value="__('Role')" />
+                
+                <select name="role" id="role" class="block mt-1 w-full rounded mb-3" >
+                    <option value="pengguna" selected>Pengguna</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+
             <!-- Name -->
             <div>
                 <x-label for="name" :value="__('Name')" />
@@ -44,8 +54,6 @@
                                 type="password"
                                 name="password_confirmation" required />
             </div>
-
-            <x-input type="hidden" id="role" name="role" value="pengguna" />
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
