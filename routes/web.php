@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DasborController;
 use App\Http\Controllers\DonorGiverController;
 use App\Http\Controllers\ReportController;
 
@@ -28,7 +29,7 @@ Route::get('/dasbor', function () {
 
 Route::middleware('auth.role:admin')->group(function () {
     Route::view('/admin', 'layouts.admin.dashboard');
-    Route::view('/admin/pendonor', 'layouts.admin.donor.donor-giver');
+    Route::get('/admin/pendonor', [DasborController::class, 'show']);
     Route::view('/admin/pemohon', 'layouts.admin.donor.donor-recipient');
     Route::view('/admin/pendonoran', 'layouts.admin.donor.donation');
     Route::view('/admin/chat', 'layouts.admin.communication.chat');

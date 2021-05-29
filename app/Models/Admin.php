@@ -10,4 +10,8 @@ class Admin extends Model
     use HasFactory;
     protected $table = 'admin';
     protected $fillable = ['no_hp', 'alamat', 'kelurahan', 'kecamatan', 'kota'];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
