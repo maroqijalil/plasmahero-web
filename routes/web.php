@@ -3,7 +3,7 @@
 use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DasborController;
-use App\Http\Controllers\User\DonorGiverController;
+use App\Http\Controllers\User\UserDetailController;
 use App\Http\Controllers\ReportController;
 
 /*
@@ -24,8 +24,8 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth.role:user')->group(function () {
-    Route::get('/detail-pendonor', [DonorGiverController::class, 'index']);
-    Route::post('/detail-pendonor', [DonorGiverController::class, 'store'])->name('fill-detail-giver.store');
+    Route::get('/detail-pendonor', [UserDetailController::class, 'index']);
+    Route::post('/detail-pendonor', [UserDetailController::class, 'store'])->name('fill-detail-giver.store');
     
     Route::get('/berita-acara', [ReportController::class, 'index']);
     Route::post('/berita-acara', [ReportController::class, 'store'])->name('fill-report.store');
