@@ -33,28 +33,40 @@
           <div class="form-group row mb-3">
             <label for="judul" class="col-2 col-form-label">Judul</label>
             <div class="col-10">
-              <input class="form-control" type="text" placeholder="Judul Kegiatan" id="judul" name="judul">
+              <input class="form-control @error('judul') is-invalid @enderror" type="text" placeholder="Judul Kegiatan" id="judul" name="judul" value="{{old('judul')}}">
+              @if ($errors->has('judul'))
+                <div class="text-danger">{{ $errors->first('judul') }}</div>
+              @endif
             </div>
           </div>
 
           <div class="form-group row mb-3">
             <label for="tgl" class="col-2 col-form-label">Tanggal Kegiatan</label>
             <div class="col-10">
-              <input class="form-control" type="date" placeholder="Tanggal Kegiatan" id="tgl" name="tgl">
+              <input class="form-control @error('tgl') is-invalid @enderror" type="date" placeholder="Tanggal Kegiatan" id="tgl" name="tgl" value="{{old('tgl')}}">
+              @if ($errors->has('tgl'))
+              <div class="text-danger">{{ $errors->first('tgl') }}</div>
+              @endif
             </div>
           </div>
 
           <div class="form-group row mb-3">
             <label for="pesan" class="col-2 col-form-label">Pesan dan Kesan</label>
             <div class="col-10">
-              <textarea class="form-control" type="text-area" placeholder="Pesan dan Kesan" id="pesan" rows="5" name="pesan"></textarea>
+              <textarea class="form-control @error('pesan') is-invalid @enderror" type="text-area" placeholder="Pesan dan Kesan" id="pesan" rows="5" name="pesan"></textarea>
+              @if ($errors->has('pesan'))
+                <div class="text-danger">{{ $errors->first('pesan') }}</div>
+              @endif
             </div>
           </div>
 
           <div class="form-group row mb-3">
             <label for="foto" class="col-2 col-form-label">Foto Kegiatan</label>
             <div class="col-10">
-              <input class="form-control" type="text" placeholder="Nama Foto Kegiatan" id="foto" name="foto">
+              <input class="form-control @error('foto') is-invalid @enderror" type="text" placeholder="Nama Foto Kegiatan" id="foto" name="foto" value="{{old('foto')}}">
+              @if ($errors->has('foto'))
+                <div class="text-danger">{{ $errors->first('foto') }}</div>
+              @endif
             </div>
           </div>
 

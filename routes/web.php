@@ -19,7 +19,7 @@ use App\Http\Controllers\ReportController;
 require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
 
 Route::get('/dasbor', function () {

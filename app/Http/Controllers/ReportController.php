@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreReport;
 use Illuminate\Http\Request;
 use App\Models\Report;
 
@@ -12,21 +13,21 @@ class ReportController extends Controller
         return view('berita-acara');
     }
 
-    public function store(Request $request)
+    public function store(StoreReport $request)
     {
+        //  Store data in database
+        $judul = $request->judul;
+        $tgl = $request->tgl;
+        $pesan = $request->pesan;
+        $foto = $request->foto;
 
-        // Form validation
-        $this->validate($request, [
-            'judul' => 'required',
-            'tgl' => 'required',
-            'pesan' => 'required',
-            'foto' => 'required',
+        Report::create([
+            'judul' => $judul,
+            'tgl' => $tgl,
+            'pesan' => $pesan,
+            'foto' => $foto
         ]);
 
-        //  Store data in database
-        Report::create($request->all());
-
-        // 
         return back()->with('success', 'Berita acara ditambahkan !');
     }
 }

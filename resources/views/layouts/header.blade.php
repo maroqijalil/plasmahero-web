@@ -8,19 +8,44 @@
     <nav class="nav-menu d-none d-lg-block">
       <ul>
         <li class="active"><a href="index.html">Beranda</a></li>
-        <li><a href="#about">Tentang Kami</a></li>
+        <li><a href="#about">FAQ</a></li>
         <li class="drop-down"><a href="">Donor</a>
           <ul>
             <li><a href="#">Ajukan Plasma</a></li>
             <li><a href="#">Donorkan Plasma</a></li>
           </ul>
         </li>
+        <li class="drop-down"><a href="">COVID</a>
+          <ul>
+            <li><a href="#">NEWS</a></li>
+            <li><a href="#">Curhat</a></li>
+          </ul>
+        </li>
         <li><a href="#">Donasi</a></li>
+
+        @if (Auth::check())
+        <li class="drop-down"><a href="">{{ Auth::user()->name }}</a>
+          <ul>
+            <li><a href="">Profil</a></li>
+            <li>
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <a href="" onclick="event.preventDefault();
+                    this.closest('form').submit();">
+                    {{ __('Log Out') }}
+                </a>
+              </form>
+            </li>
+          </ul>
+        </li>
+        @else
+          <li><a href="{{route('register')}}"><div class="font-weight-bold text-danger">Masuk/Daftar</div></a></li>
+        @endif
 
       </ul>
     </nav><!-- .nav-menu -->
-
-    <a href="#appointment" class="appointment-btn scrollto">Live Chat</a>
+    {{-- <a href="#appointment" class="appointment-btn scrollto">Live Chat</a> --}}
+    
 
   </div>
 </header>
