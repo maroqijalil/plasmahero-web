@@ -4,6 +4,7 @@ use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DasborController;
 use App\Http\Controllers\Admin\PendonoranController;
+use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\User\UserDetailController;
 use App\Http\Controllers\ReportController;
 
@@ -40,7 +41,8 @@ Route::middleware('auth.role:admin')->group(function () {
 	Route::post('/admin/pendonoran', [PendonoranController::class, 'store'])->name('store-pencocokan');
 	Route::view('/admin/chat', 'layouts.admin.communication.chat');
 	Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
-	Route::view('/admin/akun', 'layouts.admin.others.account');
+	Route::get('/admin/akun', [AccountController::class, 'index']);
+	Route::post('/admin/akun', [AccountController::class, 'store'])->name('store-admin-akun');
 	Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
 
 	Route::get('/admin/pendonor', [DasborController::class, 'showPendonor']);

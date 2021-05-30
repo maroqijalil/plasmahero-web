@@ -44,18 +44,18 @@ class User extends Authenticatable
     ];
 
     public function pengguna() {
-        return $this->hasOne(Pengguna::class);
+        return $this->hasOne(Pengguna::class, 'id_user', 'id');
     }
 
     public function admin() {
-        return $this->hasOne(Admin::class);
+        return $this->hasOne(Admin::class, 'id_user', 'id');
     }
 
     public function pencocokanPenerima() {
-        return $this->hasMany(Pencocokan::class);
+        return $this->hasMany(Pencocokan::class, 'id_penerima', 'id');
     }
 
     public function pencocokanPendonor() {
-        return $this->hasMany(Pencocokan::class);
+        return $this->hasMany(Pencocokan::class, 'id_pendonor', 'id');
     }
 }

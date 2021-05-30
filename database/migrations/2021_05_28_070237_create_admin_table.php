@@ -17,7 +17,6 @@ class CreateAdminTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('no_hp')->nullable();
             $table->string('alamat')->nullable();
             $table->string('kelurahan')->nullable();

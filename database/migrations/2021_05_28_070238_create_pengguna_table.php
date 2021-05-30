@@ -17,7 +17,6 @@ class CreatePenggunaTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_admin')->nullable();
             $table->unsignedBigInteger('id_user')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('no_hp')->nullable();
             $table->string('alamat')->nullable();
             $table->string('kelurahan')->nullable();

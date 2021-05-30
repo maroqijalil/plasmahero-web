@@ -150,7 +150,7 @@ Dashboard
 						<tr>
 							<th scope="row">{{$user->pengguna->id}}</th> <?php $counter++; ?>
 							<td>{{$user->name}}</td>
-							<td>{{$user->role}}:{{ $user->role=='pengguna' ? $user->pengguna->nama_tipe : $user->admin->id }}</td>
+							<td>{{ $user->role=='pengguna' ? $user->pengguna->nama_tipe : $user->admin->id }}</td>
 							<td>Surabaya</td>
 						</tr>
 						@endif
