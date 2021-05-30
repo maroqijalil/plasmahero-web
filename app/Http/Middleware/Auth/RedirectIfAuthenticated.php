@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Auth;
 
 use App\Providers\RouteServiceProvider;
 use Closure;
@@ -26,7 +26,7 @@ class RedirectIfAuthenticated
                 case 'admin':
                     return redirect('/admin');
                     break;
-                case 'user':
+                case 'pengguna':
                     return redirect('/');
                     break;
 

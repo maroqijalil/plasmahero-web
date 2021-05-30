@@ -23,9 +23,13 @@ Route::get('/', function () {
     return view('layouts.dashboard');
 });
 
-Route::get('/dasbor', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dasbor');
+Route::middleware('auth.role:user')->group(function () {
+    Route::get('/isi-detail-pendonor', [DonorGiverController::class, 'index'])->name('fill-detail-giver.index');
+    Route::post('/isi-detail-pendonor', [DonorGiverController::class, 'store'])->name('fill-detail-giver.store');
+    
+    Route::get('/berita-acara', [ReportController::class, 'index'])->name('berita-acara.index');
+    Route::post('/berita-acara', [ReportController::class, 'store'])->name('berita-acara.store');
+});
 
 Route::middleware('auth.role:admin')->group(function () {
     Route::view('/admin', 'layouts.admin.dashboard');
@@ -37,12 +41,7 @@ Route::middleware('auth.role:admin')->group(function () {
     Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
 
     Route::get('/admin/pendonor', [DasborController::class, 'show']);
+
     Route::get('/admin/galeri', [GalleryController::class, 'adminIndex']);
     Route::post('/admin/galeri', [GalleryController::class, 'store']);
 });
-
-Route::get('/isi-detail-pendonor', [DonorGiverController::class, 'index'])->name('fill-detail-giver.index');
-Route::post('/isi-detail-pendonor', [DonorGiverController::class, 'store'])->name('fill-detail-giver.store');
-
-Route::get('/berita-acara', [ReportController::class, 'index'])->name('berita-acara.index');
-Route::post('/berita-acara', [ReportController::class, 'store'])->name('berita-acara.store');

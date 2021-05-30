@@ -10,7 +10,7 @@ class ReportController extends Controller
 {
     public function index(Request $request)
     {
-        return view('berita-acara');
+        return view('layouts.user.donor.fill-report');
     }
 
     public function store(StoreReport $request)

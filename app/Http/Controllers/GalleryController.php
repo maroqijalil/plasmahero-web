@@ -4,20 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GalleryStoreRequest;
 use App\Models\Gallery;
-use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {
     public function index()
     {
         $galleries = Gallery::get();
-        return view('gallery', compact(['galleries']));
+        // return view('gallery', compact(['galleries']));
     }
 
     public function adminIndex()
     {
         $galleries = Gallery::get();
-        return view('admin.gallery', compact(['galleries']));
+        return view('layouts.admin.others.gallery', compact(['galleries']));
     }
 
     public function store(GalleryStoreRequest $request)
