@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreReport extends FormRequest
+class StoreGalleryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,9 @@ class StoreReport extends FormRequest
     public function rules()
     {
         return [
-            'judul' => 'required',
-            'tgl' => 'required',
-            'pesan' => 'required',
-            'foto' => 'required',
-            'pesan' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required'
         ];
     }
 }

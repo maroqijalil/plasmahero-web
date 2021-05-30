@@ -3,7 +3,7 @@
 use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DasborController;
-use App\Http\Controllers\DonorGiverController;
+use App\Http\Controllers\User\UserDetailController;
 use App\Http\Controllers\ReportController;
 
 /*
@@ -20,12 +20,12 @@ use App\Http\Controllers\ReportController;
 require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
-    return view('landing');
+	return view('layouts.dashboard');
 });
 
-Route::get('/dasbor', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dasbor');
+Route::middleware('auth.role:user')->group(function () {
+	Route::get('/detail-pendonor', [UserDetailController::class, 'index']);
+	Route::post('/detail-pendonor', [UserDetailController::class, 'store'])->name('fill-detail-giver.store');
 
 Route::middleware('auth.role:admin')->group(function () {
     Route::view('/admin', 'layouts.admin.dashboard');
