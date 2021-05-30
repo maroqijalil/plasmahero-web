@@ -23,7 +23,7 @@ Route::get('/', function () {
 	return view('layouts.dashboard');
 });
 
-Route::middleware('auth.role:user')->group(function () {
+Route::middleware('auth.role:pengguna')->group(function () {
 	Route::get('/detail-pendonor', [UserDetailController::class, 'index']);
 	Route::post('/detail-pendonor', [UserDetailController::class, 'store'])->name('fill-detail-giver.store');
 
