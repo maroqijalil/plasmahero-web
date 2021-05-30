@@ -235,55 +235,59 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text' => 'dasbor',
+            'text' => 'Dasbor',
             'url'  => 'admin',
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
-            'text' => 'donor',
+            'text' => 'Donor',
             'url'  => '#',
             'icon' => 'fas fa-fw fa-tint',
             'submenu' => [
                 [
-                    'text' => 'pendonor',
+                    'text' => 'Pendonor',
                     'url' => 'admin/pendonor'
                 ],
                 [
-                    'text' => 'pemohon_donor',
+                    'text' => 'Pencari Donor',
                     'url' => 'admin/pemohon'
                 ],
                 [
-                    'text' => 'pendonoran',
+                    'text' => 'Pendonoran',
                     'url' => 'admin/pendonoran'
+                ],
+                [
+                    'text' => 'Berita Acara',
+                    'url' => 'admin/berita-acara'
                 ],
             ]
         ],
         [
-            'text'    => 'komunikasi',
+            'text'    => 'Komunikasi',
             'icon'    => 'fas fa-fw fa-comments',
             'url'        => '#',
             'submenu' => [
                 [
-                    'text' => 'chat',
+                    'text' => 'Chat',
                     'url'  => 'admin/chat',
                 ],
                 [
-                    'text' => 'konsultasi',
+                    'text' => 'Konsultasi',
                     'url'  => 'admin/konsultasi',
                 ],
             ],
         ],
         [
-            'text'       => 'lainnya',
+            'text'       => 'Lainnya',
             'icon'       => 'fas fa-fw fa-arrow-alt-circle-right',
             'url'        => '#',
             'submenu' => [
                 [
-                    'text' => 'akun',
+                    'text' => 'Akun',
                     'url'  => 'admin/akun',
                 ],
                 [
-                    'text' => 'pengaturan',
+                    'text' => 'Pengaturan',
                     'url'  => 'admin/pengaturan',
                 ],
             ]

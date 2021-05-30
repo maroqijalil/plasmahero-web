@@ -1,6 +1,17 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('title', 'Berita Acara')
+
+@section('content_header')
+<nav class="mb-2" aria-label="breadcumb" style="font-size: 14px;">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Donor</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Berita Acara</li>
+  </ol>
+</nav>
+<h3 class="font-weight-bold">Daftar Berita Acara</h3>
+
+@stop
 
 @section('content')
 <div class="container">
@@ -24,8 +35,7 @@
           <th scope="col">Tanggal</th>
           <th scope="col">Pesan</th>
           <th scope="col">Foto</th>
-          <th scope="col">ID Pengguna</th>
-
+          <th scope="col">ID User</th>
 
         </tr>
       </thead>
@@ -46,4 +56,12 @@
 
 </div>
 
-@endsection
+@stop
+
+@section('css')
+    
+@stop
+
+@section('js')
+    
+@stop

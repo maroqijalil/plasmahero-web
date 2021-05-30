@@ -17,7 +17,7 @@ class ReportController extends Controller
     public function show(Request $request)
     {
         $reports = Report::all();
-        return view('admin.report', ['reports' => $reports]);
+        return view('layouts.admin.donor.berita-acara', ['reports' => $reports]);
     }
 
     public function store(StoreReportRequest $request)

@@ -20,13 +20,13 @@ use App\Http\Controllers\ReportController;
 require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
-	return view('layouts.dashboard');
+    return view('layouts.dashboard');
 });
 
 Route::middleware('auth.role:user')->group(function () {
-	Route::get('/detail-pendonor', [UserDetailController::class, 'index']);
-	Route::post('/detail-pendonor', [UserDetailController::class, 'store'])->name('fill-detail-giver.store');
-
+    Route::get('/detail-pendonor', [UserDetailController::class, 'index']);
+    Route::post('/detail-pendonor', [UserDetailController::class, 'store'])->name('fill-detail-giver.store');
+});
 Route::middleware('auth.role:admin')->group(function () {
     Route::view('/admin', 'layouts.admin.dashboard');
     Route::get('/admin/pendonor', [DasborController::class, 'show']);
@@ -40,7 +40,7 @@ Route::middleware('auth.role:admin')->group(function () {
     Route::get('/admin/galeri', [GalleryController::class, 'adminIndex']);
     Route::post('/admin/galeri', [GalleryController::class, 'store']);
 
-    Route::get('/admin/ba', [ReportController::class, 'show'])->name('berita-acara.show');
+    Route::get('/admin/berita-acara', [ReportController::class, 'show'])->name('berita-acara.show');
 });
 
 
