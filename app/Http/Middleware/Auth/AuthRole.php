@@ -35,7 +35,7 @@ class AuthRole
 
 		if (Auth::user()->role == 'pengguna') {
 			if ($role == 'admin') {
-				return redirect()->route('pengguna');
+				return redirect()->route('errorpage');
 			} else {
 				return $next($request);
 			}

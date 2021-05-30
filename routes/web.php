@@ -51,3 +51,5 @@ Route::middleware('auth.role:admin')->group(function () {
 
     Route::get('/admin/berita-acara', [ReportController::class, 'show'])->name('berita-acara.show');
 });
+
+Route::view('errorpage', 'layouts.error')->name('errorpage');
