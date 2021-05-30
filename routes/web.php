@@ -20,7 +20,7 @@ use App\Http\Controllers\ReportController;
 require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
-    return view('landing');
+    return view('layouts.dashboard');
 });
 
 Route::get('/dasbor', function () {
@@ -29,7 +29,6 @@ Route::get('/dasbor', function () {
 
 Route::middleware('auth.role:admin')->group(function () {
     Route::view('/admin', 'layouts.admin.dashboard');
-    Route::get('/admin/pendonor', [DasborController::class, 'show']);
     Route::view('/admin/pemohon', 'layouts.admin.donor.donor-recipient');
     Route::view('/admin/pendonoran', 'layouts.admin.donor.donation');
     Route::view('/admin/chat', 'layouts.admin.communication.chat');
@@ -37,6 +36,7 @@ Route::middleware('auth.role:admin')->group(function () {
     Route::view('/admin/akun', 'layouts.admin.others.account');
     Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
 
+    Route::get('/admin/pendonor', [DasborController::class, 'show']);
     Route::get('/admin/galeri', [GalleryController::class, 'adminIndex']);
     Route::post('/admin/galeri', [GalleryController::class, 'store']);
 });
