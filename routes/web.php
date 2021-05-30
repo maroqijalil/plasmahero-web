@@ -30,6 +30,8 @@ Route::middleware('auth.role:pengguna')->group(function () {
 
     Route::get('/berita-acara', [ReportController::class, 'index']);
     Route::post('/berita-acara', [ReportController::class, 'store'])->name('fill-report.store');
+
+	Route::get('/galeri', [GalleryController::class, 'index']);
 });
 
 Route::middleware('auth.role:admin')->group(function () {
