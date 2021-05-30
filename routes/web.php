@@ -27,21 +27,28 @@ Route::middleware('auth.role:pengguna')->group(function () {
 	Route::get('/detail-pendonor', [UserDetailController::class, 'index']);
 	Route::post('/detail-pendonor', [UserDetailController::class, 'store'])->name('fill-detail-giver.store');
 
-	Route::get('/berita-acara', [ReportController::class, 'index']);
-	Route::post('/berita-acara', [ReportController::class, 'store'])->name('fill-report.store');
+Route::middleware('auth.role:admin')->group(function () {
+    Route::view('/admin', 'layouts.admin.dashboard');
+    Route::get('/admin/pendonor', [DasborController::class, 'show']);
+    Route::view('/admin/pemohon', 'layouts.admin.donor.donor-recipient');
+    Route::view('/admin/pendonoran', 'layouts.admin.donor.donation');
+    Route::view('/admin/chat', 'layouts.admin.communication.chat');
+    Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
+    Route::view('/admin/akun', 'layouts.admin.others.account');
+    Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
+
+    Route::get('/admin/galeri', [GalleryController::class, 'adminIndex']);
+    Route::post('/admin/galeri', [GalleryController::class, 'store']);
+
+    Route::get('/admin/ba', [ReportController::class, 'show'])->name('berita-acara.show');
 });
 
-Route::middleware('auth.role:admin')->group(function () {
-	Route::view('/admin', 'layouts.admin.dashboard');
-	Route::view('/admin/pemohon', 'layouts.admin.donor.donor-recipient');
-	Route::view('/admin/pendonoran', 'layouts.admin.donor.donation');
-	Route::view('/admin/chat', 'layouts.admin.communication.chat');
-	Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
-	Route::view('/admin/akun', 'layouts.admin.others.account');
-	Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
 
-	Route::get('/admin/pendonor', [DasborController::class, 'show']);
+Route::get('/isi-detail-pendonor', [DonorGiverController::class, 'index'])->name('fill-detail-giver.index');
+Route::post('/isi-detail-pendonor', [DonorGiverController::class, 'store'])->name('fill-detail-giver.store');
 
-	Route::get('/admin/galeri', [GalleryController::class, 'adminIndex']);
-	Route::post('/admin/galeri', [GalleryController::class, 'store']);
+
+Route::middleware('auth.role:pengguna')->group(function () {
+    Route::get('/berita-acara', [ReportController::class, 'index'])->name('berita-acara.index');
+    Route::post('/berita-acara', [ReportController::class, 'store'])->name('berita-acara.store');
 });
