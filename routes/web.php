@@ -28,7 +28,7 @@ Route::middleware('auth.role:pengguna')->group(function () {
 	Route::post('/detail-pendonor', [UserDetailController::class, 'store'])->name('fill-detail-giver.store');
 
     Route::get('/berita-acara', [ReportController::class, 'index']);
-    Route::post('/berita-acara', [ReportController::class, 'store'])->name('berita-acara.store');
+    Route::post('/berita-acara', [ReportController::class, 'store'])->name('fill-report.store');
 });
 
 Route::middleware('auth.role:admin')->group(function () {
