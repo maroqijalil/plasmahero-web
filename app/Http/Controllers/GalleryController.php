@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GalleryStoreRequest;
+use App\Http\Requests\Admin\StoreGalleryRequest;
 use App\Models\Gallery;
 
 class GalleryController extends Controller
@@ -19,7 +19,7 @@ class GalleryController extends Controller
         return view('layouts.admin.others.gallery', compact(['galleries']));
     }
 
-    public function store(GalleryStoreRequest $request)
+    public function store(StoreGalleryRequest $request)
     {
         $title = $request->title;
         $description = $request->description;

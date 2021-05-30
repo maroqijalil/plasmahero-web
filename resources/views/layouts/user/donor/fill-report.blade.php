@@ -25,7 +25,7 @@
             </div>
         @endif
 
-        <form action="" method="post" action="{{ route('berita-acara.store') }}">
+        <form action="" method="post" action="{{ route('fill-report.store') }}">
 
           <!-- CROSS Site Request Forgery Protection -->
           @csrf

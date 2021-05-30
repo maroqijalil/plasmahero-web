@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pengguna;
 use App\Models\User;
-use Auth;
 
 class DonorGiverController extends Controller
 {
@@ -25,7 +25,7 @@ class DonorGiverController extends Controller
         ]);
 
         Pengguna::create([
-            'id_user' => $request->id_user,
+            'user_id' => $request->id_user,
             'no_hp' => $request->no_hp,
             'alamat' => $request->alamat,
             'kelurahan' => $request->kelurahan,

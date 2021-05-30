@@ -3,7 +3,7 @@
 use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DasborController;
-use App\Http\Controllers\DonorGiverController;
+use App\Http\Controllers\User\DonorGiverController;
 use App\Http\Controllers\ReportController;
 
 /*
@@ -24,11 +24,11 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth.role:user')->group(function () {
-    Route::get('/isi-detail-pendonor', [DonorGiverController::class, 'index'])->name('fill-detail-giver.index');
-    Route::post('/isi-detail-pendonor', [DonorGiverController::class, 'store'])->name('fill-detail-giver.store');
+    Route::get('/detail-pendonor', [DonorGiverController::class, 'index']);
+    Route::post('/detail-pendonor', [DonorGiverController::class, 'store'])->name('fill-detail-giver.store');
     
-    Route::get('/berita-acara', [ReportController::class, 'index'])->name('berita-acara.index');
-    Route::post('/berita-acara', [ReportController::class, 'store'])->name('berita-acara.store');
+    Route::get('/berita-acara', [ReportController::class, 'index']);
+    Route::post('/berita-acara', [ReportController::class, 'store'])->name('fill-report.store');
 });
 
 Route::middleware('auth.role:admin')->group(function () {

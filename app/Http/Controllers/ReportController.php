@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreReport;
+use App\Http\Requests\User\StoreReportRequest;
 use Illuminate\Http\Request;
 use App\Models\Report;
 
@@ -13,7 +13,7 @@ class ReportController extends Controller
         return view('layouts.user.donor.fill-report');
     }
 
-    public function store(StoreReport $request)
+    public function store(StoreReportRequest $request)
     {
         //  Store data in database
         $judul = $request->judul;

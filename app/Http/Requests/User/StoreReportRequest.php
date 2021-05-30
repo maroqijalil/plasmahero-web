@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GalleryStoreRequest extends FormRequest
+class StoreReportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,11 @@ class GalleryStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'description' => 'required',
-            'image' => 'required'
+            'judul' => 'required',
+            'tgl' => 'required',
+            'pesan' => 'required',
+            'foto' => 'required',
+            'pesan' => 'required',
         ];
     }
 }
