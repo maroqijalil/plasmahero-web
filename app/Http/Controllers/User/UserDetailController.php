@@ -17,7 +17,7 @@ class UserDetailController extends Controller
 	public function store(StoreUserDetailRequest $request)
 	{
 		Pengguna::create([
-			'user_id' => $request->id_user,
+			'id_user' => $request->id_user,
 			'no_hp' => $request->no_hp,
 			'alamat' => $request->alamat,
 			'kelurahan' => $request->kelurahan,

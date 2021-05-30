@@ -24,7 +24,7 @@ class StoreUserDetailRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'user_id' => ['required'],
+			'id_user' => ['required'],
 			'no_hp' => ['required'],
 			'alamat' => ['required'],
 			'kelurahan' => ['required'],

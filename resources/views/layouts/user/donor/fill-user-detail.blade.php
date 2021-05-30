@@ -16,7 +16,7 @@
         <form action="" method="post" action="{{ route('fill-report.store') }}">
           @csrf
 
-          <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
+          <input type="hidden" id="id_user" name="id_user" value="{{ Auth::user()->id }}">
 
           <!-- data diri -->
           <legend class="form">Data Diri</legend>
