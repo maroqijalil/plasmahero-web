@@ -39,10 +39,11 @@
         </tr>
       </thead>
       <tbody>
+        <?php $counter=1; ?>
         @foreach ($users as $user)
         <tr>
-          <th scope="row">1</th>
-          <td>USer Coba</td>
+          <th scope="row">{{$counter++}}</th>
+          <td>{{$user->name}}</td>
           <td>Surabaya</td>
         </tr>
         @endforeach

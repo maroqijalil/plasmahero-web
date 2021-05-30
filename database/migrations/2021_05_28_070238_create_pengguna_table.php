@@ -26,7 +26,7 @@ class CreatePenggunaTable extends Migration
             $table->unsignedBigInteger('usia')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->string('gol_darah')->nullable();
-            $table->string('rheus')->nullable();
+            $table->string('rhesus')->nullable();
             $table->unsignedInteger('berat_badan')->nullable();
             $table->date('tanggal_swab')->nullable();
 
