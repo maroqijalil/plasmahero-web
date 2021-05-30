@@ -3,6 +3,7 @@
 use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DasborController;
+use App\Http\Controllers\Admin\PendonoranController;
 use App\Http\Controllers\User\UserDetailController;
 use App\Http\Controllers\ReportController;
 
@@ -32,17 +33,19 @@ Route::middleware('auth.role:pengguna')->group(function () {
 });
 
 Route::middleware('auth.role:admin')->group(function () {
-    Route::view('/admin', 'layouts.admin.dashboard');
-    Route::get('/admin/pendonor', [DasborController::class, 'show']);
-    Route::view('/admin/pemohon', 'layouts.admin.donor.donor-recipient');
-    Route::view('/admin/pendonoran', 'layouts.admin.donor.donation');
-    Route::view('/admin/chat', 'layouts.admin.communication.chat');
-    Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
-    Route::view('/admin/akun', 'layouts.admin.others.account');
-    Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
+	Route::view('/admin', 'layouts.admin.dashboard');
+	Route::get('/admin/pendonoran', [PendonoranController::class, 'index']);
+	Route::post('/admin/pendonoran', [PendonoranController::class, 'store'])->name('store-pencocokan');
+	Route::view('/admin/chat', 'layouts.admin.communication.chat');
+	Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
+	Route::view('/admin/akun', 'layouts.admin.others.account');
+	Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
 
-    Route::get('/admin/galeri', [GalleryController::class, 'adminIndex']);
-    Route::post('/admin/galeri', [GalleryController::class, 'store']);
+	Route::get('/admin/pendonor', [DasborController::class, 'showPendonor']);
+	Route::get('/admin/pemohon', [DasborController::class, 'showPenerima']);
+
+	Route::get('/admin/galeri', [GalleryController::class, 'adminIndex']);
+	Route::post('/admin/galeri', [GalleryController::class, 'store']);
 
     Route::get('/admin/ba', [ReportController::class, 'show'])->name('berita-acara.show');
 });
