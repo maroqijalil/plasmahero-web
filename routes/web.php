@@ -20,28 +20,28 @@ use App\Http\Controllers\ReportController;
 require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
-    return view('layouts.dashboard');
+	return view('layouts.dashboard');
 });
 
 Route::middleware('auth.role:user')->group(function () {
-    Route::get('/detail-pendonor', [UserDetailController::class, 'index']);
-    Route::post('/detail-pendonor', [UserDetailController::class, 'store'])->name('fill-detail-giver.store');
-    
-    Route::get('/berita-acara', [ReportController::class, 'index']);
-    Route::post('/berita-acara', [ReportController::class, 'store'])->name('fill-report.store');
+	Route::get('/detail-pendonor', [UserDetailController::class, 'index']);
+	Route::post('/detail-pendonor', [UserDetailController::class, 'store'])->name('fill-detail-giver.store');
+
+	Route::get('/berita-acara', [ReportController::class, 'index']);
+	Route::post('/berita-acara', [ReportController::class, 'store'])->name('fill-report.store');
 });
 
 Route::middleware('auth.role:admin')->group(function () {
-    Route::view('/admin', 'layouts.admin.dashboard');
-    Route::view('/admin/pemohon', 'layouts.admin.donor.donor-recipient');
-    Route::view('/admin/pendonoran', 'layouts.admin.donor.donation');
-    Route::view('/admin/chat', 'layouts.admin.communication.chat');
-    Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
-    Route::view('/admin/akun', 'layouts.admin.others.account');
-    Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
+	Route::view('/admin', 'layouts.admin.dashboard');
+	Route::view('/admin/pemohon', 'layouts.admin.donor.donor-recipient');
+	Route::view('/admin/pendonoran', 'layouts.admin.donor.donation');
+	Route::view('/admin/chat', 'layouts.admin.communication.chat');
+	Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
+	Route::view('/admin/akun', 'layouts.admin.others.account');
+	Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
 
-    Route::get('/admin/pendonor', [DasborController::class, 'show']);
+	Route::get('/admin/pendonor', [DasborController::class, 'show']);
 
-    Route::get('/admin/galeri', [GalleryController::class, 'adminIndex']);
-    Route::post('/admin/galeri', [GalleryController::class, 'store']);
+	Route::get('/admin/galeri', [GalleryController::class, 'adminIndex']);
+	Route::post('/admin/galeri', [GalleryController::class, 'store']);
 });
