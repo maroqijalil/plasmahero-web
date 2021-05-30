@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gallery extends Model
 {
-    protected $fillable = [
-        'title',
-        'description',
-        'urlToImage'
-    ];
+	protected $fillable = [
+		'title',
+		'description',
+		'urlToImage'
+	];
 
-    use HasFactory;
+	use HasFactory;
 }

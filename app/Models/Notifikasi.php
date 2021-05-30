@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notifikasi extends Model
 {
-    use HasFactory;
-    protected $table = 'notifikasi';
-    protected $fillable = ['judul', 'isi', 'keterangan', 'tanggal', 'waktu'];
+	use HasFactory;
+	protected $table = 'notifikasi';
+	protected $fillable = ['judul', 'isi', 'keterangan', 'tanggal', 'waktu'];
 }
