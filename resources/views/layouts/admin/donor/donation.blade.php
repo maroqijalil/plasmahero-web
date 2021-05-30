@@ -30,9 +30,17 @@ Dashboard
           <div class="form-group row mb-3">
             <label for="id_pendonor" class="col-4 col-form-label">ID Pendonor</label>
             <div class="col-8">
-              <input class="form-control {{ $errors->has('id_pendonor') ? 'error' : '' }}" type="text" placeholder="ID Pendonor" id="id_pendonor" name="id_pendonor" value="{{ old('id_pendonor') }}">
-  
-              <!-- Error -->
+							<!-- <input class="form-control {{ $errors->has('id_pendonor') ? 'error' : '' }}" type="text" placeholder="ID Pendonor" id="id_pendonor" name="id_pendonor" value="{{ old('id_pendonor') }}"> -->
+							<select class="form-control" id="id_pendonor" name="id_pendonor">
+								@foreach ($users as $user)
+								@if ($user->role == 'pengguna')
+								@if ($user->pengguna->nama_tipe == 'pendonor')
+								<option value="{{$user->pengguna->id}}">{{$user->pengguna->id}}</option>
+								@endif
+								@endif
+								@endforeach
+							</select>
+
               @if ($errors->has('id_pendonor'))
               <div class="error">
                   {{ $errors->first('id_pendonor') }}
@@ -44,8 +52,16 @@ Dashboard
           <div class="form-group row mb-3">
             <label for="id_penerima" class="col-4 col-form-label">ID Penerima</label>
             <div class="col-8">
-              <input class="form-control {{ $errors->has('id_penerima') ? 'error' : '' }}" type="text" placeholder="ID Penerima" id="id_penerima" name="id_penerima" value="{{ old('id_penerima') }}">
-  
+							<!-- <input class="form-control {{ $errors->has('id_penerima') ? 'error' : '' }}" type="text" placeholder="ID Penerima" id="id_penerima" name="id_penerima" value="{{ old('id_penerima') }}"> -->
+							<select class="form-control" id="id_penerima" name="id_penerima">
+								@foreach ($users as $user)
+								@if ($user->role == 'pengguna')
+								@if ($user->pengguna->nama_tipe == 'penerima')
+								<option value="{{$user->pengguna->id}}">{{$user->pengguna->id}}</option>
+								@endif
+								@endif
+								@endforeach
+							</select>
               <!-- Error -->
               @if ($errors->has('id_penerima'))
               <div class="error">
