@@ -11,7 +11,7 @@
         <li><a href="#about">FAQ</a></li>
         <li class="drop-down"><a href="">Donor</a>
           <ul>
-            <li><a href="#">Ajukan Plasma</a></li>
+            <li><a href="{{route('carikan-plasma')}}">Carikan Plasma</a></li>
             <li><a href="#">Donorkan Plasma</a></li>
           </ul>
         </li>

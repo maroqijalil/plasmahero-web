@@ -27,7 +27,7 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth.role:pengguna')->group(function () {
-    Route::get('/detail-pengguna', [UserDetailController::class, 'index']);
+    Route::get('/detail-pengguna', [UserDetailController::class, 'index'])->name('detail-pengguna');
     Route::patch('/detail-pengguna', [UserDetailController::class, 'update'])->name('fill-detail-giver.store');
 
     Route::get('/berita-acara', [ReportController::class, 'index']);
@@ -37,6 +37,8 @@ Route::middleware('auth.role:pengguna')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::view('/carikan-plasma', 'layouts.user.donor.carikan-plasma')->name('carikan-plasma');
 });
 
 Route::middleware('auth.role:admin')->group(function () {
