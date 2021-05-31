@@ -12,14 +12,16 @@ class Pengguna extends Model
 	protected $table = 'pengguna';
 
 	protected $fillable = [
+		// umum
 		'id_user',
 		'no_hp',
 		'alamat',
 		'kelurahan',
 		'kecamatan',
 		'kota',
-		'nama_tipe',
 		'usia',
+		// terkait pendonoran
+		'nama_tipe',
 		'jenis_kelamin',
 		'gol_darah',
 		'rhesus',
@@ -27,7 +29,8 @@ class Pengguna extends Model
 		'tanggal_swab'
 	];
 
-    public function user() {
-        return $this->belongsTo(User::class, 'id_user');
-    }
+	public function user()
+	{
+		return $this->belongsTo(User::class, 'id_user');
+	}
 }

@@ -9,9 +9,17 @@ class Admin extends Model
 {
     use HasFactory;
     protected $table = 'admin';
-    protected $fillable = ['id_user', 'no_hp', 'alamat', 'kelurahan', 'kecamatan', 'kota'];
+    protected $fillable = [
+        'id_user',
+        'no_hp',
+        'alamat',
+        'kelurahan',
+        'kecamatan',
+        'kota'
+    ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class, 'id_user');
     }
 }

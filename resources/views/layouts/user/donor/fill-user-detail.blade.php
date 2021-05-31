@@ -14,6 +14,7 @@
         @endif
 
         <form action="" method="post" action="{{ route('fill-report.store') }}">
+          @method('patch')
           @csrf
 
           <input type="hidden" id="id_user" name="id_user" value="{{ Auth::user()->id }}">
@@ -23,7 +24,7 @@
           <div class="form-group row mb-3">
             <label for="no_hp" class="col-2 col-form-label">No. WhatsApp</label>
             <div class="col-10">
-              <input class="form-control {{ $errors->has('no_hp') ? 'error' : '' }}" type="text" placeholder="Nomor WhatsApp" id="no_hp" name="no_hp" value="{{ old('no_hp') }}">
+              <input class="form-control {{ $errors->has('no_hp') ? 'error' : '' }}" type="text" placeholder="Nomor WhatsApp" id="no_hp" name="no_hp" value="{{ Auth::user()->pengguna->no_hp ? Auth::user()->pengguna->no_hp : old('no_hp') }}">
   
               <!-- Error -->
               @if ($errors->has('no_hp'))
@@ -37,7 +38,7 @@
           <div class="form-group row mb-3">
             <label for="alamat" class="col-2 col-form-label">Alamat</label>
             <div class="col-10">
-              <input class="form-control {{ $errors->has('alamat') ? 'error' : '' }}" type="text" placeholder="alamat" id="alamat" name="alamat" value="{{ old('alamat') }}">
+              <input class="form-control {{ $errors->has('alamat') ? 'error' : '' }}" type="text" placeholder="alamat" id="alamat" name="alamat" value="{{ Auth::user()->pengguna->alamat ? Auth::user()->pengguna->alamat : old('alamat') }}">
   
               <!-- Error -->
               @if ($errors->has('alamat'))
@@ -51,7 +52,7 @@
           <div class="form-group row mb-3">
             <label for="kelurahan" class="col-2 col-form-label">Kelurahan</label>
             <div class="col-10">
-              <input class="form-control {{ $errors->has('kelurahan') ? 'error' : '' }}" type="text" placeholder="Kelurahan" id="kelurahan" name="kelurahan" value="{{ old('kelurahan') }}">
+              <input class="form-control {{ $errors->has('kelurahan') ? 'error' : '' }}" type="text" placeholder="Kelurahan" id="kelurahan" name="kelurahan" value="{{ Auth::user()->pengguna->kelurahan ? Auth::user()->pengguna->kelurahan : old('kelurahan') }}">
   
               <!-- Error -->
               @if ($errors->has('kelurahan'))
@@ -65,7 +66,7 @@
           <div class="form-group row mb-3">
             <label for="kecamatan" class="col-2 col-form-label">Kecamatan</label>
             <div class="col-10">
-              <input class="form-control {{ $errors->has('kecamatan') ? 'error' : '' }}" type="text" placeholder="Kecamatan" id="kecamatan" name="kecamatan" value="{{ old('kecamatan') }}">
+              <input class="form-control {{ $errors->has('kecamatan') ? 'error' : '' }}" type="text" placeholder="Kecamatan" id="kecamatan" name="kecamatan" value="{{ Auth::user()->pengguna->kecamatan ? Auth::user()->pengguna->kecamatan : old('kecamatan') }}">
   
               <!-- Error -->
               @if ($errors->has('kecamatan'))
@@ -79,7 +80,7 @@
           <div class="form-group row mb-3">
             <label for="kota" class="col-2 col-form-label">Kota</label>
             <div class="col-10">
-              <input class="form-control {{ $errors->has('kota') ? 'error' : '' }}" type="text" placeholder="Kota" id="kota" name="kota" value="{{ old('kota') }}">
+              <input class="form-control {{ $errors->has('kota') ? 'error' : '' }}" type="text" placeholder="Kota" id="kota" name="kota" value="{{ Auth::user()->pengguna->kota ? Auth::user()->pengguna->kota : old('kota') }}">
   
               <!-- Error -->
               @if ($errors->has('kota'))
@@ -106,7 +107,7 @@
           <div class="form-group row mb-3">
             <label for="usia" class="col-2 col-form-label">Usia</label>
             <div class="col-10">
-              <input class="form-control {{ $errors->has('usia') ? 'error' : '' }}" type="number" placeholder="Usia Pendonor" id="usia" name="usia" value="{{ old('usia') }}">
+              <input class="form-control {{ $errors->has('usia') ? 'error' : '' }}" type="number" placeholder="Usia Pendonor" id="usia" name="usia" value="{{ Auth::user()->pengguna->usia ? Auth::user()->pengguna->usia : old('usia') }}">
   
               <!-- Error -->
               @if ($errors->has('usia'))
@@ -166,7 +167,7 @@
           <div class="form-group row mb-3">
             <label for="berat_badan" class="col-2 col-form-label">Berat Badan</label>
             <div class="col-10">
-              <input class="form-control {{ $errors->has('berat_badan') ? 'error' : '' }}" type="number" placeholder="Berat Badan" id="berat_badan" name="berat_badan" value="{{ old('berat_badan') }}">
+              <input class="form-control {{ $errors->has('berat_badan') ? 'error' : '' }}" type="number" placeholder="Berat Badan" id="berat_badan" name="berat_badan" value="{{ Auth::user()->pengguna->berat_badan ? Auth::user()->pengguna->berat_badan : old('berat_badan') }}">
   
               <!-- Error -->
               @if ($errors->has('berat_badan'))
@@ -180,7 +181,7 @@
           <div class="form-group row mb-3">
             <label for="tanggal_swab" class="col-2 col-form-label">Tanggal Swab</label>
             <div class="col-10">
-              <input class="form-control {{ $errors->has('tanggal_swab') ? 'error' : '' }}" type="date" placeholder="Tanggal Swab" id="tanggal_swab" name="tanggal_swab" value="{{ old('tanggal_swab') }}">
+              <input class="form-control {{ $errors->has('tanggal_swab') ? 'error' : '' }}" type="date" placeholder="Tanggal Swab" id="tanggal_swab" name="tanggal_swab" value="{{ Auth::user()->pengguna->tanggal_swab ? Auth::user()->pengguna->tanggal_swab : old('tanggal_swab') }}">
   
               <!-- Error -->
               @if ($errors->has('tanggal_swab'))

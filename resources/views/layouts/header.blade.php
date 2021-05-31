@@ -26,7 +26,7 @@
         @if (Auth::check())
         <li class="drop-down"><a href="">{{ Auth::user()->name }}</a>
           <ul>
-            <li><a href="">Profil</a></li>
+            <li><a href="{{route('profile')}}">Profil</a></li>
             <li>
               <form method="POST" action="{{ route('logout') }}">
                 @csrf
