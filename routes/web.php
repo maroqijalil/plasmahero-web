@@ -45,7 +45,7 @@ Route::middleware('auth.role:admin')->group(function () {
     Route::post('/admin/pendonoran', [PendonoranController::class, 'store'])->name('store-pencocokan');
     Route::view('/admin/chat', 'layouts.admin.communication.chat');
     Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
-    Route::get('/admin/akun', [AccountController::class, 'index']);
+    Route::get('/admin/akun', [AccountController::class, 'index'])->name('show-admin-akun');
     Route::post('/admin/akun', [AccountController::class, 'store'])->name('store-admin-akun');
     Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
 
