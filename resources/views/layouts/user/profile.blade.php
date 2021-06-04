@@ -4,6 +4,12 @@
 
 @section('content')
 <div class="container">
+
+  @if(Session::has('eSent'))
+    <div class="alert alert-success">
+      {{Session::get('eSent')}}
+    </div>
+  @endif
   
   <div class="row">
 

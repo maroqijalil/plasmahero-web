@@ -10,9 +10,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Services\MailServiceInterface;
+
 
 class RegisteredUserController extends Controller
 {
+    protected $mailSender;
+
+    public function __construct(MailServiceInterface $mailService)
+    {
+        $this->mailSender = $mailService;
+    }
     /**
      * Display the registration view.
      *
@@ -47,15 +55,22 @@ class RegisteredUserController extends Controller
             'role' => $request->role,
         ]);
 
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => 'Registrasi Akun Plasmahero'
+        ];
+
         event(new Registered($user));
 
         Auth::login($user);
-        
+
         $user = User::where('email', $request->email)->first();
         if ($user['role'] == 'admin') {
             return redirect('/admin');
         } else {
-            return redirect(RouteServiceProvider::HOME);
+            $this->mailSender->sendMail($data);
+            return redirect('/profile')->with(['eSent' => 'Email berhasil dikirim, Periksa email Anda !']);
         }
     }
 }
