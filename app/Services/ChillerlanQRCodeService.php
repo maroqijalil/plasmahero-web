@@ -8,10 +8,9 @@ use chillerlan\QRCode\QROptions;
 
 class ChillerlanQRCodeService implements QRCodeServiceInterface
 {
-	public function generateQrCode()
+	public function generateQrCode($data)
 	{
 		$path = public_path('images/qrcode2.png');
-		$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 		
 		$options = new QROptions([
 			'version'    => 5,

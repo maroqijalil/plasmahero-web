@@ -8,7 +8,7 @@
 <div class="visible-print text-center">
 	<h1> QRCode Pendonoran anda </h1>
 
-    <img src="{{ asset('images/qrcode.png')}}">
+    <img src="{{ asset($qrCodePath)}}">
 </div>
     
 </body>
