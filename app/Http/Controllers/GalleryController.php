@@ -10,7 +10,7 @@ class GalleryController extends Controller
     public function index()
     {
         $galleries = Gallery::get();
-        return view('layouts.user.gallery', compact(['galleries']));
+        return view('layouts.user.others.gallery', compact(['galleries']));
     }
 
     public function adminIndex()

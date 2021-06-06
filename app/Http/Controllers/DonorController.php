@@ -16,7 +16,7 @@ class DonorController extends Controller
 
   public function index()
   {
-    return view('layouts.user.pendonoran');
+    return view('layouts.user.donor.pendonoran');
   }
 
   public function store(Request $request)
@@ -28,6 +28,6 @@ class DonorController extends Controller
     ];
 
     $qrCodePath = $this->qrCodeGenerator->generateQrCode($data);
-    return view('qr-code', compact('qrCodePath'));
+    return view('layouts.user.qr-code', compact('qrCodePath'));
   }
 }
