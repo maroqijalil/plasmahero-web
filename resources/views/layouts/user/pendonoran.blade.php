@@ -30,11 +30,11 @@
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="tanggal">Masukkan tanggal</label>
-            <input type="text" class="form-control" id="tanggal" placeholder="tanggal" name="tanggal">
+            <input type="date" class="form-control" id="tanggal" placeholder="tanggal" name="tanggal">
           </div>
           <div class="form-group col-md-12">
             <label for="waktu">Masukkan waktu</label>
-            <input type="waktu" class="form-control" id="waktu" placeholder="waktu" name="waktu">
+            <input type="time" class="form-control" id="waktu" placeholder="waktu" name="waktu">
           </div>
         </div>
         <button type="submit" class="btn btn-primary float-right">Submit</button>

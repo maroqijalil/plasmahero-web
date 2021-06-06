@@ -9,23 +9,23 @@ use App\Services\ChillerlanQRCodeService;
 
 class QRCodeServiceProvider extends ServiceProvider
 {
-    /**
-     * Register services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
+	/**
+	 * Register services.
+	 *
+	 * @return void
+	 */
+	public function register()
+	{
+		//
+	}
 
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this->app->bind(QRCodeServiceInterface::class, ChillerlanQRCodeService::class);
-    }
+	/**
+	 * Bootstrap services.
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+		$this->app->bind(QRCodeServiceInterface::class, ChillerlanQRCodeService::class);
+	}
 }

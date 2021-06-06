@@ -10,7 +10,7 @@ class ChillerlanQRCodeService implements QRCodeServiceInterface
 {
 	public function generateQrCode($data)
 	{
-		$path = public_path('images/qrcode2.png');
+		$path = 'images/qrcode2.png';
 		
 		$options = new QROptions([
 			'version'    => 5,
@@ -19,6 +19,7 @@ class ChillerlanQRCodeService implements QRCodeServiceInterface
 		]);
 
 		$qrcode = new QRCode($options);
-		$qrcode->render($data, $path);
+		$qrcode->render($data['tanggal'] . '-' . $data['waktu'], public_path($path));
+		return $path;
 	}
 }
