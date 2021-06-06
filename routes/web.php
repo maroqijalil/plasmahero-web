@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\User\UserDetailController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +62,24 @@ Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
 });
 
 Route::view('errorpage', 'layouts.error')->name('errorpage');
+
+Route::get('/send', function () {
+    $email = '76akun@gmail.com';
+    $data = array(
+        'name' => 'Boi',
+        'email_body' => 'Selamat Malam Sayang'
+    );
+
+    // Kirim Email
+    Mail::send('email_template', $data, function ($mail) use ($email) {
+        $mail->to($email, 'no-reply')
+            ->subject("Sample Email Laravel");
+        $mail->from('erikfaderik@gmail.com', 'Testing');
+    });
+
+    // Cek kegagalan
+    if (Mail::failures()) {
+        return "Gagal mengirim Email";
+    }
+    return "Email berhasil dikirim!";
+});
