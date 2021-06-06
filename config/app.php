@@ -178,12 +178,8 @@ return [
         /*
          * Custom provider
          */
-        // App\Providers\QRCodeServiceProvider::class,
-
-        
+        App\Providers\QRCodeServiceProvider::class,        
         App\Providers\MailServiceProvider::class,
-        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class
-
     ],
 
     /*

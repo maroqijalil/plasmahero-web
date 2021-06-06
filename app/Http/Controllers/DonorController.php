@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\QRCodeServiceInterface;
 
 class DonorController extends Controller
 {
@@ -13,11 +14,11 @@ class DonorController extends Controller
         $this->qrCodeGenerator = $qrCodeService;
     }
 
-    public function store(Request $request) {
+    public function store() {
 
-        $tanggal = $request->tanggal;
+        $tanggal = "DUMMY DATA";
 
         $this->qrCodeGenerator->generateQrCode($tanggal);
-            return redirect('/');
+            return view('qr-code');
     }
 }

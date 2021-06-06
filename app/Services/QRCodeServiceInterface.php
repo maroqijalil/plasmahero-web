@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-interface QRServiceInterface 
+interface QRCodeServiceInterface 
 {
     public function generateQrCode();
 }

@@ -6,9 +6,9 @@
 <body>
     
 <div class="visible-print text-center">
-	<h1> Laravel QR Code Generator Example </h1>
-     
-    {!! QrCode::size(250)->generate('codingdriver.com'); !!}
+	<h1> QRCode Pendonoran anda </h1>
+
+    <img src="{{ asset('images/qrcode.png')}}">
 </div>
     
 </body>

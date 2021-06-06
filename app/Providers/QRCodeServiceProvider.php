@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Services\QRCodeServiceInterface;
+use App\Services\SimpleQRCodeService;
 
 class QRCodeServiceProvider extends ServiceProvider
 {
