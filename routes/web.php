@@ -23,9 +23,7 @@ use Illuminate\Support\Facades\Mail;
 
 require __DIR__ . '/auth.php';
 
-Route::get('/', function () {
-    return view('layouts.dashboard');
-});
+Route::view('/', 'layouts.dashboard')->name('home');
 
 Route::middleware('auth.role:pengguna')->group(function () {
     Route::get('/detail-pengguna', [UserDetailController::class, 'index'])->name('detail-pengguna');
