@@ -7,7 +7,7 @@
 
     <nav class="nav-menu d-none d-lg-block">
       <ul>
-        <li class="active"><a href="index.html">Beranda</a></li>
+        <li class="active"><a href="{{ route('home') }}">Beranda</a></li>
         <li><a href="#about">FAQ</a></li>
         <li class="drop-down"><a href="">Donor</a>
           <ul>

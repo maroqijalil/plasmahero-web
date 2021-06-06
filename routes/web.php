@@ -24,9 +24,7 @@ use Illuminate\Support\Facades\Mail;
 
 require __DIR__ . '/auth.php';
 
-Route::get('/', function () {
-    return view('layouts.dashboard');
-});
+Route::view('/', 'layouts.dashboard')->name('home');
 
 Route::middleware('auth.role:pengguna')->group(function () {
     Route::get('/detail-pengguna', [UserDetailController::class, 'index'])->name('detail-pengguna');
@@ -43,23 +41,23 @@ Route::middleware('auth.role:pengguna')->group(function () {
     Route::view('/carikan-plasma', 'layouts.user.donor.carikan-plasma')->name('carikan-plasma');
 });
 
-Route::middleware('auth.role:admin')->group(function () {
-    Route::view('/admin', 'layouts.admin.dashboard');
-    Route::get('/admin/pendonoran', [PendonoranController::class, 'index']);
-    Route::post('/admin/pendonoran', [PendonoranController::class, 'store'])->name('store-pencocokan');
-    Route::view('/admin/chat', 'layouts.admin.communication.chat');
-    Route::view('/admin/konsultasi', 'layouts.admin.communication.consultation');
-    Route::get('/admin/akun', [AccountController::class, 'index'])->name('show-admin-akun');
-    Route::post('/admin/akun', [AccountController::class, 'store'])->name('store-admin-akun');
-    Route::view('/admin/pengaturan', 'layouts.admin.others.setting');
+Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
+    Route::view('', 'layouts.admin.dashboard');
+    Route::get('/pendonoran', [PendonoranController::class, 'index']);
+    Route::post('/pendonoran', [PendonoranController::class, 'store'])->name('store-pencocokan');
+    Route::view('/chat', 'layouts.admin.communication.chat');
+    Route::view('/konsultasi', 'layouts.admin.communication.consultation');
+    Route::get('/akun', [AccountController::class, 'index'])->name('show-admin-akun');
+    Route::post('/akun', [AccountController::class, 'store'])->name('store-admin-akun');
+    Route::view('/pengaturan', 'layouts.admin.others.setting');
 
-    Route::get('/admin/pendonor', [DasborController::class, 'showPendonor']);
-    Route::get('/admin/pemohon', [DasborController::class, 'showPenerima']);
+    Route::get('/pendonor', [DasborController::class, 'showPendonor']);
+    Route::get('/pemohon', [DasborController::class, 'showPenerima']);
 
-    Route::get('/admin/galeri', [GalleryController::class, 'adminIndex']);
-    Route::post('/admin/galeri', [GalleryController::class, 'store']);
+    Route::get('/galeri', [GalleryController::class, 'adminIndex']);
+    Route::post('/galeri', [GalleryController::class, 'store']);
 
-    Route::get('/admin/berita-acara', [ReportController::class, 'show'])->name('berita-acara.show');
+    Route::get('/berita-acara', [ReportController::class, 'show'])->name('berita-acara.show');
 });
 
 Route::view('errorpage', 'layouts.error')->name('errorpage');
