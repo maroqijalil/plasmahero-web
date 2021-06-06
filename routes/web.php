@@ -9,6 +9,7 @@ use App\Http\Controllers\User\UserDetailController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QrCodeController;
+use App\Http\Controllers\DonorController;
 use Illuminate\Support\Facades\Mail;
 
 /*
@@ -84,3 +85,5 @@ Route::get('/send', function () {
     }
     return "Email berhasil dikirim!";
 });
+
+Route::get('pendonoran', [DonorController::class, 'store']);
