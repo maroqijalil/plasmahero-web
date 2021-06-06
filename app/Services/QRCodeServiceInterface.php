@@ -4,5 +4,5 @@ namespace App\Services;
 
 interface QRCodeServiceInterface 
 {
-    public function generateQrCode();
+    public function generateQrCode($data);
 }

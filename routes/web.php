@@ -83,4 +83,5 @@ Route::get('/send', function () {
     return "Email berhasil dikirim!";
 });
 
-Route::get('pendonoran', [DonorController::class, 'store']);
+Route::get('pendonoran', [DonorController::class, 'index']);
+Route::post('pendonoran', [DonorController::class, 'store']);

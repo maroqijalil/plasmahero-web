@@ -14,11 +14,18 @@ class DonorController extends Controller
         $this->qrCodeGenerator = $qrCodeService;
     }
 
-    public function store() {
+    public function index() {
+        return view('layouts.user.pendonoran');
+    }
 
-        $tanggal = "DUMMY DATA";
+    public function store(Request $request) {
 
-        $this->qrCodeGenerator->generateQrCode($tanggal);
-            return view('qr-code');
+        $data = [
+            "tanggal" => $request->tanggal,
+            "waktu" => $request->waktu
+        ];
+        
+        $qrCodePath = $this->qrCodeGenerator->generateQrCode($data);
+        return view('qr-code', compact('qrCodePath'));
     }
 }
