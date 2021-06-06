@@ -7,18 +7,18 @@ use App\Services\QRCodeServiceInterface;
 
 class DonorController extends Controller
 {
-    protected $qrCodeGenerator;
+  protected $qrCodeGenerator;
 
-    public function __construct(QRCodeServiceInterface $qrCodeService)
-    {
-        $this->qrCodeGenerator = $qrCodeService;
-    }
+  public function __construct(QRCodeServiceInterface $qrCodeService)
+  {
+    $this->qrCodeGenerator = $qrCodeService;
+  }
 
-    public function store() {
+  public function store()
+  {
+    $tanggal = "DUMMY DATA";
 
-        $tanggal = "DUMMY DATA";
-
-        $this->qrCodeGenerator->generateQrCode($tanggal);
-            return view('qr-code');
-    }
+    $this->qrCodeGenerator->generateQrCode($tanggal);
+    return view('qr-code');
+  }
 }

@@ -8,7 +8,6 @@ use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\User\UserDetailController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\DonorController;
 use Illuminate\Support\Facades\Mail;
 
@@ -26,8 +25,6 @@ use Illuminate\Support\Facades\Mail;
 require __DIR__ . '/auth.php';
 
 Route::view('/', 'layouts.dashboard')->name('home');
-
-Route::get('/nyoba-qr-code', [QrCodeController::class, 'index']);
 
 Route::middleware('auth.role:pengguna')->group(function () {
     Route::get('/detail-pengguna', [UserDetailController::class, 'index'])->name('detail-pengguna');
