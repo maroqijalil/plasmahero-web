@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Pengguna;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PenggunaFactory extends Factory
@@ -22,6 +23,7 @@ class PenggunaFactory extends Factory
     public function definition()
     {
         return [
+            // 'id_user' => User::factory(),
             'no_hp' => $this->faker->phoneNumber,
             'alamat' => $this->faker->address,
             'kelurahan' => $this->faker->address,

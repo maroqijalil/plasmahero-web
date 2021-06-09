@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Pencocokan;
-use App\Models\Pengguna;
+use App\Models\Donor;
 use Illuminate\Database\Seeder;
 
-class PenggunaSeeder extends Seeder
+class DonorSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +14,8 @@ class PenggunaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $donor = Donor::factory()
+            ->count(25)
+            ->create();
     }
 }

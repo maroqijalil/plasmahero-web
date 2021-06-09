@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Pencocokan;
-use App\Models\Pengguna;
 use Illuminate\Database\Seeder;
 
-class PenggunaSeeder extends Seeder
+class PencocokanSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +14,8 @@ class PenggunaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $pencocokan = Pencocokan::factory()
+            ->count(25)
+            ->create();
     }
 }

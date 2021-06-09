@@ -24,9 +24,12 @@ class PencocokanFactory extends Factory
     public function definition()
     {
         return [
-            'id_admin' => Admin::factory(), 
-            'id_pendonor' => Pengguna::factory(), 
-            'id_penerima' => Pengguna::factory()
+            // 'id_admin' => Admin::factory(), 
+            // 'id_pendonor' => Pengguna::factory(), 
+            // 'id_penerima' => Pengguna::factory()
+            'id_admin' => Admin::all()->random()->id,
+            'id_pendonor' => Pengguna::all()->random()->id,
+            'id_penerima' => Pengguna::all()->random()->id
         ];
     }
 }

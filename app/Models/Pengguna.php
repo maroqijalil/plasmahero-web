@@ -31,6 +31,16 @@ class Pengguna extends Model
 
 	public function user()
 	{
-		return $this->belongsTo(User::class, 'id_user');
+		return $this->belongsTo(User::class, 'id_user', 'id');
+	}
+
+	public function menerimaDonor()
+	{
+		return $this->hasMany(Donor::class, 'id_penerima', 'id');
+	}
+
+	public function mendonor()
+	{
+		return $this->hasMany(Donor::class, 'id_pendonor', 'id');
 	}
 }
