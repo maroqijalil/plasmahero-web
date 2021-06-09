@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use App\Services\MailServiceInterface;
+use App\Services\MailTrapService;
 
 
 class RegisteredUserController extends Controller

@@ -7,7 +7,7 @@ use App\Services\MailServiceInterface;
 // use App\Services\GmailService;
 use App\Services\MailTrapService;
 
-class MailServiceProvider extends ServiceProvider
+class MailTrapServiceProvider extends ServiceProvider
 {
     /**
      * Register services.

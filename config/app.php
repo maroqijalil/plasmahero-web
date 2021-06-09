@@ -180,6 +180,7 @@ return [
          */
         App\Providers\QRCodeServiceProvider::class,        
         App\Providers\MailServiceProvider::class,
+        App\Providers\MailTrapServiceProvider::class,
     ],
 
     /*
