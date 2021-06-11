@@ -53,16 +53,6 @@ class User extends Authenticatable
         return $this->hasOne(Admin::class, 'id_user', 'id');
     }
 
-    public function pencocokanPenerima()
-    {
-        return $this->hasMany(Pencocokan::class, 'id_penerima', 'id');
-    }
-
-    public function pencocokanPendonor()
-    {
-        return $this->hasMany(Pencocokan::class, 'id_pendonor', 'id');
-    }
-
     public function report()
     {
         return $this->hasMany(Report::class, 'id_user', 'id');

@@ -22,4 +22,9 @@ class Admin extends Model
     {
         return $this->belongsTo(User::class, 'id_user');
     }
+
+    public function notifikasi()
+    {
+        return $this->hasMany(Notifikasi::class, 'id_admin');
+    }
 }
