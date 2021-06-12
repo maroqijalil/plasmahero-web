@@ -169,17 +169,17 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        App\Common\Providers\AppServiceProvider::class,
+        App\Common\Providers\AuthServiceProvider::class,
+        // App\Common\Providers\BroadcastServiceProvider::class,
+        App\Common\Providers\EventServiceProvider::class,
+        App\Common\Providers\RouteServiceProvider::class,
 
         /*
          * Custom provider
          */
-        App\Providers\QRCodeServiceProvider::class,        
-        App\Providers\MailServiceProvider::class,
+        App\Common\Providers\QRCodeServiceProvider::class,        
+        App\Common\Providers\MailServiceProvider::class,
     ],
 
     /*

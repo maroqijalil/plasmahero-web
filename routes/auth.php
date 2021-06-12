@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Common\Controllers\Auth\AuthenticatedSessionController;
+use App\Common\Controllers\Auth\ConfirmablePasswordController;
+use App\Common\Controllers\Auth\EmailVerificationNotificationController;
+use App\Common\Controllers\Auth\EmailVerificationPromptController;
+use App\Common\Controllers\Auth\NewPasswordController;
+use App\Common\Controllers\Auth\PasswordResetLinkController;
+use App\Common\Controllers\Auth\RegisteredUserController;
+use App\Common\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/register', [RegisteredUserController::class, 'create'])

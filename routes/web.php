@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\GalleryController;
+use App\Common\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\DasborController;
-use App\Http\Controllers\Admin\PendonoranController;
-use App\Http\Controllers\Admin\AccountController;
-use App\Http\Controllers\User\UserDetailController;
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\DonorController;
+use App\Admin\Controllers\DasborController;
+use App\Admin\Controllers\PendonoranController;
+use App\Admin\Controllers\AccountController;
+use App\User\Controllers\UserDetailController;
+use App\Common\Controllers\ReportController;
+use App\Common\Controllers\ProfileController;
+use App\Common\Controllers\DonorController;
 use Illuminate\Support\Facades\Mail;
 
 /*
