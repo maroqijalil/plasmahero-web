@@ -22,7 +22,6 @@ class DonorController extends Controller
 
   public function store(Request $request)
   {
-
     $data = [
       "tanggal" => $request->tanggal,
       "waktu" => $request->waktu

@@ -31,6 +31,36 @@ class Pengguna extends Model
 
 	public function user()
 	{
-		return $this->belongsTo(User::class, 'id_user');
+		return $this->belongsTo(User::class, 'id_user', 'id');
 	}
+
+	public function menerimaDonor()
+	{
+		return $this->hasMany(Donor::class, 'id_penerima', 'id');
+	}
+
+	public function mendonor()
+	{
+		return $this->hasMany(Donor::class, 'id_pendonor', 'id');
+	}
+
+	public function notifikasi()
+	{
+		return $this->belongsToMany(Notifikasi::class, 'menerima', 'id_pengguna', 'id_notifikasi');
+	}
+
+	public function menerima()
+	{
+		return $this->hasMany(Menerima::class, 'id_user', 'id');
+	}
+
+    public function pencocokanPenerima()
+    {
+        return $this->hasMany(Pencocokan::class, 'id_penerima', 'id');
+    }
+
+    public function pencocokanPendonor()
+    {
+        return $this->hasMany(Pencocokan::class, 'id_pendonor', 'id');
+    }
 }
