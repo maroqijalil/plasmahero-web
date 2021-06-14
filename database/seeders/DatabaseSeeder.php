@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(DonorSeeder::class);
         // $this->call(ReportSeeder::class);
         // $this->call(NotifikasiSeeder::class);
-        $this->call(MenerimaSeeder::class);
+        // $this->call(MenerimaSeeder::class);
+        $this->call(PesanSeeder::class);
     }
 }

@@ -16,8 +16,10 @@ class CreatePesanTable extends Migration
         Schema::create('pesan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_partisipan');
+            $table->unsignedBigInteger('id_pengirim');
             $table->text('isi')->nullable();
             $table->foreign('id_partisipan')->references('id')->on('partisipan');
+            $table->foreign('id_pengirim')->references('id')->on('user');
             $table->timestamps();
         });
     }
