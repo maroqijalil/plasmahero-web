@@ -6,6 +6,7 @@ use App\Controller\Controller;
 use App\Common\Models\User;
 use App\Common\Providers\RouteServiceProvider;
 use App\Common\Interfaces\MailServiceInterface;
+use App\Common\Interfaces\UserRepositoryInterface;
 use App\Common\Services\MailTrapService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -15,11 +16,13 @@ use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
-	protected $mailSender;
+	private $mailSender;
+	private $userRepository;
 
-	public function __construct(MailServiceInterface $mailService)
+	public function __construct(MailServiceInterface $mailService, UserRepositoryInterface $userRepository)
 	{
 		$this->mailSender = $mailService;
+		$this->userRepository = $userRepository;
 	}
 	/**
 	 * Display the registration view.
@@ -48,7 +51,14 @@ class RegisteredUserController extends Controller
 			'role' => ['required']
 		]);
 
-		$user = User::create([
+		// $user = User::create([
+		// 	'name' => $request->name,
+		// 	'email' => $request->email,
+		// 	'password' => Hash::make($request->password),
+		// 	'role' => $request->role,
+		// ]);
+
+		$user = $this->userRepository->create([
 			'name' => $request->name,
 			'email' => $request->email,
 			'password' => Hash::make($request->password),

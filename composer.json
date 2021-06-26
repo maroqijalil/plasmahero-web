@@ -49,9 +49,13 @@
 			"App\\Common\\Controllers\\": "src/Common/Application/Controllers/",
 			"App\\Common\\Middleware\\": "src/Common/Application/Middleware/",
 			"App\\Common\\Providers\\": "src/Common/Application/Providers/",
+			"App\\Common\\Models\\": "src/Common/Domain/Models/",
 			"App\\Common\\Repositories\\": "src/Common/Domain/Repositories/",
 			"App\\Common\\Requests\\": "src/Common/Domain/Requests/",
-			"App\\Common\\Interfaces\\": "src/Common/Infrastructure/Interfaces/",
+			"App\\Common\\Interfaces\\": [
+				"src/Common/Infrastructure/Interfaces/",
+				"src/Common/Domain/Interfaces/"
+			],
 			"App\\Common\\Services\\": "src/Common/Infrastructure/Services/"
 		}
 	},
