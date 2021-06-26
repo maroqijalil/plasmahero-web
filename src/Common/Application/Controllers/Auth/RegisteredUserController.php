@@ -70,4 +70,10 @@ class RegisteredUserController extends BaseController
 			return redirect('/profile')->with(['eSent' => 'Email berhasil dikirim, Periksa email Anda !']);
 		}
 	}
+
+	public function show()
+	{
+		$users = $this->userRepository->all();
+		return $this->sendResponse($users, "Daftar pengguna berhasil di dapatkan");
+	}
 }
