@@ -2,10 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Admin;
-use App\Models\Partisipan;
-use App\Models\Percakapan;
-use App\Models\User;
+use App\Common\Models\Admin;
+use App\Common\Models\Partisipan;
+use App\Common\Models\Percakapan;
+use App\Common\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PartisipanFactory extends Factory

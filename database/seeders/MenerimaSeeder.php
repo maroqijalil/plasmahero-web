@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Menerima;
+use App\Common\Models\Menerima;
 use Illuminate\Database\Seeder;
 
 class MenerimaSeeder extends Seeder

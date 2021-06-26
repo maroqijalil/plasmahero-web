@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Pengguna;
-use App\Models\User;
+use App\Common\Models\Pengguna;
+use App\Common\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PenggunaFactory extends Factory

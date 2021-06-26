@@ -4,7 +4,7 @@ namespace App\Common\Controllers;
 
 use App\Controller\Controller;
 use App\Admin\Requests\StoreGalleryRequest;
-use App\Models\Gallery;
+use App\Common\Models\Gallery;
 
 class GalleryController extends Controller
 {

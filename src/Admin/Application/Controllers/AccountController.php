@@ -4,7 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Admin\Requests\StoreAccountRequest;
 use App\Controller\Controller;
-use App\Models\Admin;
+use App\Common\Models\Admin;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

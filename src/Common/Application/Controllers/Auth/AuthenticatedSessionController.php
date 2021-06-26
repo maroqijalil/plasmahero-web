@@ -7,7 +7,7 @@ use App\Common\Requests\LoginRequest;
 use App\Common\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use App\Common\Models\User;
 
 class AuthenticatedSessionController extends Controller
 {

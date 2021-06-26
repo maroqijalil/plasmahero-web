@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Pencocokan;
+use App\Common\Models\Pencocokan;
 use Illuminate\Database\Seeder;
 
 class PencocokanSeeder extends Seeder

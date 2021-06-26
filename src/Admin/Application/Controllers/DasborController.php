@@ -4,8 +4,8 @@ namespace App\Admin\Controllers;
 
 use App\Controller\Controller;
 use Illuminate\Http\Request;
-use App\Models\Pengguna;
-use App\Models\User;
+use App\Common\Models\Pengguna;
+use App\Common\Models\User;
 
 class DasborController extends Controller
 {

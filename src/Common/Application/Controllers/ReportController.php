@@ -4,7 +4,7 @@ namespace App\Common\Controllers;
 
 use App\Controller\Controller;
 use App\User\Requests\StoreReportRequest;
-use App\Models\Report;
+use App\Common\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

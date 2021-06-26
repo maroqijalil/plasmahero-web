@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Notifikasi;
-use App\Models\Admin;
+use App\Common\Models\Notifikasi;
+use App\Common\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class NotifikasiFactory extends Factory

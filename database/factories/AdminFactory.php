@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Admin;
-use App\Models\User;
+use App\Common\Models\Admin;
+use App\Common\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AdminFactory extends Factory

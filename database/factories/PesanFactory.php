@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Partisipan;
-use App\Models\Pesan;
-use App\Models\User;
+use App\Common\Models\Partisipan;
+use App\Common\Models\Pesan;
+use App\Common\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PesanFactory extends Factory

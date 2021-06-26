@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Pencocokan;
-use App\Models\Pengguna;
+use App\Common\Models\Pencocokan;
+use App\Common\Models\Pengguna;
 use Illuminate\Database\Seeder;
 
 class PenggunaSeeder extends Seeder

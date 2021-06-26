@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Notifikasi;
-use App\Models\User;
+use App\Common\Models\Notifikasi;
+use App\Common\Models\User;
 use Database\Factories\NotifikasiFactory;
 use Illuminate\Database\Seeder;
 

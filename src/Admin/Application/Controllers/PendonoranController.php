@@ -3,8 +3,8 @@
 namespace App\Admin\Controllers;
 
 use App\Controller\Controller;
-use App\Models\User;
-use App\Models\Pencocokan;
+use App\Common\Models\User;
+use App\Common\Models\Pencocokan;
 use App\Admin\Requests\StorePendonoranRequest;
 use Illuminate\Support\Facades\Auth;
 

@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Admin;
-use App\Models\Pencocokan;
-use App\Models\Pengguna;
+use App\Common\Models\Admin;
+use App\Common\Models\Pencocokan;
+use App\Common\Models\Pengguna;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PencocokanFactory extends Factory

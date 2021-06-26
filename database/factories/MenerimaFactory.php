@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Menerima;
-use App\Models\Notifikasi;
-use App\Models\Pengguna;
+use App\Common\Models\Menerima;
+use App\Common\Models\Notifikasi;
+use App\Common\Models\Pengguna;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MenerimaFactory extends Factory

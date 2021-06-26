@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Partisipan;
-use App\Models\Percakapan;
-use App\Models\Pesan;
+use App\Common\Models\Partisipan;
+use App\Common\Models\Percakapan;
+use App\Common\Models\Pesan;
 use Illuminate\Database\Seeder;
 
 class PesanSeeder extends Seeder

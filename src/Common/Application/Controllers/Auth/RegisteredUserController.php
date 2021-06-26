@@ -3,7 +3,7 @@
 namespace App\Common\Controllers\Auth;
 
 use App\Controller\Controller;
-use App\Models\User;
+use App\Common\Models\User;
 use App\Common\Providers\RouteServiceProvider;
 use App\Common\Interfaces\MailServiceInterface;
 use App\Common\Services\MailTrapService;

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Report;
+use App\Common\Models\Report;
 use Illuminate\Database\Seeder;
 
 class ReportSeeder extends Seeder

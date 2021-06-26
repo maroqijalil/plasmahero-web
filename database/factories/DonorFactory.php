@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Donor;
-use App\Models\Pengguna;
+use App\Common\Models\Donor;
+use App\Common\Models\Pengguna;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DonorFactory extends Factory

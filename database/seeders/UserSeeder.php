@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Report;
+use App\Common\Models\User;
+use App\Common\Models\Report;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder

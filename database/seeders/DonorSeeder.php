@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Donor;
+use App\Common\Models\Donor;
 use Illuminate\Database\Seeder;
 
 class DonorSeeder extends Seeder
