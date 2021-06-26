@@ -2,13 +2,13 @@
 
 namespace App\User\Controllers;
 
-use App\Controller\Controller;
+use App\Controller\BaseController;
 use App\User\Requests\StoreUserDetailRequest;
 use App\Common\Models\Pengguna;
 use App\Common\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class UserDetailController extends Controller
+class UserDetailController extends BaseController
 {
 	public function index()
 	{

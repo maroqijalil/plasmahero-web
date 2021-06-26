@@ -2,22 +2,23 @@
 
 namespace App\Common\Controllers\Auth;
 
-use App\Controller\Controller;
+use App\Controller\BaseController;
 use App\Common\Models\User;
 use App\Common\Providers\RouteServiceProvider;
 use App\Common\Interfaces\MailServiceInterface;
 use App\Common\Interfaces\UserRepositoryInterface;
 use App\Common\Services\MailTrapService;
+use App\Common\Requests\StoreUserRequest;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
-class RegisteredUserController extends Controller
+class RegisteredUserController extends BaseController
 {
-	private $mailSender;
-	private $userRepository;
+	protected $mailSender;
+	protected $userRepository;
 
 	public function __construct(MailServiceInterface $mailService, UserRepositoryInterface $userRepository)
 	{
@@ -42,22 +43,8 @@ class RegisteredUserController extends Controller
 	 *
 	 * @throws \Illuminate\Validation\ValidationException
 	 */
-	public function store(Request $request)
+	public function store(StoreUserRequest $request)
 	{
-		$request->validate([
-			'name' => ['required', 'string', 'max:255'],
-			'email' => ['required', 'string', 'email', 'unique:users', 'max:255'],
-			'password' => ['required', 'confirmed', Rules\Password::defaults()],
-			'role' => ['required']
-		]);
-
-		// $user = User::create([
-		// 	'name' => $request->name,
-		// 	'email' => $request->email,
-		// 	'password' => Hash::make($request->password),
-		// 	'role' => $request->role,
-		// ]);
-
 		$user = $this->userRepository->create([
 			'name' => $request->name,
 			'email' => $request->email,

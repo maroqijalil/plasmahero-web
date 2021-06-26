@@ -2,11 +2,11 @@
 
 namespace App\Common\Controllers;
 
-use App\Controller\Controller;
+use App\Controller\BaseController;
 use App\Admin\Requests\StoreGalleryRequest;
 use App\Common\Models\Gallery;
 
-class GalleryController extends Controller
+class GalleryController extends BaseController
 {
     public function index()
     {

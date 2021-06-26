@@ -2,12 +2,11 @@
 
 namespace App\Common\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Eloquent\BaseModel;
+use Database\Factories\PencocokanFactory;
 
-class Pencocokan extends Model
+class Pencocokan extends BaseModel
 {
-	use HasFactory;
 	protected $table = 'pencocokan_donor';
 	protected $fillable = ['id_admin', 'id_pendonor', 'id_penerima'];
 
@@ -24,5 +23,10 @@ class Pencocokan extends Model
 	public function penerima()
 	{
 		return $this->belongsTo(Pengguna::class, 'id_penerima', 'id');
+	}
+
+	protected static function newFactory()
+	{
+		return new PencocokanFactory();
 	}
 }

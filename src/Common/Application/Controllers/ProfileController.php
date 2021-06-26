@@ -2,13 +2,13 @@
 
 namespace App\Common\Controllers;
 
-use App\Controller\Controller;
+use App\Controller\BaseController;
 use App\Common\Requests\UpdateProfileRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
-class ProfileController extends Controller
+class ProfileController extends BaseController
 {
     public function index(Request $request)
     {

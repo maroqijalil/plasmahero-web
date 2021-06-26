@@ -8,22 +8,22 @@ use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        User::factory()
-            ->count(20)
-            ->hasPengguna()
-            ->state(['role' => 'pengguna'])
-            ->create();
-        User::factory()
-            ->count(1)
-            ->hasAdmin()
-            ->state(['role' => 'admin'])
-            ->create();
-    }
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+		User::newFactory()
+			->count(20)
+			->hasPengguna()
+			->state(['role' => 'pengguna'])
+			->create();
+		User::newFactory()
+			->count(1)
+			->hasAdmin()
+			->state(['role' => 'admin'])
+			->create();
+	}
 }

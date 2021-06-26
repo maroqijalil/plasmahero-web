@@ -19,7 +19,7 @@ class CreatePesanTable extends Migration
             $table->unsignedBigInteger('id_pengirim');
             $table->text('isi')->nullable();
             $table->foreign('id_partisipan')->references('id')->on('partisipan');
-            $table->foreign('id_pengirim')->references('id')->on('user');
+            $table->foreign('id_pengirim')->references('id')->on('users');
             $table->timestamps();
         });
     }

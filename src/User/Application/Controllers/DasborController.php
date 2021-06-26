@@ -2,10 +2,10 @@
 
 namespace App\User\Controllers;
 
-use App\Controller\Controller;
+use App\Controller\BaseController;
 use Illuminate\Http\Request;
 
-class DasborController extends Controller
+class DasborController extends BaseController
 {
     //
 }

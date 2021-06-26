@@ -3,14 +3,14 @@
 namespace App\Common\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Eloquent\BaseModel;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Database\Factories\UserFactory;
 
 class User extends Authenticatable
 {
-	use HasFactory, Notifiable;
+	use Notifiable;
 
 	/**
 	 * The attributes that are mass assignable.
@@ -61,5 +61,10 @@ class User extends Authenticatable
 	public function pesan()
 	{
 		return $this->hasMany(Pesan::class, 'id_user', 'id');
+	}
+
+	protected static function newFactory()
+	{
+		return new UserFactory();
 	}
 }

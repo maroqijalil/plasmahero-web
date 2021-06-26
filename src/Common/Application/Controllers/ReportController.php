@@ -2,13 +2,13 @@
 
 namespace App\Common\Controllers;
 
-use App\Controller\Controller;
+use App\Controller\BaseController;
 use App\User\Requests\StoreReportRequest;
 use App\Common\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ReportController extends Controller
+class ReportController extends BaseController
 {
     public function index(Request $request)
     {

@@ -2,17 +2,27 @@
 
 namespace App\Common\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Eloquent\BaseModel;
+use Database\Factories\ReportFactory;
 
-class Report extends Model
+class Report extends BaseModel
 {
-	use HasFactory;
 	protected $table = 'reports';
-	protected $fillable = ['judul', 'tgl', 'pesan', 'foto', 'id_user'];
+	protected $fillable = [
+		'judul',
+		'tgl',
+		'pesan',
+		'foto',
+		'id_user'
+	];
 
 	public function user()
 	{
 		return $this->belongsTo(User::class, 'id_user', 'id');
+	}
+
+	protected static function newFactory()
+	{
+		return new ReportFactory();
 	}
 }

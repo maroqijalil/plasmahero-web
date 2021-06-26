@@ -2,14 +2,14 @@
 
 namespace App\Common\Controllers\Auth;
 
-use App\Controller\Controller;
+use App\Controller\BaseController;
 use App\Common\Providers\RouteServiceProvider;
 use App\Common\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class RegisterController extends Controller
+class RegisterController extends BaseController
 {
 	/*
     |--------------------------------------------------------------------------

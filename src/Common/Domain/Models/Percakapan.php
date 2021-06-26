@@ -2,17 +2,21 @@
 
 namespace App\Common\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Eloquent\BaseModel;
+use Database\Factories\PercakapanFactory;
 
-class Percakapan extends Model
+class Percakapan extends BaseModel
 {
-	use HasFactory;
 	protected $table = 'percakapan';
 	protected $fillable = ['judul'];
 
 	public function partisipan()
 	{
 		return $this->hasOne(Partisipan::class, 'id_percakapan', 'id');
+	}
+
+	protected static function newFactory()
+	{
+		return new PercakapanFactory();
 	}
 }

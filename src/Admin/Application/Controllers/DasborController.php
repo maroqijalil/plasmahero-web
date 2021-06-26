@@ -2,12 +2,12 @@
 
 namespace App\Admin\Controllers;
 
-use App\Controller\Controller;
+use App\Controller\BaseController;
 use Illuminate\Http\Request;
 use App\Common\Models\Pengguna;
 use App\Common\Models\User;
 
-class DasborController extends Controller
+class DasborController extends BaseController
 {
     public function showPendonor() {
         $users = User::all();

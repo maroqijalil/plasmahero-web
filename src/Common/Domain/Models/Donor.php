@@ -2,12 +2,11 @@
 
 namespace App\Common\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Eloquent\BaseModel;
+use Database\Factories\DonorFactory;
 
-class Donor extends Model
+class Donor extends BaseModel
 {
-	use HasFactory;
 	protected $table = 'donor';
 	protected $fillable = [
 		'id_pendonor',
@@ -32,5 +31,10 @@ class Donor extends Model
 	public function penerima()
 	{
 		return $this->belongsTo(Pengguna::class, 'id_penerima', 'id');
+	}
+
+	protected static function newFactory()
+	{
+		return new DonorFactory();
 	}
 }

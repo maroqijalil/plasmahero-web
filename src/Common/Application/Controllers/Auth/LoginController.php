@@ -2,12 +2,12 @@
 
 namespace App\Common\Controllers\Auth;
 
-use App\Controller\Controller;
+use App\Controller\BaseController;
 use App\Common\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class LoginController extends BaseController
 {
     /*
     |--------------------------------------------------------------------------

@@ -1,16 +1,20 @@
 <?php
 
 namespace App\Common\Models;
+use Database\Factories\GalleryFactory;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Eloquent\BaseModel;
 
-class Gallery extends Model
+class Gallery extends BaseModel
 {
-	use HasFactory;
 	protected $fillable = [
 		'title',
 		'description',
 		'urlToImage'
 	];
+
+	protected static function newFactory()
+	{
+		return new GalleryFactory();
+	}
 }

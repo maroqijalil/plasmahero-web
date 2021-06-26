@@ -2,11 +2,11 @@
 
 namespace App\Common\Controllers;
 
-use App\Controller\Controller;
+use App\Controller\BaseController;
 use Illuminate\Http\Request;
 use App\Common\Services\QRCodeServiceInterface;
 
-class DonorController extends Controller
+class DonorController extends BaseController
 {
   protected $qrCodeGenerator;
 

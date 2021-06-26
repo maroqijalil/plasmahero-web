@@ -2,14 +2,17 @@
 
 namespace App\Common\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Eloquent\BaseModel;
+use Database\Factories\PesanFactory;
 
-class Pesan extends Model
+class Pesan extends BaseModel
 {
-	use HasFactory;
 	protected $table = 'pesan';
-	protected $fillable = ['id_partisipan', 'id_pengirim', 'pesan'];
+	protected $fillable = [
+		'id_partisipan',
+		'id_pengirim',
+		'pesan'
+	];
 
 	public function partisipan()
 	{
@@ -19,5 +22,10 @@ class Pesan extends Model
 	public function pengirim()
 	{
 		return $this->belongsTo(User::class, 'id_pengirim', 'id');
+	}
+
+	protected static function newFactory()
+	{
+		return new PesanFactory();
 	}
 }

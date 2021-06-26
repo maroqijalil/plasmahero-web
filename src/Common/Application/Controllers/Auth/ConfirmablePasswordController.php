@@ -2,13 +2,13 @@
 
 namespace App\Common\Controllers\Auth;
 
-use App\Controller\Controller;
+use App\Controller\BaseController;
 use App\Common\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-class ConfirmablePasswordController extends Controller
+class ConfirmablePasswordController extends BaseController
 {
     /**
      * Show the confirm password view.

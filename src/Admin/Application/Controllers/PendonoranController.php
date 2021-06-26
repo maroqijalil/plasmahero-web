@@ -2,13 +2,13 @@
 
 namespace App\Admin\Controllers;
 
-use App\Controller\Controller;
+use App\Controller\BaseController;
 use App\Common\Models\User;
 use App\Common\Models\Pencocokan;
 use App\Admin\Requests\StorePendonoranRequest;
 use Illuminate\Support\Facades\Auth;
 
-class PendonoranController extends Controller
+class PendonoranController extends BaseController
 {
     public function index() {
         if (Auth::user()->admin == null) return redirect()->route('show-admin-akun');

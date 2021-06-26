@@ -6,6 +6,7 @@ use App\Common\Models\Partisipan;
 use App\Common\Models\Percakapan;
 use App\Common\Models\Pesan;
 use Illuminate\Database\Seeder;
+use Database\Factories\PercakapanFactory;
 
 class PesanSeeder extends Seeder
 {

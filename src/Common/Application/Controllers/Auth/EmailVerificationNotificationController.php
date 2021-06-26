@@ -2,11 +2,11 @@
 
 namespace App\Common\Controllers\Auth;
 
-use App\Controller\Controller;
+use App\Controller\BaseController;
 use App\Common\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
-class EmailVerificationNotificationController extends Controller
+class EmailVerificationNotificationController extends BaseController
 {
     /**
      * Send a new email verification notification.

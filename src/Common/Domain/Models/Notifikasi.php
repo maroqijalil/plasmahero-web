@@ -2,12 +2,11 @@
 
 namespace App\Common\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Eloquent\BaseModel;
+use Database\Factories\NotifikasiFactory;
 
-class Notifikasi extends Model
+class Notifikasi extends BaseModel
 {
-	use HasFactory;
 	protected $table = 'notifikasi';
 	protected $fillable = ['judul', 'isi', 'keterangan', 'tanggal', 'waktu'];
 
@@ -21,5 +20,10 @@ class Notifikasi extends Model
 
 	public function menerima() {
 		return $this->hasMany(Menerima::class, 'id_notifikasi', 'id');
+	}
+
+	protected static function newFactory()
+	{
+		return new NotifikasiFactory();
 	}
 }

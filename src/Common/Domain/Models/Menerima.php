@@ -2,14 +2,16 @@
 
 namespace App\Common\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Eloquent\BaseModel;
+use Database\Factories\MenerimaFactory;
 
-class Menerima extends Model
+class Menerima extends BaseModel
 {
-	use HasFactory;
 	protected $table = 'menerima';
-	protected $fillable = ['id_user', 'id_notifikasi'];
+	protected $fillable = [
+		'id_user',
+		'id_notifikasi'
+	];
 
 	public function user()
 	{
@@ -19,5 +21,10 @@ class Menerima extends Model
 	public function notifikasi()
 	{
 		return $this->belongsTo(Notifikasi::class, 'id_notifikasi', 'id');
+	}
+
+	protected static function newFactory()
+	{
+		return new MenerimaFactory();
 	}
 }

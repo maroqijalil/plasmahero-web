@@ -7,22 +7,22 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PercakapanFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
-    protected $model = Percakapan::class;
+	/**
+	 * The name of the factory's corresponding model.
+	 *
+	 * @var string
+	 */
+	protected $model = Percakapan::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
-    public function definition()
-    {
-        return [
-            'judul' => $this->faker->word()
-        ];
-    }
+	/**
+	 * Define the model's default state.
+	 *
+	 * @return array
+	 */
+	public function definition()
+	{
+		return [
+			'judul' => $this->faker->word()
+		];
+	}
 }

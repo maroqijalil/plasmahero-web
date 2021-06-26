@@ -2,13 +2,11 @@
 
 namespace App\Common\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Eloquent\BaseModel;
+use Database\Factories\PenggunaFactory;
 
-class Pengguna extends Model
+class Pengguna extends BaseModel
 {
-	use HasFactory;
-
 	protected $table = 'pengguna';
 
 	protected $fillable = [
@@ -54,13 +52,18 @@ class Pengguna extends Model
 		return $this->hasMany(Menerima::class, 'id_user', 'id');
 	}
 
-    public function pencocokanPenerima()
-    {
-        return $this->hasMany(Pencocokan::class, 'id_penerima', 'id');
-    }
+	public function pencocokanPenerima()
+	{
+		return $this->hasMany(Pencocokan::class, 'id_penerima', 'id');
+	}
 
-    public function pencocokanPendonor()
-    {
-        return $this->hasMany(Pencocokan::class, 'id_pendonor', 'id');
-    }
+	public function pencocokanPendonor()
+	{
+		return $this->hasMany(Pencocokan::class, 'id_pendonor', 'id');
+	}
+
+	protected static function newFactory()
+	{
+		return new PenggunaFactory();
+	}
 }

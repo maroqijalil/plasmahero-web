@@ -2,12 +2,11 @@
 
 namespace App\Common\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Eloquent\BaseModel;
+use Database\Factories\AdminFactory;
 
-class Admin extends Model
+class Admin extends BaseModel
 {
-	use HasFactory;
 	protected $table = 'admin';
 	protected $fillable = [
 		'id_user',
@@ -26,5 +25,10 @@ class Admin extends Model
 	public function notifikasi()
 	{
 		return $this->hasMany(Notifikasi::class, 'id_admin');
+	}
+
+	protected static function newFactory()
+	{
+		return new AdminFactory();
 	}
 }

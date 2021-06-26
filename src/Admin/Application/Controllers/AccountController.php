@@ -3,13 +3,13 @@
 namespace App\Admin\Controllers;
 
 use App\Admin\Requests\StoreAccountRequest;
-use App\Controller\Controller;
+use App\Controller\BaseController;
 use App\Common\Models\Admin;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AccountController extends Controller
+class AccountController extends BaseController
 {
     public function index() {
         return view('layouts.admin.others.account');
