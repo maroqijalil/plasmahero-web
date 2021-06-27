@@ -46,4 +46,25 @@ class BaseController extends Controller
 
 		return response()->json($response, $code);
 	}
+
+	/**
+	 * return menu of API routes
+	 *
+	 * @return Array String
+	 */
+	public function availableMenu () {
+		$result = [
+			'/menu:GET',
+			'/register:POST|both-roles',
+			'/login:POST|both-roles',
+			'/logout:POST|both-roles',
+			'/profile:RESOURCES|both-roles',
+			'/report:RESOURCES|both-roles',
+			'/donor:RESOURCES|admin',
+			'/gallery:RESOURCES|admin',
+			'/pendonoran:RESOURCES|admin'
+		];
+		$message = 'route yang tersedia pada API';
+		return $this->sendResponse($result, $message);
+	}
 }

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Admin\Controllers\API;
+namespace App\Common\Controllers\API;
 
-use App\Controller\BaseController;
 use App\Common\Models\User;
+use App\Controller\BaseController;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,7 +20,10 @@ class AuthController extends BaseController
         $user = User::create([
             'name' => $fields['name'],
             'email' => $fields['email'],
-            'password' => bcrypt($fields['password'])
+            'password' => bcrypt($fields['password']),
+            'role' => $fields['role'],
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
 
         $token = $user->createToken('myapptoken')->plainTextToken;
