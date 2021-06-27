@@ -38,7 +38,10 @@
 			"App\\Admin\\Providers\\": "src/Admin/Application/Providers/",
 			"App\\Admin\\Repositories\\": "src/Admin/Domain/Repositories/",
 			"App\\Admin\\Requests\\": "src/Admin/Domain/Requests/",
-			"App\\Admin\\Interfaces\\": "src/Admin/Infrastructure/Interfaces/",
+			"App\\Admin\\Interfaces\\": [
+				"src/Admin/Infrastructure/Interfaces/",
+				"src/Admin/Domain/Interfaces/"
+			],
 			"App\\Admin\\Services\\": "src/Admin/Infrastructure/Services/",
 			"App\\User\\Controllers\\": "src/User/Application/Controllers/",
 			"App\\User\\Middleware\\": "src/User/Application/Middleware/",

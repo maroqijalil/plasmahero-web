@@ -2,6 +2,8 @@
 
 namespace App\Common\Providers;
 
+use App\Admin\Interfaces\PendonoranRepositoryInterface;
+use App\Admin\Repositories\PendonoranRepository;
 use App\Repository\BaseRepository;
 use App\Repository\BaseRepositoryInterface;
 use App\Common\Interfaces\AdminRepositoryInterface;
@@ -52,6 +54,7 @@ class RepositoryServiceProvider extends ServiceProvider
 		$this->app->bind(PesanRepositoryInterface::class, PesanRepository::class);
 		$this->app->bind(ReportRepositoryInterface::class, ReportRepository::class);
 		$this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+		$this->app->bind(PendonoranRepositoryInterface::class, PendonoranRepository::class);
 	}
 
 	/**

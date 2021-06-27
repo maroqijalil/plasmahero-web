@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Interfaces\PendonoranRepositoryInterface;
 use App\Controller\BaseController;
 use App\Common\Models\User;
 use App\Common\Models\Pencocokan;
@@ -10,14 +11,23 @@ use Illuminate\Support\Facades\Auth;
 
 class PendonoranController extends BaseController
 {
-    public function index() {
+    protected $pendonoranRepository;
+
+    public function __construct(PendonoranRepositoryInterface $pendonoranRepository)
+    {
+        $this->pendonoranRepository = $pendonoranRepository;
+    }
+
+    public function index()
+    {
         if (Auth::user()->admin == null) return redirect()->route('show-admin-akun');
         $users = User::all();
         $pencocokans = Pencocokan::all();
         return view('layouts.admin.donor.donation', ['users' => $users, 'pencocokans' => $pencocokans]);
     }
 
-    public function store(StorePendonoranRequest $request) {
+    public function store(StorePendonoranRequest $request)
+    {
         Pencocokan::create([
             'id_admin' => $request->id_admin,
             'id_pendonor' => $request->id_pendonor,
@@ -25,5 +35,11 @@ class PendonoranController extends BaseController
         ]);
 
         return back()->with('success', 'Pencocokan Berhasil ditambahkan');
+    }
+
+    public function fetch()
+    {
+        $pendonoran = $this->pendonoranRepository->all();
+        return $this->sendResponse($pendonoran, "Daftar pendonoran berhasil di dapatkan");
     }
 }
