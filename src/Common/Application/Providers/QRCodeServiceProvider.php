@@ -3,7 +3,7 @@
 namespace App\Common\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Common\Services\QRCodeServiceInterface;
+use App\Common\Interfaces\QRCodeServiceInterface;
 use App\Common\Services\SimpleQRCodeService;
 use App\Common\Services\ChillerlanQRCodeService;
 

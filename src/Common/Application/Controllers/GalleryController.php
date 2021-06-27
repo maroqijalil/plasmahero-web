@@ -4,10 +4,18 @@ namespace App\Common\Controllers;
 
 use App\Controller\BaseController;
 use App\Admin\Requests\StoreGalleryRequest;
+use App\Common\Interfaces\GalleryRepositoryInterface;
 use App\Common\Models\Gallery;
 
 class GalleryController extends BaseController
 {
+    protected $galleryRepository;
+
+    public function __construct(GalleryRepositoryInterface $galleryRepository)
+    {
+        $this->galleryRepository = $galleryRepository;
+    }
+
     public function index()
     {
         $galleries = Gallery::get();
@@ -49,5 +57,11 @@ class GalleryController extends BaseController
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    public function fetch()
+    {
+        $gallery = $this->galleryRepository->all();
+        return $this->sendResponse($gallery, "Daftar gallery berhasil di dapatkan");
     }
 }

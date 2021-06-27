@@ -1,6 +1,9 @@
 <?php
 
 use App\Common\Controllers\Auth\RegisteredUserController;
+use App\Common\Controllers\DonorController;
+use App\Common\Controllers\GalleryController;
+use App\Common\Controllers\ReportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('daftar-pengguna', [RegisteredUserController::class, 'show']);
+Route::get('user', [RegisteredUserController::class, 'fetch']);
+Route::get('report', [ReportController::class, 'fetch']);
+Route::get('donor', [DonorController::class, 'fetch']);
+Route::get('gallery', [GalleryController::class, 'fetch']);
+
+
+
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

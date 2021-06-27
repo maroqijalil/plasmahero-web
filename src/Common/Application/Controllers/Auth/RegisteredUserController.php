@@ -71,7 +71,7 @@ class RegisteredUserController extends BaseController
 		}
 	}
 
-	public function show()
+	public function fetch()
 	{
 		$users = $this->userRepository->all();
 		return $this->sendResponse($users, "Daftar pengguna berhasil di dapatkan");
