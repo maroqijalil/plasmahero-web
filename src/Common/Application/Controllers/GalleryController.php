@@ -6,6 +6,8 @@ use App\Controller\BaseController;
 use App\Admin\Requests\StoreGalleryRequest;
 use App\Common\Interfaces\GalleryRepositoryInterface;
 use App\Common\Models\Gallery;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class GalleryController extends BaseController
 {
@@ -63,5 +65,35 @@ class GalleryController extends BaseController
     {
         $gallery = $this->galleryRepository->all();
         return $this->sendResponse($gallery, "Daftar gallery berhasil di dapatkan");
+    }
+
+    public function destroy($id)
+    {
+        $this->galleryRepository->deleteById($id);
+        return $this->sendResponse($id, "Gallery id {$id} berhasil di dihapus");
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+        $this->galleryRepository->update($id, $data);
+        return $this->sendResponse($data, "Gallery id {$id} berhasil di update");
+    }
+
+    public function create(Request $request)
+    {
+        $data = [
+            'title' => $request->title,
+            'description' => $request->description,
+            'urlToImage' => '/gallery/images/' . $request->imageName
+        ];
+
+        // $imageName = time() . '-' . GalleryController::generateRandomString(6) . '-' . $image->getClientOriginalName();
+        // $imageName = str_replace(' ', '-', strtolower($imageName));
+        // $image->storeAs('images', $imageName);
+        // $image->move(public_path() . '/gallery/images', $imageName);
+
+        $this->galleryRepository->create($data);
+        return $this->sendResponse($data, "Gallery berhasil di ditambahkan");
     }
 }
