@@ -8,8 +8,8 @@
 </p>
 
 ## About Laravel
+### Repo Pattern
 ```
-Repo Pattern
 src
   Admin
     Domain
