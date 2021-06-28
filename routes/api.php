@@ -1,6 +1,6 @@
 <?php
 
-use App\Admin\Controllers\PendonoranController;
+use App\Admin\Controllers\API\PendonoranController;
 use App\Common\Controllers\API\AuthController;
 use App\Common\Controllers\API\ProfileController;
 use App\Common\Controllers\API\DonorController;
@@ -46,11 +46,19 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::delete('', [ProfileController::class, 'destroy']);
     });
 
+    Route::group(['prefix' => 'pendonoran'], function () {
+        Route::get('', [PendonoranController::class, 'index']);
+        Route::get('/show', [PendonoranController::class, 'show']);
+        Route::post('', [PendonoranController::class, 'store']);
+        Route::put('/{id}', [PendonoranController::class, 'update']);
+        Route::delete('/{id}', [PendonoranController::class, 'destroy']);
+    });
+
 
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [RegisteredUserController::class, 'fetch']);
-    Route::get('/donor', [DonorController::class, 'fetch']);
-    Route::get('/pendonoran', [PendonoranController::class, 'fetch']);
+    // Route::get('/donor', [DonorController::class, 'fetch']);
+    // Route::get('/pendonoran', [PendonoranController::class, 'fetch']);
 
     Route::post('/gallery', [GalleryController::class, 'create']);
     Route::get('/gallery', [GalleryController::class, 'fetch']);

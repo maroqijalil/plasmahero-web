@@ -60,7 +60,7 @@ class AuthController extends BaseController
         }
 
         $token = $user->createToken('myapptoken')->plainTextToken;
-
+        $user->admin;
         $response = [
             'user' => $user,
             'token' => $token

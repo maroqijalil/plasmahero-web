@@ -4,8 +4,6 @@ namespace App\Common\Controllers\API;
 
 use App\Controller\BaseController;
 use App\Common\Interfaces\UserRepositoryInterface;
-use App\Common\Models\User;
-use App\Common\Requests\UpdateProfileRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
