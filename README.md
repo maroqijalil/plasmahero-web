@@ -62,4 +62,4 @@ src
     Domain
 ```
 
-[<img src="/Screenshot.png" alt="foto-kerkel" style="display: flex; max-width: 450px;" />](https://github.com/maroqijalil/plasmahero-web/tree/master/foto-kerja-kolompok)
+[<img src="foto-kerja-kolompok/Screenshot.png" alt="foto-kerkel" style="display: flex; max-width: 450px;" />](https://github.com/maroqijalil/plasmahero-web)
