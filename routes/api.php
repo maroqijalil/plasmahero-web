@@ -3,7 +3,7 @@
 use App\Admin\Controllers\PendonoranController;
 use App\Common\Controllers\API\AuthController;
 use App\Common\Controllers\API\ProfileController;
-use App\Common\Controllers\DonorController;
+use App\Common\Controllers\API\DonorController;
 use App\Common\Controllers\GalleryController;
 use App\Common\Controllers\ReportController;
 use App\Controller\BaseController;
@@ -61,15 +61,19 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/report', [ReportController::class, 'fetch']);
     Route::put('/report/{id}', [ReportController::class, 'update']);
     Route::delete('/report/{id}', [ReportController::class, 'destroy']);
+
+    Route::get('/donor', [DonorController::class, 'index']);
+    Route::get('/donor/{id}', [DonorController::class, 'show']);
+    Route::post('/donor', [DonorController::class, 'store']);
+    Route::put('/donor/{id}', [DonorController::class, 'update']);
+    Route::delete('/donor/{id}', [DonorController::class, 'destroy']);
+
 });
 
 Route::get('/user', [RegisteredUserController::class, 'fetch']);
 Route::get('/report', [ReportController::class, 'fetch']);
-Route::get('/donor', [DonorController::class, 'fetch']);
 Route::get('/gallery', [GalleryController::class, 'fetch']);
 Route::get('/pendonoran', [PendonoranController::class, 'fetch']);
-
-
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

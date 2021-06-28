@@ -39,6 +39,9 @@ Route::middleware('auth.role:pengguna')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::view('/carikan-plasma', 'layouts.user.donor.carikan-plasma')->name('carikan-plasma');
+
+    Route::get('/pendonoran', [DonorController::class, 'index']);
+    Route::post('/pendonoran', [DonorController::class, 'store']);
 });
 
 Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
@@ -61,6 +64,3 @@ Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
 });
 
 Route::view('errorpage', 'layouts.error')->name('errorpage');
-
-Route::get('pendonoran', [DonorController::class, 'index']);
-Route::post('pendonoran', [DonorController::class, 'store']);
