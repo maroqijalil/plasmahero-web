@@ -36,11 +36,6 @@ class BaseController extends Controller
 		return response()->json($response, $code);
 	}
 
-	/**
-	 * return menu of API routes
-	 *
-	 * @return Array String
-	 */
 	public function availableMenu () {
 		$result = [
 			'/menu:GET',

@@ -169,7 +169,7 @@ return [
 		/*
 			* Application Service Providers...
 			*/
-		App\Common\Providers\AppServiceProvider::class,
+		App\Provider\AppServiceProvider::class,
 		App\Common\Providers\AuthServiceProvider::class,
 		// App\Common\Providers\BroadcastServiceProvider::class,
 		App\Common\Providers\EventServiceProvider::class,

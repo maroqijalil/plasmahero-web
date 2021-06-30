@@ -2,7 +2,6 @@
 
 namespace App\Common\Services;
 
-use App\Common\Interfaces\MailServiceInterface;
 use Illuminate\Support\Facades\Mail;
 
 class GmailService implements MailServiceInterface

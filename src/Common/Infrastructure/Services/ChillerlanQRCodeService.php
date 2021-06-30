@@ -2,7 +2,6 @@
 
 namespace App\Common\Services;
 
-use App\Common\Interfaces\QRCodeServiceInterface;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 

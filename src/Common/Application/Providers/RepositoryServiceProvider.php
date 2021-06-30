@@ -6,18 +6,18 @@ use App\Admin\Interfaces\PendonoranRepositoryInterface;
 use App\Admin\Repositories\PendonoranRepository;
 use App\Repository\BaseRepository;
 use App\Repository\BaseRepositoryInterface;
-use App\Common\Interfaces\AdminRepositoryInterface;
-use App\Common\Interfaces\DonorRepositoryInterface;
-use App\Common\Interfaces\GalleryRepositoryInterface;
-use App\Common\Interfaces\MenerimaRepositoryInterface;
-use App\Common\Interfaces\NotifikasiRepositoryInterface;
-use App\Common\Interfaces\PartisipanRepositoryInterface;
-use App\Common\Interfaces\PencocokanRepositoryInterface;
-use App\Common\Interfaces\PenggunaRepositoryInterface;
-use App\Common\Interfaces\PercakapanRepositoryInterface;
-use App\Common\Interfaces\PesanRepositoryInterface;
-use App\Common\Interfaces\ReportRepositoryInterface;
-use App\Common\Interfaces\UserRepositoryInterface;
+use App\Common\Repositories\AdminRepositoryInterface;
+use App\Common\Repositories\DonorRepositoryInterface;
+use App\Common\Repositories\GalleryRepositoryInterface;
+use App\Common\Repositories\MenerimaRepositoryInterface;
+use App\Common\Repositories\NotifikasiRepositoryInterface;
+use App\Common\Repositories\PartisipanRepositoryInterface;
+use App\Common\Repositories\PencocokanRepositoryInterface;
+use App\Common\Repositories\PenggunaRepositoryInterface;
+use App\Common\Repositories\PercakapanRepositoryInterface;
+use App\Common\Repositories\PesanRepositoryInterface;
+use App\Common\Repositories\ReportRepositoryInterface;
+use App\Common\Repositories\UserRepositoryInterface;
 use App\Common\Repositories\AdminRepository;
 use App\Common\Repositories\DonorRepository;
 use App\Common\Repositories\GalleryRepository;
@@ -34,11 +34,6 @@ use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
-	/**
-	 * Register services.
-	 *
-	 * @return void
-	 */
 	public function register()
 	{
 		$this->app->bind(BaseRepositoryInterface::class, BaseRepository::class);
@@ -57,13 +52,7 @@ class RepositoryServiceProvider extends ServiceProvider
 		$this->app->bind(PendonoranRepositoryInterface::class, PendonoranRepository::class);
 	}
 
-	/**
-	 * Bootstrap services.
-	 *
-	 * @return void
-	 */
 	public function boot()
 	{
-		//
 	}
 }

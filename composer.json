@@ -36,31 +36,42 @@
 			"App\\Admin\\Controllers\\": "src/Admin/Application/Controllers/",
 			"App\\Admin\\Middleware\\": "src/Admin/Application/Middleware/",
 			"App\\Admin\\Providers\\": "src/Admin/Application/Providers/",
-			"App\\Admin\\Repositories\\": "src/Admin/Domain/Repositories/",
-			"App\\Admin\\Requests\\": "src/Admin/Domain/Requests/",
-			"App\\Admin\\Interfaces\\": [
-				"src/Admin/Infrastructure/Interfaces/",
-				"src/Admin/Domain/Interfaces/"
+			"App\\Admin\\Repositories\\": [
+				"src/Admin/Domain/Repositories/",
+				"src/Admin/Infrastructure/Repositories/"
 			],
-			"App\\Admin\\Services\\": "src/Admin/Infrastructure/Services/",
+			"App\\Admin\\Requests\\": "src/Admin/Domain/Requests/",
+			"App\\Admin\\Services\\": [
+				"src/Admin/Domain/Services/",
+				"src/Admin/Infrastructure/Services/"
+			],
+
 			"App\\User\\Controllers\\": "src/User/Application/Controllers/",
 			"App\\User\\Middleware\\": "src/User/Application/Middleware/",
 			"App\\User\\Providers\\": "src/User/Application/Providers/",
-			"App\\User\\Repositories\\": "src/User/Domain/Repositories/",
+			"App\\User\\Repositories\\": [
+				"src/User/Domain/Repositories/",
+				"src/User/Infrastructure/Repositories/"
+			],
 			"App\\User\\Requests\\": "src/User/Domain/Requests/",
-			"App\\User\\Interfaces\\": "src/User/Infrastructure/Interfaces/",
-			"App\\User\\Services\\": "src/User/Infrastructure/Services/",
+			"App\\User\\Services\\": [
+				"src/User/Domain/Services/",
+				"src/User/Infrastructure/Services/"
+			],
+
 			"App\\Common\\Controllers\\": "src/Common/Application/Controllers/",
 			"App\\Common\\Middleware\\": "src/Common/Application/Middleware/",
 			"App\\Common\\Providers\\": "src/Common/Application/Providers/",
 			"App\\Common\\Models\\": "src/Common/Domain/Models/",
-			"App\\Common\\Repositories\\": "src/Common/Domain/Repositories/",
-			"App\\Common\\Requests\\": "src/Common/Domain/Requests/",
-			"App\\Common\\Interfaces\\": [
-				"src/Common/Infrastructure/Interfaces/",
-				"src/Common/Domain/Interfaces/"
+			"App\\Common\\Repositories\\": [
+				"src/Common/Domain/Repositories/",
+				"src/Common/Infrastructure/Repositories/"
 			],
-			"App\\Common\\Services\\": "src/Common/Infrastructure/Services/"
+			"App\\Common\\Requests\\": "src/Common/Domain/Requests/",
+			"App\\Common\\Services\\": [
+				"src/Common/Infrastructure/Services/",
+				"src/Common/Domain/Interfaces/"
+			]
 		}
 	},
 	"autoload-dev": {

@@ -2,7 +2,6 @@
 
 namespace App\Common\Services;
 
-use App\Common\Interfaces\MailServiceInterface;
 use App\Mail\MailtrapExample;
 use Illuminate\Support\Facades\Mail;
 
