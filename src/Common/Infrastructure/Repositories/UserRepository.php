@@ -3,7 +3,6 @@
 namespace App\Common\Repositories;
 
 use App\Repository\BaseRepository;
-use App\Common\Repositories\UserRepositoryInterface;
 use App\Common\Models\Donor;
 use App\Common\Models\Menerima;
 use App\Common\Models\Notifikasi;

@@ -1,8 +1,8 @@
 <?php
 namespace App\Admin\Controllers\API;
 
-use App\Admin\Interfaces\PendonoranRepositoryInterface;
-use App\Common\Interfaces\UserRepositoryInterface;
+use App\Admin\Repositories\PendonoranRepositoryInterface;
+use App\Common\Repositories\UserRepositoryInterface;
 use App\Controller\BaseController;
 use Illuminate\Http\Request;
 

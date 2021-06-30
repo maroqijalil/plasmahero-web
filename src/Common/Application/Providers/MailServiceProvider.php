@@ -2,7 +2,7 @@
 
 namespace App\Common\Providers;
 
-use App\Common\Interfaces\MailServiceInterface;
+use App\Common\Services\MailServiceInterface;
 use App\Common\Services\GmailService;
 use App\Common\Services\MailTrapService;
 use Illuminate\Support\ServiceProvider;

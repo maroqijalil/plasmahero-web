@@ -2,7 +2,7 @@
 
 namespace App\Common\Providers;
 
-use App\Admin\Interfaces\PendonoranRepositoryInterface;
+use App\Admin\Repositories\PendonoranRepositoryInterface;
 use App\Admin\Repositories\PendonoranRepository;
 use App\Repository\BaseRepository;
 use App\Repository\BaseRepositoryInterface;
