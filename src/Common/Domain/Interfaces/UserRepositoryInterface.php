@@ -29,4 +29,17 @@ interface UserRepositoryInterface extends BaseRepositoryInterface {
    */
   public function deleteProfile($id_user): ?bool;
 
+  /**
+   * Get User yang mempunyai tipe penerima.
+   * @param null
+   * @return Collection
+   */
+  public function getPenerima() : Collection;
+
+  /**
+   * Get User yang mempunyai tipe pendonor.
+   * @param null
+   * @return Collection
+   */
+  public function getPendonor() : Collection;
 }

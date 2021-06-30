@@ -12,6 +12,7 @@ use App\Common\Models\Pencocokan;
 use App\Common\Models\Pengguna;
 use App\Common\Models\User;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Builder;
 use phpDocumentor\Reflection\Types\Mixed_;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface
@@ -29,6 +30,18 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
   public function __construct(User $model)
   {
     $this->model = $model;
+  }
+
+  public function getPenerima() : Collection {
+    return $this->model->whereHas('pengguna', function (Builder $query) {
+      $query->where('nama_tipe', 'like', 'penerima');
+    })->get();
+  }
+
+  public function getPendonor(): Collection {
+    return $this->model->whereHas('pengguna', function (Builder $query) {
+      $query->where('nama_tipe', 'like', 'pendonor');
+    })->get();
   }
 
   public function searchByName($name): Collection
