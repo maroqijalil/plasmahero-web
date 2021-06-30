@@ -95,8 +95,8 @@
             <label for="nama_tipe" class="col-2 col-form-label">Nama Tipe</label>
             <div class="col-10">
               <select class="form-control" id="nama_tipe" name="nama_tipe">
-                <option value="pendonor" selected>Pendonor</option>
-                <option value="penerima">Penerima</option>
+                <option value="pendonor" {{Auth::user()->pengguna->nama_tipe == 'pendonor' ? 'selected' : ''}}>Pendonor</option>
+                <option value="penerima" {{Auth::user()->pengguna->nama_tipe == 'penerima' ? 'selected' : ''}}>Penerima</option>
               </select>
             </div>
           </div>
@@ -122,8 +122,8 @@
             <label for="jenis_kelamin" class="col-2 col-form-label">Jenis Kelamin</label>
             <div class="col-10">
               <select id="jenis_kelamin" name="jenis_kelamin" class="form-control">
-                <option value="L" selected>Laki-laki</option>
-                <option value="P">Perempuan</option>
+                <option value="l" {{strtolower(Auth::user()->pengguna->jenis_kelamin) == 'laki-laki' || strtolower(Auth::user()->pengguna->jenis_kelamin) == 'l' ? 'selected' : ''}}>Laki-laki</option>
+                <option value="p" {{strtolower(Auth::user()->pengguna->jenis_kelamin) == 'perempuan' || strtolower(Auth::user()->pengguna->jenis_kelamin) == 'p' ? 'selected' : ''}}>Perempuan</option>
               </select>
             </div>
           </div>
@@ -131,11 +131,11 @@
           <div class="form-group row mb-3">
             <label for="gol_darah" class="col-2 col-form-label">Golongan Darah</label>
             <div class="col-10">
-              <select class="form-control {{ $errors->has('rhesus') ? 'error' : '' }}" id="gol_darah" name="gol_darah">
-                <option value="a" selected>A</option>
-                <option value="b">B</option>
-                <option value="ab">AB</option>
-                <option value="o">O</option>
+              <select class="form-control {{ $errors->has('gol_darah') ? 'error' : '' }}" id="gol_darah" name="gol_darah">
+                <option value="a" {{strtolower(Auth::user()->pengguna->gol_darah) == 'a' ? 'selected' : ''}}>A</option>
+                <option value="b" {{strtolower(Auth::user()->pengguna->gol_darah) == 'b' ? 'selected' : ''}}>B</option>
+                <option value="ab" {{strtolower(Auth::user()->pengguna->gol_darah) == 'ab' ? 'selected' : ''}}>AB</option>
+                <option value="o" {{strtolower(Auth::user()->pengguna->gol_darah) == 'o' ? 'selected' : ''}}>O</option>
               </select>
 
               <!-- Error -->
@@ -151,8 +151,8 @@
             <label for="rhesus" class="col-2 col-form-label">Rhesus</label>
             <div class="col-10">
               <select class="form-control {{ $errors->has('rhesus') ? 'error' : '' }}" id="rhesus" name="rhesus">
-                <option value="positif" selected>Positif</option>
-                <option value="negatif">Negatif</option>
+                <option value="+" {{strtolower(Auth::user()->pengguna->rhesus) == '+' ? 'selected' : ''}}>Positif</option>
+                <option value="-" {{strtolower(Auth::user()->pengguna->rhesus) == '-' ? 'selected' : ''}}>Negatif</option>
               </select>
   
               <!-- Error -->

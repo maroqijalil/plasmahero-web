@@ -33,7 +33,7 @@ Dashboard
 							<!-- <input class="form-control {{ $errors->has('id_pendonor') ? 'error' : '' }}" type="text" placeholder="ID Pendonor" id="id_pendonor" name="id_pendonor" value="{{ old('id_pendonor') }}"> -->
 							<select class="form-control" id="id_pendonor" name="id_pendonor">
 								@foreach ($users as $user)
-								@if ($user->role == 'pengguna')
+								@if ($user->pengguna)
 								@if ($user->pengguna->nama_tipe == 'pendonor')
 								<option value="{{$user->pengguna->id}}">{{$user->pengguna->id}}</option>
 								@endif
@@ -55,7 +55,7 @@ Dashboard
 							<!-- <input class="form-control {{ $errors->has('id_penerima') ? 'error' : '' }}" type="text" placeholder="ID Penerima" id="id_penerima" name="id_penerima" value="{{ old('id_penerima') }}"> -->
 							<select class="form-control" id="id_penerima" name="id_penerima">
 								@foreach ($users as $user)
-								@if ($user->role == 'pengguna')
+								@if ($user->pengguna)
 								@if ($user->pengguna->nama_tipe == 'penerima')
 								<option value="{{$user->pengguna->id}}">{{$user->pengguna->id}}</option>
 								@endif
@@ -85,7 +85,7 @@ Dashboard
 <div class="container">
 	<div class="row justify-content-around">
 
-		<div class="card col-5">
+		<div class="card col-6">
 			<div class="card-header">
 				<div class="row">
 					<div class="col d-flex align-items-center">
@@ -114,12 +114,12 @@ Dashboard
 					<tbody>
 						<?php $counter=1; ?>
 						@foreach ($users as $user)
-						@if ($user->role == 'pengguna')
+						@if ($user->pengguna)
 						@if ($user->pengguna->nama_tipe == 'pendonor')
 						<tr>
 							<th scope="row">{{$user->pengguna->id}}</th> <?php $counter++; ?>
 							<td>{{ $user->name }}</td>
-							<td>{{ $user->role=='pengguna' ? $user->pengguna->nama_tipe : $user->admin->id }}</td>
+							<td>{{ $user->pengguna ? $user->pengguna->nama_tipe : $user->admin->id }}</td>
 							<td>{{ $user->pengguna->kota }}</td>
 						</tr>
 						@endif
@@ -132,7 +132,7 @@ Dashboard
 			</div>
 		</div>
 
-		<div class="card col-5">
+		<div class="card col-6">
 			<div class="card-header">
 				<div class="row">
 					<div class="col d-flex align-items-center">
@@ -161,7 +161,7 @@ Dashboard
 					<tbody>
 					<?php $counter=1; ?>
 						@foreach ($users as $user)
-						@if ($user->role == 'pengguna')
+						@if ($user->pengguna)
 						@if ($user->pengguna->nama_tipe == 'penerima')
 						<tr>
 							<th scope="row">{{$user->pengguna->id}}</th> <?php $counter++; ?>

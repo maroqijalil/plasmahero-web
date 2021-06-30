@@ -42,16 +42,12 @@
       <tbody>
           <?php $counter=1; ?>
           @foreach ($users as $user)
-          @if ($user->role == 'pengguna')
-          @if ($user->pengguna->nama_tipe == 'pendonor')
           <tr>
             <th scope="row">{{$user->pengguna->id}}</th> <?php $counter++; ?>
             <td>{{ $user->name }}</td>
             <td>{{ $user->pengguna->nama_tipe }}</td>
             <td>{{ $user->pengguna->kota }}</td>
           </tr>
-          @endif
-          @endif
           @endforeach
       </tbody>
     </table>

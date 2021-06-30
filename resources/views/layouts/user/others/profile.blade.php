@@ -19,10 +19,16 @@
       <div class="card mt-4">
         <div class="card-body">
           <label for="tipe" class="font-weight-bold mr-4">Tipe   : </label>
-          <div class="alert alert-primary" id="tipe">Pendonor</div>
+          <div class="alert alert-primary" id="tipe">{{ Auth::user()->pengguna->nama_tipe }}</div>
           <br>
           <label for="status" class="font-weight-bold mr-4">Status   : </label>
-          <div class="alert alert-warning" id="status">Menunggu Validasi Detail Pengguna</div>
+          <div class="alert alert-warning" id="status">
+            @if(Auth::user()->pengguna->id_admin)
+              Diverifikasi
+            @else
+              Menunggu Validasi Detail Pengguna
+            @endif
+          </div>
         </div>
       </div>
     </div>

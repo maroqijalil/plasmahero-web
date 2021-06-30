@@ -26,6 +26,9 @@ require __DIR__ . '/auth.php';
 
 Route::view('/', 'layouts.dashboard')->name('home');
 
+Route::view('/chat', 'layouts.chat')->name('chat');
+Route::view('/my-test-login', 'layouts.auth')->name('test-login');
+
 Route::middleware('auth.role:pengguna')->group(function () {
     Route::get('/detail-pengguna', [UserDetailController::class, 'index'])->name('detail-pengguna');
     Route::patch('/detail-pengguna', [UserDetailController::class, 'update'])->name('fill-detail-giver.store');

@@ -42,7 +42,7 @@ Dashboard
           <div class="form-group row mb-3">
             <label for="alamat" class="col-2 col-form-label">Alamat</label>
             <div class="col-10">
-              <input class="form-control {{ $errors->has('alamat') ? 'error' : '' }}" type="text" placeholder="alamat" id="alamat" name="alamat" value="{{ old('alamat') }}">
+              <input class="form-control {{ $errors->has('alamat') ? 'error' : '' }}" type="text" placeholder="alamat" id="alamat" name="alamat" value="{{ Auth::user()->admin ? Auth::user()->admin->alamat : '' }}">
   
               <!-- Error -->
               @if ($errors->has('alamat'))
