@@ -41,7 +41,7 @@ Dashboard
 								@foreach ($users as $user)
 								@if ($user->pengguna)
 								@if ($user->pengguna->nama_tipe == 'pendonor')
-								<option value="{{$user->pengguna->id}}">{{$user->pengguna->id}}</option>
+								<option value="{{$user->pengguna->id}}">{{$user->pengguna->id}}:{{$user->name}}</option>
 								@endif
 								@endif
 								@endforeach
@@ -63,7 +63,7 @@ Dashboard
 								@foreach ($users as $user)
 								@if ($user->pengguna)
 								@if ($user->pengguna->nama_tipe == 'penerima')
-								<option value="{{$user->pengguna->id}}">{{$user->pengguna->id}}</option>
+								<option value="{{$user->pengguna->id}}">{{$user->pengguna->id}}:{{$user->name}}</option>
 								@endif
 								@endif
 								@endforeach

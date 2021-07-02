@@ -52,7 +52,7 @@ Route::get('/tesmail', [DonorController::class, 'tesEmail']);
 
 //Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
 Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function() {
-    Route::view('/', 'admin.dashboard')->name('admin.dashboard');
+    Route::get('/', [DasborController::class, 'index'])->name('admin.dashboard');
     Route::get('/pendonoran', [PendonoranController::class, 'index'])->name('index-pendonoran');
     Route::post('/pendonoran', [PendonoranController::class, 'store'])->name('store-pencocokan');
     Route::get('/pendonoran/{id}', [ChatCreateController::class, 'create'])->name('chat-create');
@@ -70,7 +70,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function
     Route::get('/berita-acara', [ReportController::class, 'show'])->name('berita-acara.show');
 
     Route::group(['prefix'=>'galeri'], function() {
-        Route::get('/', [AdminGaleriController::class, 'index']);
+        Route::get('/', [AdminGaleriController::class, 'index'])->name('galeri');
         Route::view('/tambah', 'admin.others.gallery.add');
         Route::get('/{id}/edit', [AdminGaleriController::class, 'edit']);
         Route::post('/', [AdminGaleriController::class, 'store']);
