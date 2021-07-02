@@ -26,9 +26,11 @@ class PartisipanFactory extends Factory
     {
         return [
             'id_percakapan' => Percakapan::all()->random()->id,
-            'id_admin' => Admin::all()->random()->id,
-            'id_user' => User::all()->random()->id,
-            'tipe_partisipan' => $this->faker->randomElement(['pendonor', 'penerima'])
+            'id_admin' => User::all()->random()->id,
+            'id_pendonor' => User::all()->random()->id,
+            'id_penerima' => User::all()->random()->id,
+
+            'tipe_partisipan' => 'private'
         ];
     }
 }

@@ -5,7 +5,7 @@ namespace App\Common\Controllers;
 use App\Common\Models\Donor;
 use App\Controller\BaseController;
 use Illuminate\Http\Request;
-use App\Common\Repositories\QRCodeServiceInterface;
+use App\Common\Services\QRCodeServiceInterface;
 use App\Common\Repositories\DonorRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 

@@ -16,7 +16,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('chat') }}">
+                        <a class="nav-link" href="{{ route('chat', ['id' => 1]) }}">
                             <i class="ni ni-chat-round text-primary"></i>
                             <span class="nav-link-text">Chat</span>
                         </a>

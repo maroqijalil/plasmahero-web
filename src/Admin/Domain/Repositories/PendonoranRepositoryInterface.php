@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Common\Repositories;
+namespace App\Admin\Repositories;
 
 use App\Repository\BaseRepositoryInterface;
 
