@@ -30,7 +30,6 @@ class StoreUserDetailRequest extends FormRequest
 			'kelurahan' => ['required'],
 			'kecamatan' => ['required'],
 			'kota' => ['required'],
-			'nama_tipe' => ['required'],
 			'usia' => ['required'],
 			'jenis_kelamin' => ['required'],
 			'gol_darah' => ['required'],

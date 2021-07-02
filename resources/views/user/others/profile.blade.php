@@ -17,9 +17,10 @@
       <h2 class="text-center font-weight-bold">Dashboard</h2>
       <div class="p-1"></div>
       <div class="card mt-4">
+        @if(Auth::user()->pengguna)
         <div class="card-body">
           <label for="tipe" class="font-weight-bold mr-4">Tipe   : </label>
-          <div class="alert alert-success" id="tipe">{{ Auth::user()->pengguna->nama_tipe }}</div>
+          <div class="alert alert-success" id="tipe">{{ Auth::user()->pengguna->nama_tipe ? Auth::user()->pengguna->nama_tipe : 'Anda belum mengisi detail pengguna' }}</div>
 
           <br>
           <label for="status" class="font-weight-bold mr-4">Status Verifikasi  : </label>
@@ -70,6 +71,12 @@
           </a>
           @endif
         </div>
+        @else
+        <div class="card-body">
+          <div class="alert alert-danger text-center">Anda belum memngisi detail pengguna. Isi <a href="/detail-pengguna">disini</a> </div>
+        </div>
+        @endif
+
       </div>
     </div>
 
@@ -116,7 +123,7 @@
     <div class="col">
       <h2 class="text-center font-weight-bold mb-4">Histori Donor</h2>
       {{-- {{dump(date('Y-m-d') < Auth::user()->pengguna->menerimaDonor->first()->tanggal)}} --}}
-
+      @if($donorall->count() != 0)
       <table class="table table-hover">
         <thead>
           <tr>
@@ -137,7 +144,9 @@
           @endforeach
         </tbody>
       </table>
-
+      @else
+      <div class="alert alert-danger text-center">Anda belum pernah melakukan pendonoran </div>
+      @endif
     </div>
   </div>
 
