@@ -5,16 +5,18 @@ use Database\Factories\GalleryFactory;
 
 use App\Eloquent\BaseModel;
 
-class Gallery extends BaseModel
+class Galeri extends BaseModel
 {
+    protected $table = 'Galeri';
+
 	protected $fillable = [
-		'title',
-		'description',
-		'urlToImage'
+		'judul',
+		'deskripsi',
+		'foto'
 	];
 
 	protected static function newFactory()
 	{
-		return new GalleryFactory();
+		return new GaleriFactory();
 	}
 }

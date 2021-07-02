@@ -17,6 +17,7 @@
     <!-- Page plugins -->
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{asset("assets/css/argon.css?v=1.2.0")}}" type="text/css">
+    <link rel="stylesheet" href="{{asset("css/my.css")}}" type="text/css">
 </head>
 
 <body>
@@ -275,10 +276,10 @@
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-lg-6 col-5 text-right">
-                        <a href="#" class="btn btn-sm btn-neutral">New</a>
-                        <a href="#" class="btn btn-sm btn-neutral">Filters</a>
-                    </div>
+{{--                    <div class="col-lg-6 col-5 text-right">--}}
+{{--                        <a href="#" class="btn btn-sm btn-neutral">New</a>--}}
+{{--                        <a href="#" class="btn btn-sm btn-neutral">Filters</a>--}}
+{{--                    </div>--}}
                 </div>
                 <!-- Card stats -->
                 @yield('card-stats')

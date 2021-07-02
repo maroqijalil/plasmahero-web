@@ -5,7 +5,7 @@
 {{--            <a class="navbar-brand" href="javascript:void(0)">--}}
 {{--                <img src="{{asset("img/brand/blue.png")}}" class="navbar-brand-img" alt="...">--}}
 {{--            </a>--}}
-            <h1>Northwind</h1>
+            <h1>Plasmahero</h1>
         </div>
         <div class="navbar-inner">
             <!-- Collapse -->
@@ -19,9 +19,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="employee">
+                        <a class="nav-link" href="/admin/galeri">
                             <i class="ni ni-bullet-list-67 text-primary"></i>
-                            <span class="nav-link-text">Employee</span>
+                            <span class="nav-link-text">Galeri</span>
                         </a>
                     </li>
 {{--                    <li class="nav-item">--}}

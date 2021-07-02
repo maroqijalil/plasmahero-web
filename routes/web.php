@@ -9,6 +9,8 @@ use App\User\Controllers\UserDetailController;
 use App\Common\Controllers\ReportController;
 use App\Common\Controllers\ProfileController;
 use App\Common\Controllers\DonorController;
+
+use App\Admin\Controllers\Others\GaleriController as AdminGaleriController;
 use Illuminate\Support\Facades\Mail;
 
 require __DIR__ . '/auth.php';
@@ -50,10 +52,16 @@ Route::group(['prefix' => '/admin'], function() {
     Route::get('/pendonor', [DasborController::class, 'showPendonor']);
     Route::get('/pemohon', [DasborController::class, 'showPenerima']);
 
-    Route::get('/galeri', [GalleryController::class, 'adminIndex']);
-    Route::post('/galeri', [GalleryController::class, 'store']);
-
     Route::get('/berita-acara', [ReportController::class, 'show'])->name('berita-acara.show');
+
+    Route::group(['prefix'=>'galeri'], function() {
+        Route::get('/', [AdminGaleriController::class, 'index']);
+        Route::view('/tambah', 'admin.others.gallery.add');
+        Route::get('/{id}/edit', [AdminGaleriController::class, 'edit']);
+        Route::post('/', [AdminGaleriController::class, 'store']);
+        Route::put('/{id}', [AdminGaleriController::class, 'update']);
+        Route::delete('/{id}', [AdminGaleriController::class, 'destroy']);
+    });
 });
 
 Route::view('errorpage', 'common.layouts.error')->name('errorpage');
