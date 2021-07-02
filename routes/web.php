@@ -9,6 +9,7 @@ use App\User\Controllers\UserDetailController;
 use App\Common\Controllers\ReportController;
 use App\Common\Controllers\ProfileController;
 use App\Common\Controllers\DonorController;
+use App\User\Controllers\Others\CeritaController;
 
 use App\Admin\Controllers\Others\GaleriController as AdminGaleriController;
 use Illuminate\Support\Facades\Mail;
@@ -36,6 +37,10 @@ Route::middleware('auth.role:pengguna')->group(function () {
 
     Route::get('/pendonoran', [DonorController::class, 'index']);
     Route::post('/pendonoran', [DonorController::class, 'store']);
+
+    Route::view('/buat-cerita', 'user.others.create-cerita');
+    Route::post('/cerita', [CeritaController::class, 'store']);
+
 });
 
 //Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
