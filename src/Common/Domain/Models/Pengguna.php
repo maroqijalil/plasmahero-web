@@ -28,6 +28,11 @@ class Pengguna extends BaseModel
 		'status'
 	];
 
+	public function report()
+	{
+		return $this->hasMany(Report::class, 'id_pengguna', 'id');
+	}
+
 	public function user()
 	{
 		return $this->belongsTo(User::class, 'id_user', 'id');

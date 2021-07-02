@@ -4,22 +4,21 @@ namespace App\User\Controllers\Auth;
 
 use App\Common\Controllers\Auth\AuthenticationController;
 use App\Common\Models\Pengguna;
-use App\Common\Models\User;
 use App\Common\Services\MailServiceInterface;
 use App\Common\Repositories\UserRepositoryInterface;
+use App\Common\Repositories\PenggunaRepositoryInterface;
 use App\Common\Requests\StoreUserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\App;
 
 class RegisterUserController extends AuthenticationController
 {
 	protected $mailSender;
-	protected $userRepository;
 
-	public function __construct(MailServiceInterface $mailService, UserRepositoryInterface $userRepository)
+	public function __construct(MailServiceInterface $mailService)
 	{
 		$this->mailSender = $mailService;
-		$this->userRepository = $userRepository;
 	}
 
 	public function create()
@@ -29,13 +28,21 @@ class RegisterUserController extends AuthenticationController
 
 	public function store(StoreUserRequest $request)
 	{
-		$user = $this->userRepository->create([
+		$userRepository = App::make(UserRepositoryInterface::class);
+		$user = $userRepository->create([
 			'name' => $request->name,
 			'email' => $request->email,
 			'password' => Hash::make($request->password),
 			'role' => 'pengguna',
 		]);
 		$this->registerUser($user);
+
+		$penggunaRepository = App::make(PenggunaRepositoryInterface::class);
+		$pengguna = $penggunaRepository->create([
+			'id_user' => Auth::user()->id,
+			'status' => 'i'
+		]);
+		$user->pengguna()->save($pengguna);
 
 		$data = [
 			'name' => $request->name,
@@ -44,11 +51,6 @@ class RegisterUserController extends AuthenticationController
 		];
 		$this->mailSender->sendMail($data);
 
-		Pengguna::create([
-			'id_user' => Auth::user()->id,
-			'status' => 'i'
-		]);
-
-		return redirect('/profile')->with(['eSent' => 'Email berhasil dikirim, Periksa email Anda !']);
+		return redirect()->route('user-detail')->with(['email_verif' => 'Email berhasil dikirim, Periksa email Anda !']);
 	}
 }

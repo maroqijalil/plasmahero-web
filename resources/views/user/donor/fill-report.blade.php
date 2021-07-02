@@ -25,7 +25,7 @@
             </div>
         @endif
 
-        <form action="" method="post" action="{{ route('fill-report.store') }}">
+        <form action="" method="post" enctype="multipart/form-data" action="{{ route('fill-report.store') }}">
 
           <!-- CROSS Site Request Forgery Protection -->
           @csrf
@@ -63,7 +63,7 @@
           <div class="form-group row mb-3">
             <label for="foto" class="col-2 col-form-label">Foto Kegiatan</label>
             <div class="col-10">
-              <input class="form-control @error('foto') is-invalid @enderror" type="text" placeholder="Nama Foto Kegiatan" id="foto" name="foto" value="{{old('foto')}}">
+              <input class="form-control @error('foto') is-invalid @enderror" type="file" id="foto" name="foto" value="{{old('foto')}}">
               @if ($errors->has('foto'))
                 <div class="text-danger">{{ $errors->first('foto') }}</div>
               @endif

@@ -14,7 +14,9 @@ class Admin extends BaseModel
 		'alamat',
 		'kelurahan',
 		'kecamatan',
-		'kota'
+		'kota',
+		'created_at',
+		'updated_at'
 	];
 
 	public function user()

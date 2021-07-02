@@ -67,7 +67,7 @@
       </form>
 
       <label>
-        <a href="/detail-pengguna">Detail Data Diri Pengguna</a>
+        <a href="{{ route('user-detail') }}">Detail Data Diri Pengguna</a>
       </label>
     </div>
 
