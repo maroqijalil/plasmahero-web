@@ -30,6 +30,7 @@
             <li>
               <form method="POST" action="{{ route('logout') }}">
                 @csrf
+                <input type="hidden" id="user_type" name="user_type" value="{{ Auth::user()->role }}">
                 <a href="" onclick="event.preventDefault();
                     this.closest('form').submit();">
                     {{ __('Log Out') }}
@@ -39,7 +40,7 @@
           </ul>
         </li>
         @else
-          <li><a href="{{route('register')}}"><div class="font-weight-bold text-danger">Masuk/Daftar</div></a></li>
+          <li><a href="{{ route('register') }}"><div class="font-weight-bold text-danger">Masuk/Daftar</div></a></li>
         @endif
 
       </ul>
