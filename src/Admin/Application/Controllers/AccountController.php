@@ -17,17 +17,33 @@ class AccountController extends BaseController
     }
 
     public function store(StoreAccountRequest $request) {
-        Admin::create([
-            'id_user' => $request->id_user,
-            'no_hp' => $request->no_hp,
-            'alamat' => $request->alamat,
-            'kelurahan' => $request->kelurahan,
-            'kecamatan' => $request->kecamatan,
-            'kota' => $request->kota,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-
-        return back()->with('success', 'Profil Berhasil Ditambahkan');
+        $admin = Admin::where('id_user', '=', $request->id_user);
+        if ($admin) {
+            $admin = $admin->first();
+            $admin->update([
+                'id_user'   => $request->id_user,
+                'no_hp'     => $request->no_hp,
+                'alamat'    => $request->alamat,
+                'kelurahan' => $request->kelurahan,
+                'kecamatan' => $request->kecamatan,
+                'kota'      => $request->kota,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+            return back()->with('success', 'Profil Berhasil Diedit');
+        } else {
+            Admin::create([
+                'id_user'   => $request->id_user,
+                'no_hp'     => $request->no_hp,
+                'alamat'    => $request->alamat,
+                'kelurahan' => $request->kelurahan,
+                'kecamatan' => $request->kecamatan,
+                'kota'      => $request->kota,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+            return back()->with('success', 'Profil Berhasil Ditambahkan');
+        }
+        
     }
 }

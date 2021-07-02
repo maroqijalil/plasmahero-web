@@ -78,22 +78,12 @@
                         <div class="dropdown-header noti-title">
                             <h6 class="text-overflow m-0">Welcome!</h6>
                         </div>
-                        <a href="#!" class="dropdown-item">
+                        @if(Auth::user()->admin)
+                        <a href="{{ route('show-admin-akun') }}" class="dropdown-item">
                             <i class="ni ni-single-02"></i>
                             <span>My profile</span>
                         </a>
-                        <a href="#!" class="dropdown-item">
-                            <i class="ni ni-settings-gear-65"></i>
-                            <span>Settings</span>
-                        </a>
-                        <a href="#!" class="dropdown-item">
-                            <i class="ni ni-calendar-grid-58"></i>
-                            <span>Activity</span>
-                        </a>
-                        <a href="#!" class="dropdown-item">
-                            <i class="ni ni-support-16"></i>
-                            <span>Support</span>
-                        </a>
+                        @endif
                         <div class="dropdown-divider"></div>
                         <form action="{{ route('logout') }}" class="dropdown-item" method="POST">
                             @csrf

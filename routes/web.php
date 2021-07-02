@@ -70,8 +70,8 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function
 
     Route::get('/berita-acara', [ReportController::class, 'show'])->name('berita-acara.show');
 
-    Route::group(['prefix' => 'galeri'], function () {
-        Route::get('/', [AdminGaleriController::class, 'index']);
+    Route::group(['prefix'=>'galeri'], function() {
+        Route::get('/', [AdminGaleriController::class, 'index'])->name('galeri');
         Route::view('/tambah', 'admin.others.gallery.add');
         Route::get('/{id}/edit', [AdminGaleriController::class, 'edit']);
         Route::post('/', [AdminGaleriController::class, 'store']);
