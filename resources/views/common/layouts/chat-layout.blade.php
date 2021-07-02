@@ -19,11 +19,16 @@
 </head>
 
 <body>
+<!-- Sidenav -->
+@include('common.layouts.sidenav')
+<div class="main-content" id="panel">
+  @include('common.layouts.topnav')
   <div class="container-fluid mt--6">
-    <div class="row">
+    <div class="contaner mt-4">
       @yield('chat')
     </div>
   </div>
+</div>
   <!-- Argon Scripts -->
   <!-- Core -->
   <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
