@@ -42,7 +42,8 @@
       </div>
     </div>
   </div>
-  <?php 
+  <?php
+    $show_chat = false;
     $show_chat = $partisipans->where('id', '=', $active_chat)->first();
   ?>
   <div class="col-lg-8">
@@ -117,6 +118,10 @@
           </div>
         </div>
         @endforeach
+        @else
+          <h3>
+            ups... grup chat anda masih kosong
+          </h3>
         @endif
       </div>
       <div class="card-footer d-block">
