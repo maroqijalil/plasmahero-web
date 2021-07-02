@@ -9,18 +9,8 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('admin.register.store') }}">
             @csrf
-
-            <!-- Role -->
-            <div>
-                <x-label for="role" :value="__('Role')" />
-                
-                <select name="role" id="role" class="block mt-1 w-full rounded mb-3" >
-                    <option value="pengguna" selected>Pengguna</option>
-                    <option value="admin">Admin</option>
-                </select>
-            </div>
 
             <!-- Name -->
             <div>
@@ -56,7 +46,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('admin.login') }}">
                     {{ __('Sudah punya akun?') }}
                 </a>
 

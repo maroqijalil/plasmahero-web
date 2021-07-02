@@ -10,14 +10,14 @@ use App\Common\Controllers\ReportController;
 use App\Common\Controllers\ProfileController;
 use App\Common\Controllers\DonorController;
 use App\Admin\Controllers\Others\GaleriController as AdminGaleriController;
-use Illuminate\Support\Facades\Mail;
 
 require __DIR__ . '/auth.php';
 
-Route::view('/', 'user.dashboard')->name('home');
 
 Route::view('/chat', 'common.layouts.chat')->name('chat');
 Route::view('/my-test-login', 'user.layouts.auth')->name('test-login');
+
+Route::view('/', 'user.home')->name('home');
 
 Route::middleware('auth.role:pengguna')->group(function () {
 	Route::get('/detail-pengguna', [UserDetailController::class, 'index'])->name('detail-pengguna');
@@ -37,9 +37,9 @@ Route::middleware('auth.role:pengguna')->group(function () {
 	Route::post('/pendonoran', [DonorController::class, 'store']);
 });
 
-//Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
-Route::group(['prefix' => '/admin'], function () {
+Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
 	Route::view('/', 'admin.dashboard');
+
 	Route::get('/pendonoran', [PendonoranController::class, 'index']);
 	Route::post('/pendonoran', [PendonoranController::class, 'store'])->name('store-pencocokan');
 	Route::view('/chat', 'admin.communication.chat');
@@ -63,4 +63,4 @@ Route::group(['prefix' => '/admin'], function () {
 	});
 });
 
-Route::view('errorpage', 'common.layouts.error')->name('errorpage');
+Route::view('/akses-eror', 'common.layouts.error')->name('admin.error');
