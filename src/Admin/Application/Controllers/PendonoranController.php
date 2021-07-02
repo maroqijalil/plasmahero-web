@@ -2,7 +2,8 @@
 
 namespace App\Admin\Controllers;
 
-use App\Admin\Interfaces\PendonoranRepositoryInterface;
+use App\Common\Repositories\UserRepositoryInterface;
+use App\Admin\Repositories\PendonoranRepositoryInterface;
 use App\Controller\BaseController;
 use App\Common\Models\User;
 use App\Common\Models\Pencocokan;

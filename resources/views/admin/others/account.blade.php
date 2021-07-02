@@ -28,7 +28,7 @@ Dashboard
           <div class="form-group row mb-3">
             <label for="no_hp" class="col-2 col-form-label">No. WhatsApp</label>
             <div class="col-10">
-              <input class="form-control {{ $errors->has('no_hp') ? 'error' : '' }}" type="text" placeholder="Nomor WhatsApp" id="no_hp" name="no_hp" value="{{ old('no_hp') }}">
+              <input class="form-control {{ $errors->has('no_hp') ? 'error' : '' }}" type="text" placeholder="Nomor WhatsApp" id="no_hp" name="no_hp" value="{{ Auth::user()->admin ? Auth::user()->admin->no_hp : '' }}">
   
               <!-- Error -->
               @if ($errors->has('no_hp'))
@@ -56,7 +56,7 @@ Dashboard
           <div class="form-group row mb-3">
             <label for="kelurahan" class="col-2 col-form-label">Kelurahan</label>
             <div class="col-10">
-              <input class="form-control {{ $errors->has('kelurahan') ? 'error' : '' }}" type="text" placeholder="Kelurahan" id="kelurahan" name="kelurahan" value="{{ old('kelurahan') }}">
+              <input class="form-control {{ $errors->has('kelurahan') ? 'error' : '' }}" type="text" placeholder="Kelurahan" id="kelurahan" name="kelurahan" value="{{ Auth::user()->admin ? Auth::user()->admin->kelurahan : '' }}">
   
               <!-- Error -->
               @if ($errors->has('kelurahan'))
@@ -70,7 +70,7 @@ Dashboard
           <div class="form-group row mb-3">
             <label for="kecamatan" class="col-2 col-form-label">Kecamatan</label>
             <div class="col-10">
-              <input class="form-control {{ $errors->has('kecamatan') ? 'error' : '' }}" type="text" placeholder="Kecamatan" id="kecamatan" name="kecamatan" value="{{ old('kecamatan') }}">
+              <input class="form-control {{ $errors->has('kecamatan') ? 'error' : '' }}" type="text" placeholder="Kecamatan" id="kecamatan" name="kecamatan" value="{{ Auth::user()->admin ? Auth::user()->admin->kecamatan : '' }}">
   
               <!-- Error -->
               @if ($errors->has('kecamatan'))
@@ -84,7 +84,7 @@ Dashboard
           <div class="form-group row mb-3">
             <label for="kota" class="col-2 col-form-label">Kota</label>
             <div class="col-10">
-              <input class="form-control {{ $errors->has('kota') ? 'error' : '' }}" type="text" placeholder="Kota" id="kota" name="kota" value="{{ old('kota') }}">
+              <input class="form-control {{ $errors->has('kota') ? 'error' : '' }}" type="text" placeholder="Kota" id="kota" name="kota" value="{{ Auth::user()->admin ? Auth::user()->admin->kota : '' }}">
   
               <!-- Error -->
               @if ($errors->has('kota'))
@@ -110,5 +110,5 @@ Dashboard
 @stop
 
 @section('js')
-    
+  
 @stop

@@ -4,7 +4,7 @@ namespace App\Common\Controllers;
 
 use App\Controller\BaseController;
 use App\Admin\Requests\StoreGalleryRequest;
-use App\Common\Interfaces\GalleryRepositoryInterface;
+use App\Common\Repositories\GalleryRepositoryInterface;
 use App\Common\Models\Gallery;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;

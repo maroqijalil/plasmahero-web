@@ -1,4 +1,4 @@
-@extends('layouts.chat-layout')
+@extends('common.layouts.chat-layout')
 
 @section('chat')
 <div class="row flex-row chat">

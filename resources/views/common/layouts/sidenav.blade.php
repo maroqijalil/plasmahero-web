@@ -2,9 +2,6 @@
     <div class="scrollbar-inner">
         <!-- Brand -->
         <div class="sidenav-header  align-items-center mt-3">
-{{--            <a class="navbar-brand" href="javascript:void(0)">--}}
-{{--                <img src="{{asset("img/brand/blue.png")}}" class="navbar-brand-img" alt="...">--}}
-{{--            </a>--}}
             <h1>Plasmahero</h1>
         </div>
         <div class="navbar-inner">
@@ -13,15 +10,15 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">
+                        <a class="nav-link" href="{{ route('home') }}">
                             <i class="ni ni-tv-2 text-primary"></i>
-                            <span class="nav-link-text">Dashboard</span>
+                            <span class="nav-link-text">Home</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/galeri">
-                            <i class="ni ni-bullet-list-67 text-primary"></i>
-                            <span class="nav-link-text">Galeri</span>
+                        <a class="nav-link" href="{{ route('chat') }}">
+                            <i class="ni ni-chat-round text-primary"></i>
+                            <span class="nav-link-text">Chat</span>
                         </a>
                     </li>
 {{--                    <li class="nav-item">--}}
