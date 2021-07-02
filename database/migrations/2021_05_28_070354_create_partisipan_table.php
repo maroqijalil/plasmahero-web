@@ -16,13 +16,15 @@ class CreatePartisipanTable extends Migration
         Schema::create('partisipan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_percakapan');
-            $table->unsignedBigInteger('id_admin');
-            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_admin')->nullable();
+            $table->unsignedBigInteger('id_pendonor')->nullable();
+            $table->unsignedBigInteger('id_penerima')->nullable();
             $table->string('tipe_partisipan')->nullable();
 
             $table->foreign('id_percakapan')->references('id')->on('percakapan');
             $table->foreign('id_admin')->references('id')->on('users');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_pendonor')->references('id')->on('users');
+            $table->foreign('id_penerima')->references('id')->on('users');
 
             $table->timestamps();
         });

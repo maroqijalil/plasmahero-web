@@ -24,7 +24,8 @@ class Pengguna extends BaseModel
 		'gol_darah',
 		'rhesus',
 		'berat_badan',
-		'tanggal_swab'
+		'tanggal_swab',
+		'status'
 	];
 
 	public function user()

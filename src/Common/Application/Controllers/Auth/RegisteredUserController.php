@@ -2,6 +2,8 @@
 
 namespace App\Common\Controllers\Auth;
 
+use App\Common\Models\Admin;
+use App\Common\Models\Pengguna;
 use App\Controller\BaseController;
 use App\Common\Models\User;
 use App\Common\Providers\RouteServiceProvider;
@@ -52,6 +54,7 @@ class RegisteredUserController extends BaseController
 			'role' => $request->role,
 		]);
 
+
 		$data = [
 			'name' => $request->name,
 			'email' => $request->email,
@@ -64,8 +67,14 @@ class RegisteredUserController extends BaseController
 
 		$user = User::where('email', $request->email)->first();
 		if ($user['role'] == 'admin') {
+			Admin::create([
+				'id_user' => Auth::user()->id,
+			]);
 			return redirect('/admin');
 		} else {
+			Pengguna::create([
+				'id_user' => Auth::user()->id,
+			]);
 			$this->mailSender->sendMail($data);
 			return redirect('/profile')->with(['eSent' => 'Email berhasil dikirim, Periksa email Anda !']);
 		}

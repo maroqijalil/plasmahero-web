@@ -91,17 +91,6 @@
             </div>
           </div>
 
-          <div class="form-group row mb-3">
-            <label for="nama_tipe" class="col-2 col-form-label">Nama Tipe</label>
-            <div class="col-10">
-              <select class="form-control" id="nama_tipe" name="nama_tipe">
-                <option value="pendonor" {{Auth::user()->pengguna->nama_tipe == 'pendonor' ? 'selected' : ''}}>Pendonor</option>
-                <option value="penerima" {{Auth::user()->pengguna->nama_tipe == 'penerima' ? 'selected' : ''}}>Penerima</option>
-              </select>
-            </div>
-          </div>
-          <br>
-
           <!-- keperluan donor -->
           <legend>Keperluan Donor</legend>
           <div class="form-group row mb-3">

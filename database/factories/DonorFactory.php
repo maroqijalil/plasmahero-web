@@ -33,8 +33,6 @@ class DonorFactory extends Factory
             'kelurahan' => $this->faker->address,
             'kecamatan' => $this->faker->address,
             'kota' => $this->faker->address,
-            'judul' => $this->faker->word(),
-            'isi' => $this->faker->sentence()
         ];
     }
 }

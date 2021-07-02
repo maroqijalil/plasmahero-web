@@ -4,6 +4,7 @@ namespace App\Common\Controllers;
 
 use App\Controller\BaseController;
 use App\Common\Requests\UpdateProfileRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +14,9 @@ class ProfileController extends BaseController
     public function index(Request $request)
     {
         $userData = Auth::user();
-        return view('user.others.profile', ['userData' => $userData]);
+        $donorall = Auth::user()->pengguna->mendonor->where('tanggal', '<', Carbon::now()->format('Y-m-d'));
+        // dd($donorall);
+        return view('user.others.profile', ['userData' => $userData, 'donorall' => $donorall]);
     }
 
     public function update(UpdateProfileRequest $request)

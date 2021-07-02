@@ -8,6 +8,7 @@ use Database\Factories\ReportFactory;
 class Report extends BaseModel
 {
 	protected $table = 'reports';
+	
 	protected $fillable = [
 		'judul',
 		'tgl',

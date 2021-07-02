@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Admin\Controllers\DasborController;
 use App\Admin\Controllers\PendonoranController;
 use App\Admin\Controllers\AccountController;
+use App\Admin\Controllers\ChatController as ChatCreateController;
+use App\Common\Controllers\ChatController;
 use App\User\Controllers\UserDetailController;
 use App\Common\Controllers\ReportController;
 use App\Common\Controllers\ProfileController;
@@ -12,13 +14,15 @@ use App\Common\Controllers\DonorController;
 use App\User\Controllers\Others\CeritaController;
 
 use App\Admin\Controllers\Others\GaleriController as AdminGaleriController;
-use Illuminate\Support\Facades\Mail;
 
 require __DIR__ . '/auth.php';
 
-Route::view('/', 'user.dashboard')->name('home');
+Route::view('/', 'user.home')->name('home');
 
-Route::view('/chat', 'common.layouts.chat')->name('chat');
+
+Route::get('/chat', [ChatController::class, 'show'])->name('chat');
+Route::get('/chat/{id}', [ChatController::class, 'index'])->name('chat');
+Route::post('/chat', [ChatController::class, 'store'])->name('chat-store');
 Route::view('/my-test-login', 'user.layouts.auth')->name('test-login');
 
 Route::middleware('auth.role:pengguna')->group(function () {
@@ -33,7 +37,9 @@ Route::middleware('auth.role:pengguna')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-    Route::view('/carikan-plasma', 'user.donor.carikan-plasma')->name('carikan-plasma');
+	Route::get('/carikan-plasma', [DonorController::class, 'carikanidx'])->name('carikan-plasma');
+	Route::patch('/carikan-plasma', [DonorController::class, 'carikan'])->name('carikan.store');
+	Route::view('/donorkan-plasma', 'user.donor.donorkan-plasma')->name('donorkan-plasma');
 
     Route::get('/pendonoran', [DonorController::class, 'index']);
     Route::post('/pendonoran', [DonorController::class, 'store']);
@@ -44,11 +50,14 @@ Route::middleware('auth.role:pengguna')->group(function () {
 });
 
 //Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
-Route::group(['prefix' => '/admin'], function() {
+Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function() {
     Route::view('/', 'admin.dashboard');
     Route::get('/pendonoran', [PendonoranController::class, 'index']);
     Route::post('/pendonoran', [PendonoranController::class, 'store'])->name('store-pencocokan');
-    Route::view('/chat', 'admin.communication.chat');
+    Route::get('/pendonoran/{id}', [ChatCreateController::class, 'create'])->name('chat-create');
+
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat-view-admin');
+
     Route::view('/konsultasi', 'admin.communication.consultation');
     Route::get('/akun', [AccountController::class, 'index'])->name('show-admin-akun');
     Route::post('/akun', [AccountController::class, 'store'])->name('store-admin-akun');
@@ -69,4 +78,4 @@ Route::group(['prefix' => '/admin'], function() {
     });
 });
 
-Route::view('errorpage', 'common.layouts.error')->name('errorpage');
+Route::view('/akses-eror', 'common.layouts.error')->name('admin.error');

@@ -69,8 +69,8 @@
 			],
 			"App\\Common\\Requests\\": "src/Common/Domain/Requests/",
 			"App\\Common\\Services\\": [
-				"src/Common/Infrastructure/Services/",
-				"src/Common/Domain/Services/"
+				"src/Common/Domain/Services/",
+				"src/Common/Infrastructure/Services/"
 			]
 		}
 	},

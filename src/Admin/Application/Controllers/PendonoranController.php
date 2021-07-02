@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Admin\Interfaces\PendonoranRepositoryInterface;
+use App\Admin\Repositories\PendonoranRepositoryInterface;
 use App\Controller\BaseController;
 use App\Common\Models\User;
 use App\Common\Models\Pencocokan;
@@ -20,7 +20,7 @@ class PendonoranController extends BaseController
 
     public function index()
     {
-        if (Auth::user()->admin == null) return redirect()->route('show-admin-akun');
+        // if (Auth::user()->admin == null) return redirect()->route('show-admin-akun');
         $users = User::all();
         $pencocokans = Pencocokan::all();
         return view('admin.donor.donation', ['users' => $users, 'pencocokans' => $pencocokans]);

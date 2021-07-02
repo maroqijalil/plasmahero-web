@@ -35,7 +35,8 @@ class PenggunaFactory extends Factory
             'gol_darah' => $this->faker->randomElement(['A', 'AB', 'B', 'O']),
             'rhesus' => $this->faker->randomElement(['+', '-']),
             'berat_badan' => $this->faker->numberBetween(40, 80),
-            'tanggal_swab' => $this->faker->dateTimeBetween('-1 years', 'now')
+            'tanggal_swab' => $this->faker->dateTimeBetween('-1 years', 'now'),
+            'status' => 'i',
         ];
     }
 }

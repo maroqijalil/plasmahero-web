@@ -23,9 +23,10 @@ class PesanFactory extends Factory
      */
     public function definition()
     {
+        $partisipan = Partisipan::all()->random();
         return [
-            'id_partisipan' => Partisipan::all()->random()->id,
-            'id_pengirim' => User::all()->random()->id,
+            'id_partisipan' => $partisipan->id,
+            'id_pengirim' => $this->faker->randomElement([$partisipan->id_admin, $partisipan->id_pendonor, $partisipan->id_penerima]),
             'isi' => $this->faker->sentence()
         ];
     }
