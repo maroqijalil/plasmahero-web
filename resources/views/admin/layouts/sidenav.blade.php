@@ -42,6 +42,12 @@
                             <span class="nav-link-text">Pemohon</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('chat', ['id' => 1]) }}">
+                            <i class="ni ni-chat-round text-primary"></i>
+                            <span class="nav-link-text">Chat</span>
+                        </a>
+                    </li>
 {{--                    <li class="nav-item">--}}
 {{--                        <a class="nav-link" href="examples/tables.html">--}}
 {{--                            <i class="ni ni-bullet-list-67 text-default"></i>--}}
