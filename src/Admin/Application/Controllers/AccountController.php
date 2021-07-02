@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class AccountController extends BaseController
 {
     public function index() {
-        return view('layouts.admin.others.account');
+        return view('admin.others.account');
     }
 
     public function store(StoreAccountRequest $request) {

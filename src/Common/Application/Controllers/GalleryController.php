@@ -21,13 +21,13 @@ class GalleryController extends BaseController
     public function index()
     {
         $galleries = Gallery::get();
-        return view('layouts.user.others.gallery', compact(['galleries']));
+        return view('user.others.gallery', compact(['galleries']));
     }
 
     public function adminIndex()
     {
         $galleries = Gallery::get();
-        return view('layouts.admin.others.gallery', compact(['galleries']));
+        return view('admin.others.gallery', compact(['galleries']));
     }
 
     public function store(StoreGalleryRequest $request)

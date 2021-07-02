@@ -20,7 +20,7 @@ class DonorController extends BaseController
 
   public function index()
   {
-    return view('layouts.user.donor.pendonoran');
+    return view('user.donor.pendonoran');
   }
 
   public function store(Request $request)
@@ -31,7 +31,7 @@ class DonorController extends BaseController
     ];
 
     $qrCodePath = $this->qrCodeGenerator->generateQrCode($data);
-    return view('layouts.user.qr-code', compact('qrCodePath'));
+    return view('user.qr-code', compact('qrCodePath'));
   }
 
   public function fetch()

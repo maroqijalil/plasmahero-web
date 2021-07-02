@@ -22,7 +22,7 @@ class RegisterUserController extends AuthenticationController
 	
 	public function create()
 	{
-		return view('layouts.user.auth.register');
+		return view('user.auth.register');
 	}
 
 	public function store(StoreUserRequest $request)

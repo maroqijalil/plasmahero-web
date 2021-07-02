@@ -9,7 +9,7 @@ class LoginUserController extends AuthenticationController
 {
 	public function create()
 	{
-		return view('layouts.user.auth.login');
+		return view('user.auth.login');
 	}
 
 	public function store(LoginRequest $request)

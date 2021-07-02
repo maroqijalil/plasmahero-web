@@ -23,7 +23,7 @@ class PendonoranController extends BaseController
         if (Auth::user()->admin == null) return redirect()->route('show-admin-akun');
         $users = User::all();
         $pencocokans = Pencocokan::all();
-        return view('layouts.admin.donor.donation', ['users' => $users, 'pencocokans' => $pencocokans]);
+        return view('admin.donor.donation', ['users' => $users, 'pencocokans' => $pencocokans]);
     }
 
     public function store(StorePendonoranRequest $request)

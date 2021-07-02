@@ -20,13 +20,13 @@ class ReportController extends BaseController
 
     public function index(Request $request)
     {
-        return view('layouts.user.donor.fill-report');
+        return view('user.donor.fill-report');
     }
 
     public function show(Request $request)
     {
         $reports = Report::all();
-        return view('layouts.admin.donor.berita-acara', ['reports' => $reports]);
+        return view('admin.donor.berita-acara', ['reports' => $reports]);
     }
 
     public function store(StoreReportRequest $request)
