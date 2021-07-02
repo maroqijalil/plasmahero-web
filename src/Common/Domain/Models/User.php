@@ -59,9 +59,6 @@ class User extends Authenticatable
 		return $this->hasMany(Report::class, 'id_user', 'id');
 	}
 
-	
-
-
 	/* relasi chat */
 	public function pesan() //kepemilikan pesan
 	{

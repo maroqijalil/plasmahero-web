@@ -12,7 +12,7 @@
         Untuk mencari plasma, ikuti langkah langkah berikut : 
       </p>
       <ul>
-        <li>Lengkapi data diri pengguna pada halaman <a href="{{route('detail-pengguna')}}">detail pengguna</a></li>
+        <li>Lengkapi data diri pengguna pada halaman <a href="{{ route('user-detail') }}">detail pengguna</a></li>
         <li>Isi kolom Tipe dengan "Pendonor"</li>
         <li>Lengkapi Bukti pendukung</li>
         <li>Submit</li>

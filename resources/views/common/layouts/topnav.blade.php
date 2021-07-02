@@ -222,9 +222,12 @@
                             <span>Support</span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <form href="{{ route('admin.logout') }}" class="dropdown-item" method="POST">
+                        <form action="{{ route('logout') }}" class="dropdown-item" method="POST">
                             @csrf
-                            <button type="submit">
+
+                            <input type="hidden" name="user_type" value="{{ Auth::user()->admin ? 'admin' : 'pengguna' }}">
+                            
+                            <button type="submit" style="border: none; background: none;">
                                 <i class="ni ni-user-run"></i>
                                 <span>Logout</span>
                             </button>

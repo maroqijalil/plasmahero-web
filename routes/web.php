@@ -25,8 +25,8 @@ Route::view('/my-test-login', 'user.layouts.auth')->name('test-login');
 Route::view('/', 'user.home')->name('home');
 
 Route::group(['middleware' => 'auth.role:pengguna'], function () {
-	Route::get('/detail-pengguna', [UserDetailController::class, 'index'])->name('detail-pengguna');
-	Route::patch('/detail-pengguna', [UserDetailController::class, 'update'])->name('fill-detail-giver.store');
+	Route::get('/detail-pengguna', [UserDetailController::class, 'create'])->name('user-detail');
+	Route::post('/detail-pengguna', [UserDetailController::class, 'store'])->name('user-detail.store');
 
 	Route::get('/berita-acara', [ReportController::class, 'index']);
 	Route::post('/berita-acara', [ReportController::class, 'store'])->name('fill-report.store');

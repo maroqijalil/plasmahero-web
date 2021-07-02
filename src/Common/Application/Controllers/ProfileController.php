@@ -11,24 +11,28 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends BaseController
 {
-    public function index(Request $request)
-    {
-        $userData = Auth::user();
-        $donorall = Auth::user()->pengguna->mendonor->where('tanggal', '<', Carbon::now()->format('Y-m-d'));
-        // dd($donorall);
-        return view('user.others.profile', ['userData' => $userData, 'donorall' => $donorall]);
-    }
+	public function index(Request $request)
+	{
+		$userData = Auth::user();
+		$donorall = array();
+		
+		if (Auth::user()->pengguna->mendonor) {
+			Auth::user()->pengguna->mendonor->where('tanggal', '<', Carbon::now()->format('Y-m-d'));
+		}
 
-    public function update(UpdateProfileRequest $request)
-    {
-        Auth::user()->update($request->only('name'));
+		return view('user.others.profile', ['userData' => $userData, 'donorall' => $donorall]);
+	}
 
-        if ($request->input('password')) {
-            Auth::user()->update([
-                'password' => bcrypt($request->input('password'))
-            ]);
-        }
+	public function update(UpdateProfileRequest $request)
+	{
+		Auth::user()->update($request->only('name'));
 
-        return back()->with('success', 'Profile diperbarui');
-    }
+		if ($request->input('password')) {
+			Auth::user()->update([
+				'password' => bcrypt($request->input('password'))
+			]);
+		}
+
+		return back()->with('success', 'Profile diperbarui');
+	}
 }

@@ -6,9 +6,9 @@
 <div class="container">
 
   @if(Session::has('eSent'))
-    <div class="alert alert-success">
-      {{Session::get('eSent')}}
-    </div>
+  <div class="alert alert-success">
+    {{Session::get('eSent')}}
+  </div>
   @endif
 
   <div class="row">
@@ -73,10 +73,9 @@
         </div>
         @else
         <div class="card-body">
-          <div class="alert alert-danger text-center">Anda belum memngisi detail pengguna. Isi <a href="/detail-pengguna">disini</a> </div>
+          <div class="alert alert-danger text-center">Anda belum memngisi detail pengguna. Isi <a href="{{ route('user-detail') }}">disini</a> </div>
         </div>
         @endif
-
       </div>
     </div>
 
@@ -114,7 +113,7 @@
       </form>
 
       <label>
-        <a href="/detail-pengguna">Detail Data Diri Pengguna</a>
+        <a href={{ route('user-detail') }}>Detail Data Diri Pengguna</a>
       </label>
     </div>
 
