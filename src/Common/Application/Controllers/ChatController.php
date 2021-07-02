@@ -13,25 +13,11 @@ use Exception;
 class ChatController extends BaseController {
   
   public function show() {
-    $partisipans = Partisipan::orWhere('id_admin', '=', Auth::user()->id)
-                            ->orWhere('id_pendonor', '=', Auth::user()->id)
-                            ->orWhere('id_penerima', '=', Auth::user()->id)
-                            ->get();
-    try {
-      $active_chat = $partisipans->first()->id;
-      return view('common.layouts.chat', compact(['partisipans', 'active_chat']));
-    } catch (Exception $e) {
-      $active_chat = null;
-      return view('common.layouts.chat', compact(['partisipans', 'active_chat']));
-    }
+    return $this->nullHandlePartisipans(null);
   }
 
   public function index($active_chat) {
-    $partisipans = Partisipan::where('id_admin', '=', Auth::user()->id)
-                            ->orWhere('id_pendonor', '=', Auth::user()->id)
-                            ->orWhere('id_penerima', '=', Auth::user()->id)
-                            ->get();
-    return view('common.layouts.chat', compact(['partisipans', 'active_chat']));
+    return $this->nullHandlePartisipans($active_chat);
   }
 
   public function store(Request $request) {
@@ -42,5 +28,25 @@ class ChatController extends BaseController {
       'created_at' => Carbon::now(),
     ]);
     return redirect()->back()->with('success', 'chat terkirim');
+  }
+
+
+  /* utility */
+  public function getPartisipans($id) {
+    return Partisipan::where('id_admin', '=', $id)
+                      ->orWhere('id_pendonor', '=', $id)
+                      ->orWhere('id_penerima', '=', $id)
+                      ->get();
+  }
+
+  public function nullHandlePartisipans($active_chat) {
+    $partisipans = $this->getPartisipans(Auth::user()->id);
+    try {
+      $show_chat = $partisipans->where('id', '=', $active_chat)->first(); //grup yang aktif
+      return view('common.layouts.chat', compact(['partisipans', 'active_chat', 'show_chat']));
+    } catch (Exception $e) {
+      $show_chat = null;
+      return view('common.layouts.chat', compact(['partisipans', 'active_chat', 'show_chat']));
+    }
   }
 }

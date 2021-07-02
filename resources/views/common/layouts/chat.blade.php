@@ -42,10 +42,6 @@
       </div>
     </div>
   </div>
-  <?php
-    $show_chat = false;
-    $show_chat = $partisipans->where('id', '=', $active_chat)->first();
-  ?>
   <div class="col-lg-8">
     <div class="card card-plain" >
 
@@ -81,17 +77,6 @@
               <ul class="dropdown-menu dropdown-menu-right">
                 <a href="javascript:;" class="dropdown-item">
                   <i class="ni ni-single-02"></i> Profile 
-                </a>
-                <a href="javascript:;" class="dropdown-item">
-                  <i class="ni ni-notification-70"></i> Mute conversation 
-                </a>
-                <a href="javascript:;" class="dropdown-item"><i class="ni ni-key-25"></i> Block 
-                </a>
-                <a href="javascript:;" class="dropdown-item"><i class="ni ni-button-power"></i> Clear chat 
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="javascript:;" class="dropdown-item">
-                  <i class="ni ni-fat-remove"></i> Delete chat 
                 </a>
               </ul>
             </li>
