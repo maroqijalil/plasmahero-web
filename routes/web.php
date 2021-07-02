@@ -11,6 +11,8 @@ use App\User\Controllers\UserDetailController;
 use App\Common\Controllers\ReportController;
 use App\Common\Controllers\ProfileController;
 use App\Common\Controllers\DonorController;
+use App\User\Controllers\Others\CeritaController;
+use App\Admin\Controllers\Others\CeritaController as AdminCeritaController;
 
 use App\Admin\Controllers\Others\GaleriController as AdminGaleriController;
 
@@ -38,10 +40,15 @@ Route::group(['middleware' => 'auth.role:pengguna'], function () {
 
 	Route::get('/carikan-plasma', [DonorController::class, 'carikanidx'])->name('carikan-plasma');
 	Route::patch('/carikan-plasma', [DonorController::class, 'carikan'])->name('carikan.store');
+
 	Route::view('/donorkan-plasma', 'user.donor.donorkan-plasma')->name('donorkan-plasma');
+
 
 	Route::get('/pendonoran', [DonorController::class, 'index']);
 	Route::post('/pendonoran', [DonorController::class, 'store']);
+
+	Route::view('/buat-cerita', 'user.others.create-cerita');
+	Route::post('/cerita', [CeritaController::class, 'store']);
 });
 
 //Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
@@ -64,12 +71,19 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function
 	Route::get('/berita-acara', [ReportController::class, 'show'])->name('berita-acara.show');
 
 	Route::group(['prefix' => 'galeri'], function () {
-		Route::get('/', [AdminGaleriController::class, 'index']);
+		Route::get('/', [AdminGaleriController::class, 'index'])->name('galeri');
 		Route::view('/tambah', 'admin.others.gallery.add');
 		Route::get('/{id}/edit', [AdminGaleriController::class, 'edit']);
 		Route::post('/', [AdminGaleriController::class, 'store']);
 		Route::put('/{id}', [AdminGaleriController::class, 'update']);
 		Route::delete('/{id}', [AdminGaleriController::class, 'destroy']);
+	});
+
+	Route::group(['prefix' => 'cerita'], function () {
+		Route::get('/', [AdminCeritaController::class, 'index']);
+		Route::post('/{id}/terima', [AdminCeritaController::class, 'accept']);
+		Route::post('/{id}/tolak', [AdminCeritaController::class, 'reject']);
+		Route::get('/{id}/reset', [AdminCeritaController::class, 'reset']);
 	});
 });
 

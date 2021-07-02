@@ -10,11 +10,14 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">
+                        <a class="nav-link" href="{{ Auth::user()->admin ? route('admin.dashboard') : route('home') }}">
                             <i class="ni ni-tv-2 text-primary"></i>
-                            <span class="nav-link-text">Home</span>
+                            <span class="nav-link-text">Dashboard</span>
                         </a>
                     </li>
+                    @if(Auth::user()->admin)
+                        @include('common.layouts.menu-admin')
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('chat', ['id' => 1]) }}">
                             <i class="ni ni-chat-round text-primary"></i>

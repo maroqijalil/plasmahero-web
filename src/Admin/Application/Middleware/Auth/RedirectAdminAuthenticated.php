@@ -14,7 +14,7 @@ class RedirectAdminAuthenticated
 
 			switch ($role) {
 				case 'admin':
-					return redirect()->route('admin.home');
+					return redirect()->route('admin.dashboard');
 					break;
 				case 'pengguna':
 					return redirect()->route('home');

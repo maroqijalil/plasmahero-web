@@ -33,6 +33,11 @@ class Donor extends BaseModel
 		return $this->belongsTo(Pengguna::class, 'id_penerima', 'id');
 	}
 
+	public function report()
+	{
+		return $this->hasMany(Report::class, 'id_donor', 'id');
+	}
+
 	protected static function newFactory()
 	{
 		return new DonorFactory();

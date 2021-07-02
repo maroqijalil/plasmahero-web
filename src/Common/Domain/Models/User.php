@@ -86,4 +86,8 @@ class User extends Authenticatable
 	{
 		return new UserFactory();
 	}
+	
+    public function cerita() {
+        return $this->hasMany(Cerita::class, 'id_user', 'id');
+    }
 }
