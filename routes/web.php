@@ -16,7 +16,7 @@ use App\Admin\Controllers\Others\GaleriController as AdminGaleriController;
 
 require __DIR__ . '/auth.php';
 
-Route::view('/', 'user.dashboard')->name('home');
+Route::view('/', 'user.home')->name('home');
 
 
 Route::get('/chat', [ChatController::class, 'show'])->name('chat');
