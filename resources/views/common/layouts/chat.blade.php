@@ -63,24 +63,6 @@
               </div>
             </div>
           </div>
-          <div class="col-md-1 col-3">
-            <button type="button" class="btn text-primary">
-              <!----><!----><!---->
-              <i class="ni ni-book-bookmark"></i>
-            </button>
-          </div>
-          <div class="col-md-2 col-3 text-right">
-            <li aria-haspopup="true" class="dropdown dropdown">
-              <div data-toggle="dropdown" class="nav-link dropdown-toggle text-primary text-sm mt-1">
-                <i class="ni ni-settings-gear-65"></i>
-              </div>
-              <ul class="dropdown-menu dropdown-menu-right">
-                <a href="javascript:;" class="dropdown-item">
-                  <i class="ni ni-single-02"></i> Profile 
-                </a>
-              </ul>
-            </li>
-          </div>
         </div>
       </div>
 

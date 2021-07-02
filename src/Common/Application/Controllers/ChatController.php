@@ -8,16 +8,31 @@ use App\Controller\BaseController;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
 use Exception;
 
 class ChatController extends BaseController {
   
   public function show() {
-    return $this->nullHandlePartisipans(null);
+    $partisipans = $this->getPartisipans(Auth::user()->id);
+    $pesan = new Collection;
+    foreach($partisipans as $partisipan) {
+      $pesan = $pesan->union($partisipan->pesan->where('id_pengirim', '!=', Auth::user()->id));
+    }
+    $pesan = $pesan->sortBy([['updated_at', 'desc']]);
+    $pesan = $pesan->take(10);
+    return $this->nullHandlePartisipans(null, $pesan, 'notifikasi_pesan');
   }
 
   public function index($active_chat) {
-    return $this->nullHandlePartisipans($active_chat);
+    $partisipans = $this->getPartisipans(Auth::user()->id);
+    $pesan = new Collection;
+    foreach($partisipans as $partisipan) {
+      $pesan = $pesan->union($partisipan->pesan->where('id_pengirim', '!=', Auth::user()->id));
+    }
+    $pesan = $pesan->sortBy([['updated_at', 'desc']]);
+    $pesan = $pesan->take(10);
+    return $this->nullHandlePartisipans($active_chat, $pesan, 'notifikasi_pesan');
   }
 
   public function store(Request $request) {
@@ -27,6 +42,7 @@ class ChatController extends BaseController {
       'isi' => $request->isi,
       'created_at' => Carbon::now(),
     ]);
+    $partisipan = Partisipan::findOrFail($request->id_partisipan)->update(['updated_at' => Carbon::now()]);
     return redirect()->back()->with('success', 'chat terkirim');
   }
 
@@ -39,14 +55,14 @@ class ChatController extends BaseController {
                       ->get();
   }
 
-  public function nullHandlePartisipans($active_chat) {
+  public function nullHandlePartisipans($active_chat, $notifikasi_pesan, $var_name) {
     $partisipans = $this->getPartisipans(Auth::user()->id);
     try {
       $show_chat = $partisipans->where('id', '=', $active_chat)->first(); //grup yang aktif
-      return view('common.layouts.chat', compact(['partisipans', 'active_chat', 'show_chat']));
+      return view('common.layouts.chat', compact(['partisipans', 'active_chat', 'show_chat', $var_name]));
     } catch (Exception $e) {
       $show_chat = null;
-      return view('common.layouts.chat', compact(['partisipans', 'active_chat', 'show_chat']));
+      return view('common.layouts.chat', compact(['partisipans', 'active_chat', 'show_chat', $var_name]));
     }
   }
 }
