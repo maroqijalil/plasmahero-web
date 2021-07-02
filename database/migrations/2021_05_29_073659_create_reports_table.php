@@ -15,13 +15,16 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->unsignedBigInteger('id_user')->nullable();
+            $table->unsignedBigInteger('id_pengguna')->nullable();
+            $table->unsignedBigInteger('id_donor')->nullable();
             $table->string('judul')->nullable();
             $table->date('tgl')->nullable();
             $table->string('pesan')->nullable();
             $table->string('foto')->nullable();
             $table->timestamps();
-            $table->foreign('id_user')->references('id')->on('users');
+
+            $table->foreign('id_pengguna')->references('id')->on('pengguna');
+            $table->foreign('id_donor')->references('id')->on('donor');
         });
     }
 

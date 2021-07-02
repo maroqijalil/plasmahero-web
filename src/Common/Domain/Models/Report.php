@@ -8,18 +8,24 @@ use Database\Factories\ReportFactory;
 class Report extends BaseModel
 {
 	protected $table = 'reports';
-	
+
 	protected $fillable = [
 		'judul',
 		'tgl',
 		'pesan',
 		'foto',
-		'id_user'
+		'id_pengguna',
+		'id_donor'
 	];
 
-	public function user()
+	public function pengguna()
 	{
-		return $this->belongsTo(User::class, 'id_user', 'id');
+		return $this->belongsTo(Pengguna::class, 'id_pengguna', 'id');
+	}
+
+	public function donor()
+	{
+		return $this->belongsTo(Donor::class, 'id_donor', 'id');
 	}
 
 	protected static function newFactory()

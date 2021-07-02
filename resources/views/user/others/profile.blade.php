@@ -9,6 +9,10 @@
     <div class="alert alert-success">
       {{Session::get('eSent')}}
     </div>
+  @elseif(Session::has('report'))
+    <div class="alert alert-success">
+      {{Session::get('report')}}
+    </div>
   @endif
 
   <div class="row">
@@ -94,6 +98,7 @@
         @csrf
         <div class="form-row">
           <div class="form-group col-md-12">
+            <div class="py-3"></div>
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" placeholder="emailku@mail.com" value="{{$userData->email}}" readonly name="email">
           </div>
@@ -128,6 +133,7 @@
         <thead>
           <tr>
             <th scope="col">No</th>
+            <th scope="col">ID</th>
             <th scope="col">Penerima Donor</th>
             <th scope="col">Tanggal Donor</th>
             <th scope="col">Lokasi Donor</th>
@@ -135,11 +141,23 @@
         </thead>
         <tbody>
           @foreach ($donorall as $donor)
-          <tr>
+          <tr data-toggle="collapse" data-target="{{'#dt'.$loop->iteration}}" class="clickable">
             <th scope="row">{{$loop->iteration}}</th>
+            <td>{{$donor->id}}</td>
             <td>{{$donor->penerima->user->name}}</td>
             <td>{{$donor->tanggal}}</td>
             <td>{{$donor->nama_udd}}</td>
+          </tr>
+          <tr>
+            <td colspan="5" class="py-3">
+                <div id="{{'dt'.$loop->iteration}}" class="collapse text-center">
+                  <h6 class="font-weight-bold">{{$donor->report->where('id_donor', $donor->id)->first()->judul}}</h6>
+                  <p>{{$donor->report->where('id_donor', $donor->id)->first()->tgl}}</p>
+                  <img src="{{(url($donor->report->where('id_donor', $donor->id)->first()->foto))}}" alt="" style="height:150px;" class="" >
+                  <p>{{$donor->report->where('id_donor', $donor->id)->first()->pesan}}</p>
+
+                </div>
+            </td>
           </tr>
           @endforeach
         </tbody>

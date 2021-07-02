@@ -33,6 +33,7 @@ Route::middleware('auth.role:pengguna')->group(function () {
 
     Route::get('/carikan-plasma', [DonorController::class, 'carikanidx'])->name('carikan-plasma');
     Route::patch('/carikan-plasma', [DonorController::class, 'carikan'])->name('carikan.store');
+
     Route::view('/donorkan-plasma', 'user.donor.donorkan-plasma')->name('donorkan-plasma');
 
 
