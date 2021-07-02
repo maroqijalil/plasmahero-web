@@ -24,24 +24,30 @@
                             <span class="nav-link-text">Galeri</span>
                         </a>
                     </li>
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="examples/icons.html">--}}
-{{--                            <i class="ni ni-planet text-orange"></i>--}}
-{{--                            <span class="nav-link-text">Icons</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="examples/map.html">--}}
-{{--                            <i class="ni ni-pin-3 text-primary"></i>--}}
-{{--                            <span class="nav-link-text">Google</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="examples/profile.html">--}}
-{{--                            <i class="ni ni-single-02 text-yellow"></i>--}}
-{{--                            <span class="nav-link-text">Profile</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('index-pendonoran') }}">
+                            <i class="ni ni-favourite-28 text-primary"></i>
+                            <span class="nav-link-text">Pencocokan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('index-pendonor') }}">
+                            <i class="ni ni-single-02 text-warning"></i>
+                            <span class="nav-link-text">Pendonor</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('index-pemohon') }}">
+                            <i class="ni ni-single-02 text-yellow"></i>
+                            <span class="nav-link-text">Pemohon</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('chat', ['id' => 1]) }}">
+                            <i class="ni ni-chat-round text-primary"></i>
+                            <span class="nav-link-text">Chat</span>
+                        </a>
+                    </li>
 {{--                    <li class="nav-item">--}}
 {{--                        <a class="nav-link" href="examples/tables.html">--}}
 {{--                            <i class="ni ni-bullet-list-67 text-default"></i>--}}

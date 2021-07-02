@@ -40,9 +40,10 @@ class ChatController extends BaseController {
       'id_partisipan' => $request->id_partisipan,
       'id_pengirim' => $request->id_pengirim,
       'isi' => $request->isi,
-      'created_at' => Carbon::now(),
+      'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
     ]);
-    $partisipan = Partisipan::findOrFail($request->id_partisipan)->update(['updated_at' => Carbon::now()]);
+    $partisipan = $pesan->partisipan;
+    $partisipan = $partisipan->update(['updated_at' => Carbon::now()->format('Y-m-d H:i:s')]);
     return redirect()->back()->with('success', 'chat terkirim');
   }
 
