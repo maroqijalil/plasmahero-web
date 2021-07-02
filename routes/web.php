@@ -44,8 +44,9 @@ Route::group(['middleware' => 'auth.role:pengguna'], function () {
 	Route::post('/pendonoran', [DonorController::class, 'store']);
 });
 
+//Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
 Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function () {
-	Route::view('/', 'admin.dashboard');
+	Route::view('/', 'admin.dashboard')->name('admin.dashboard');
 	Route::get('/pendonoran', [PendonoranController::class, 'index'])->name('index-pendonoran');
 	Route::post('/pendonoran', [PendonoranController::class, 'store'])->name('store-pencocokan');
 	Route::get('/pendonoran/{id}', [ChatCreateController::class, 'create'])->name('chat-create');

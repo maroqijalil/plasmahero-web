@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('admin.layouts.app')
 
 @section('title', 'Dashboard')
 
@@ -10,19 +10,20 @@ Dashboard
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        {{-- if success --}}
-        @if(Session::has('success'))
-            <div class="alert alert-success">
-                {{Session::get('success')}}
-            </div>
-        @endif
+  <div class="row justify-content-center">
+    <div class="col-12">
+      {{-- if success --}}
+      @if(Session::has('success'))
+          <div class="alert alert-success">
+              {{Session::get('success')}}
+          </div>
+      @endif
 
+      <div class="card p-4">
         <form method="post" action="{{ route('store-admin-akun') }}">
           @csrf
 
-					<input type="hidden" name="id_user" value="{{Auth::user()->id}}">
+          <input type="hidden" name="id_user" value="{{Auth::user()->id}}">
           <!-- data diri -->
           <legend class="form">Data Diri</legend>
           <div class="form-group row mb-3">
@@ -98,11 +99,9 @@ Dashboard
           <input type="submit" name="send" value="Submit" class="btn mt-4 btn-primary ml-50 float-right">
         </form>
       </div>
+    </div>
   </div>
-
-
 </div>
-
 @stop
 
 @section('css')

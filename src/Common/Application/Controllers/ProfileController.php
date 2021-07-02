@@ -14,11 +14,7 @@ class ProfileController extends BaseController
 	public function index(Request $request)
 	{
 		$userData = Auth::user();
-		$donorall = array();
-		
-		if (Auth::user()->pengguna->mendonor) {
-			Auth::user()->pengguna->mendonor->where('tanggal', '<', Carbon::now()->format('Y-m-d'));
-		}
+		$donorall = Auth::user()->pengguna->mendonor->where('tanggal', '<', Carbon::now()->format('Y-m-d'));
 
 		return view('user.others.profile', ['userData' => $userData, 'donorall' => $donorall]);
 	}

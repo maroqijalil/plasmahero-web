@@ -252,27 +252,20 @@
                                 <div class="dropdown-header noti-title">
                                     <h6 class="text-overflow m-0">Welcome!</h6>
                                 </div>
-                                <a href="#!" class="dropdown-item">
+                                <a href="{{ route('show-admin-akun') }}" class="dropdown-item">
                                     <i class="ni ni-single-02"></i>
                                     <span>My profile</span>
                                 </a>
-                                <a href="#!" class="dropdown-item">
-                                    <i class="ni ni-settings-gear-65"></i>
-                                    <span>Settings</span>
-                                </a>
-                                <a href="#!" class="dropdown-item">
-                                    <i class="ni ni-calendar-grid-58"></i>
-                                    <span>Activity</span>
-                                </a>
-                                <a href="#!" class="dropdown-item">
-                                    <i class="ni ni-support-16"></i>
-                                    <span>Support</span>
-                                </a>
                                 <div class="dropdown-divider"></div>
-                                <a href="#!" class="dropdown-item">
-                                    <i class="ni ni-user-run"></i>
-                                    <span>Logout</span>
-                                </a>
+                                <form action="{{ route('logout') }}" class="dropdown-item" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="user_type"
+                                        value="{{ Auth::user()->admin ? 'admin' : 'pengguna' }}">
+                                    <button type="submit" style="border: none; background: none;">
+                                        <i class="ni ni-user-run"></i>
+                                        <span>Logout</span>
+                                    </button>
+                                </form>
                             </div>
                         </li>
                     </ul>
