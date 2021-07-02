@@ -8,7 +8,7 @@ use Database\Factories\PartisipanFactory;
 class Partisipan extends BaseModel
 {
 	protected $table = 'partisipan';
-	protected $fillable = ['id_percakapan', 'id_admin', 'id_pendonor', 'id_penerima'];
+	protected $fillable = ['id_percakapan', 'id_admin', 'id_pendonor', 'id_penerima', 'created_at', 'updated_at'];
 
 	public function percakapan()
 	{

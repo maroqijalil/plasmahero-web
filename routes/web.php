@@ -44,10 +44,9 @@ Route::group(['middleware' => 'auth.role:pengguna'], function () {
 	Route::post('/pendonoran', [DonorController::class, 'store']);
 });
 
-//Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
 Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function () {
 	Route::view('/', 'admin.dashboard');
-	Route::get('/pendonoran', [PendonoranController::class, 'index']);
+	Route::get('/pendonoran', [PendonoranController::class, 'index'])->name('index-pendonoran');
 	Route::post('/pendonoran', [PendonoranController::class, 'store'])->name('store-pencocokan');
 	Route::get('/pendonoran/{id}', [ChatCreateController::class, 'create'])->name('chat-create');
 
@@ -58,8 +57,8 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function
 	Route::post('/akun', [AccountController::class, 'store'])->name('store-admin-akun');
 	Route::view('/pengaturan', 'admin.others.setting');
 
-	Route::get('/pendonor', [DasborController::class, 'showPendonor']);
-	Route::get('/pemohon', [DasborController::class, 'showPenerima']);
+	Route::get('/pendonor', [DasborController::class, 'showPendonor'])->name('index-pendonor');
+	Route::get('/pemohon', [DasborController::class, 'showPenerima'])->name('index-pemohon');
 
 	Route::get('/berita-acara', [ReportController::class, 'show'])->name('berita-acara.show');
 

@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('admin.layouts.app')
 
 @section('title', 'Dashboard')
 
@@ -18,7 +18,7 @@
   <div class="card-header">
     <div class="row">
       <div class="col d-flex align-items-center">
-        <h5 class="m-0">Jumlah: </h5>
+        <h5 class="m-0">Jumlah: {{ $users->count() }}</h5>
       </div>
       <div class="col-3">
         <div class="input-group">
@@ -43,7 +43,7 @@
       <tbody>
           <?php $counter=1; ?>
           @foreach ($users as $user)
-          @if ($user->role == 'pengguna')
+          @if ($user->pengguna)
           @if ($user->pengguna->nama_tipe == 'penerima')
           <tr>
             <th scope="row">{{$user->pengguna->id}}</th> <?php $counter++; ?>

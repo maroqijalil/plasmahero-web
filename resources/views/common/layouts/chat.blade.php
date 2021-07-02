@@ -6,7 +6,7 @@
     <div class="card bg-secondary">
       <form class="card-header mb-3 w-100">
         <div class="form-group w-100 mb-0">
-          <div class="form-group input-group-alternative mb-0 input-group" placeholder="Search contact">
+          <div class="form-group input-group-alternative mb-0 input-group" placeholder="Search Group">
             <!----><!----><!---->
             <input aria-describedby="addon-right addon-left" placeholder="Search contact" class="form-control">
             <div class="input-group-append">
@@ -20,6 +20,7 @@
       </form>
       <div class="list-group list-group-chat list-group-flush">
 
+      @if(!empty($partisipans))
       @foreach($partisipans as $partisipan)
         <a href="{{ route('chat', ['id' => $partisipan->id]) }}" class="list-group-item {{ $partisipan->id == $active_chat ? 'active bg-gradient-primary' : ''}}">
           <div class="media align-items-center">
@@ -37,13 +38,10 @@
           </div>
         </a>
         @endforeach
-        
+        @endif
       </div>
     </div>
   </div>
-  <?php 
-    $show_chat = $partisipans->where('id', '=', $active_chat)->first();
-  ?>
   <div class="col-lg-8">
     <div class="card card-plain" >
 
@@ -54,49 +52,23 @@
             <div class="media align-items-center">
             <i class="ni ni-single-02 avatar"></i>
               <div class="media-body">
+                @if($show_chat)
                 <h4 class="mb-0 d-block">
                   {{ $show_chat->admin->name }},
                   {{ $show_chat->pendonor->name }},
                   {{ $show_chat->penerima->name }}
                 </h4>
                 <small class="text-muted text-small">last seen message at {{ $show_chat->updated_at }}</small>
+                @endif
               </div>
             </div>
-          </div>
-          <div class="col-md-1 col-3">
-            <button type="button" class="btn text-primary">
-              <!----><!----><!---->
-              <i class="ni ni-book-bookmark"></i>
-            </button>
-          </div>
-          <div class="col-md-2 col-3 text-right">
-            <li aria-haspopup="true" class="dropdown dropdown">
-              <div data-toggle="dropdown" class="nav-link dropdown-toggle text-primary text-sm mt-1">
-                <i class="ni ni-settings-gear-65"></i>
-              </div>
-              <ul class="dropdown-menu dropdown-menu-right">
-                <a href="javascript:;" class="dropdown-item">
-                  <i class="ni ni-single-02"></i> Profile 
-                </a>
-                <a href="javascript:;" class="dropdown-item">
-                  <i class="ni ni-notification-70"></i> Mute conversation 
-                </a>
-                <a href="javascript:;" class="dropdown-item"><i class="ni ni-key-25"></i> Block 
-                </a>
-                <a href="javascript:;" class="dropdown-item"><i class="ni ni-button-power"></i> Clear chat 
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="javascript:;" class="dropdown-item">
-                  <i class="ni ni-fat-remove"></i> Delete chat 
-                </a>
-              </ul>
-            </li>
           </div>
         </div>
       </div>
 
       <!-- chat card -->
       <div class="card-body overflow-scroll" style="max-height: 768px; overflow-y: scroll;">
+        @if($show_chat)
         @foreach ($show_chat->pesan as $pesan)
         <div class="row {{ $pesan->id_pengirim == Auth::user()->id ? 'justify-content-end text-right' : 'justify-content-start' }}">
           <div class="col-auto">
@@ -113,8 +85,14 @@
           </div>
         </div>
         @endforeach
+        @else
+          <h3>
+            ups... grup chat anda masih kosong
+          </h3>
+        @endif
       </div>
       <div class="card-footer d-block">
+        @if($show_chat)
         <form class="form-group" action="{{ route('chat-store') }}" method="POST">
           @csrf
           <div class="form-group input-group">
@@ -130,6 +108,7 @@
             <!---->
           </div>
         </form>
+        @endif
       </div>
     </div>
   </div>
