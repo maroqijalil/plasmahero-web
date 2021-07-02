@@ -8,21 +8,27 @@ use App\Controller\BaseController;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Exception;
 
 class ChatController extends BaseController {
   
   public function show() {
-    $partisipans = Partisipan::where('id_admin', '=', Auth::user()->id)
-                            ->orWhere('id_penerima', '=', Auth::user()->id)
+    $partisipans = Partisipan::orWhere('id_admin', '=', Auth::user()->id)
+                            ->orWhere('id_pendonor', '=', Auth::user()->id)
                             ->orWhere('id_penerima', '=', Auth::user()->id)
                             ->get();
-    $active_chat = $partisipans->first()->id;
-    return view('common.layouts.chat', compact(['partisipans', 'active_chat']));
+    try {
+      $active_chat = $partisipans->first()->id;
+      return view('common.layouts.chat', compact(['partisipans', 'active_chat']));
+    } catch (Exception $e) {
+      $active_chat = null;
+      return view('common.layouts.chat', compact(['partisipans', 'active_chat']));
+    }
   }
 
   public function index($active_chat) {
     $partisipans = Partisipan::where('id_admin', '=', Auth::user()->id)
-                            ->orWhere('id_penerima', '=', Auth::user()->id)
+                            ->orWhere('id_pendonor', '=', Auth::user()->id)
                             ->orWhere('id_penerima', '=', Auth::user()->id)
                             ->get();
     return view('common.layouts.chat', compact(['partisipans', 'active_chat']));

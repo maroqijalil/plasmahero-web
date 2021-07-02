@@ -6,7 +6,7 @@
     <div class="card bg-secondary">
       <form class="card-header mb-3 w-100">
         <div class="form-group w-100 mb-0">
-          <div class="form-group input-group-alternative mb-0 input-group" placeholder="Search contact">
+          <div class="form-group input-group-alternative mb-0 input-group" placeholder="Search Group">
             <!----><!----><!---->
             <input aria-describedby="addon-right addon-left" placeholder="Search contact" class="form-control">
             <div class="input-group-append">
@@ -20,6 +20,7 @@
       </form>
       <div class="list-group list-group-chat list-group-flush">
 
+      @if(!empty($partisipans))
       @foreach($partisipans as $partisipan)
         <a href="{{ route('chat', ['id' => $partisipan->id]) }}" class="list-group-item {{ $partisipan->id == $active_chat ? 'active bg-gradient-primary' : ''}}">
           <div class="media align-items-center">
@@ -37,7 +38,7 @@
           </div>
         </a>
         @endforeach
-        
+        @endif
       </div>
     </div>
   </div>
@@ -54,12 +55,14 @@
             <div class="media align-items-center">
             <i class="ni ni-single-02 avatar"></i>
               <div class="media-body">
+                @if($show_chat)
                 <h4 class="mb-0 d-block">
                   {{ $show_chat->admin->name }},
                   {{ $show_chat->pendonor->name }},
                   {{ $show_chat->penerima->name }}
                 </h4>
                 <small class="text-muted text-small">last seen message at {{ $show_chat->updated_at }}</small>
+                @endif
               </div>
             </div>
           </div>
@@ -97,6 +100,7 @@
 
       <!-- chat card -->
       <div class="card-body overflow-scroll" style="max-height: 768px; overflow-y: scroll;">
+        @if($show_chat)
         @foreach ($show_chat->pesan as $pesan)
         <div class="row {{ $pesan->id_pengirim == Auth::user()->id ? 'justify-content-end text-right' : 'justify-content-start' }}">
           <div class="col-auto">
@@ -113,8 +117,10 @@
           </div>
         </div>
         @endforeach
+        @endif
       </div>
       <div class="card-footer d-block">
+        @if($show_chat)
         <form class="form-group" action="{{ route('chat-store') }}" method="POST">
           @csrf
           <div class="form-group input-group">
@@ -130,6 +136,7 @@
             <!---->
           </div>
         </form>
+        @endif
       </div>
     </div>
   </div>
