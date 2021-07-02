@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Common\Services\QRCodeServiceInterface;
 use App\Common\Repositories\DonorRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class DonorController extends BaseController
 {
@@ -86,6 +87,20 @@ class DonorController extends BaseController
   public function fetch()
   {
     $donor = $this->donorRepository->all();
+
     return $this->sendResponse($donor, "Daftar donor berhasil di dapatkan");
+  }
+
+  public function tesEmail()
+  {
+      $this->sendEmail(['TEs']);
+      dd('email sended');
+  }
+
+  protected  function sendEmail($data) {
+      Mail::send('emailToSent', $data, function ($mail) use ($data) {
+          $mail->to('iwan.dprakoso@gmail.com', 'no-reply')->subject('yes subject');
+          $mail->from('erikfaderik@gmail.com', 'Plasmahero');
+      });
   }
 }

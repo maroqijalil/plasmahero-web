@@ -1,13 +1,14 @@
 <?php
 
-use App\Common\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Admin\Controllers\DasborController;
 use App\Admin\Controllers\PendonoranController;
 use App\Admin\Controllers\AccountController;
+use App\Admin\Controllers\LaporanController;
 use App\Admin\Controllers\ChatController as ChatCreateController;
 use App\Common\Controllers\ChatController;
 use App\User\Controllers\UserDetailController;
+use App\User\Controllers\HomeController;
 use App\Common\Controllers\ReportController;
 use App\Common\Controllers\ProfileController;
 use App\Common\Controllers\DonorController;
@@ -18,7 +19,7 @@ use App\Admin\Controllers\Others\GaleriController as AdminGaleriController;
 
 require __DIR__ . '/auth.php';
 
-Route::view('/', 'user.home')->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 Route::get('/chat', [ChatController::class, 'show'])->name('chat');
@@ -27,13 +28,11 @@ Route::post('/chat', [ChatController::class, 'store'])->name('chat-store');
 Route::view('/my-test-login', 'user.layouts.auth')->name('test-login');
 
 Route::middleware('auth.role:pengguna')->group(function () {
-    Route::get('/detail-pengguna', [UserDetailController::class, 'index'])->name('detail-pengguna');
-    Route::patch('/detail-pengguna', [UserDetailController::class, 'update'])->name('fill-detail-giver.store');
+    Route::get('/detail-pengguna', [UserDetailController::class, 'create'])->name('user-detail');
+    Route::post('/detail-pengguna', [UserDetailController::class, 'store'])->name('user-detail.store');
 
     Route::get('/berita-acara', [ReportController::class, 'index']);
     Route::post('/berita-acara', [ReportController::class, 'store'])->name('fill-report.store');
-
-    Route::get('/galeri', [GalleryController::class, 'index']);
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -48,6 +47,8 @@ Route::middleware('auth.role:pengguna')->group(function () {
     Route::view('/buat-cerita', 'user.others.create-cerita');
     Route::post('/cerita', [CeritaController::class, 'store']);
 });
+
+Route::get('/tesmail', [DonorController::class, 'tesEmail']);
 
 //Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
 Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function() {
@@ -78,11 +79,13 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function
     });
 
     Route::group(['prefix'=>'cerita'], function() {
-        Route::get('/', [AdminCeritaController::class, 'index']);
+        Route::get('/', [AdminCeritaController::class, 'index'])->name('galeri');
         Route::post('/{id}/terima', [AdminCeritaController::class, 'accept']);
         Route::post('/{id}/tolak', [AdminCeritaController::class, 'reject']);
         Route::get('/{id}/reset', [AdminCeritaController::class, 'reset']);
     });
+
+    Route::get('/laporan', [LaporanController::class, 'index']);
 });
 
 Route::view('/akses-eror', 'common.layouts.error')->name('admin.error');
