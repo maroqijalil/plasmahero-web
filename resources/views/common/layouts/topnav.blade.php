@@ -222,9 +222,9 @@
                             <span>Support</span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <form href="{{ route('logout') }}" class="dropdown-item" method="POST">
+                        <form href="{{ route('admin.logout') }}" class="dropdown-item" method="POST">
+                            @csrf
                             <button type="submit">
-                                @csrf
                                 <i class="ni ni-user-run"></i>
                                 <span>Logout</span>
                             </button>
