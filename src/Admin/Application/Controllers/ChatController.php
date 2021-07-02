@@ -7,6 +7,7 @@ use App\Common\Models\Pencocokan;
 use App\Common\Models\Percakapan;
 use App\Controller\BaseController;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class ChatController extends BaseController {
 
@@ -18,7 +19,7 @@ class ChatController extends BaseController {
     ]);
     $partisipan = Partisipan::create([
       'id_percakapan' => $percakapan->id,
-      'id_admin' => $pencocokan->admin->user->id,
+      'id_admin' => Auth::user()->id,
       'id_pendonor' => $pencocokan->pendonor->user->id,
       'id_penerima' => $pencocokan->penerima->user->id
     ]);
