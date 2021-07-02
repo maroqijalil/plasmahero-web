@@ -22,10 +22,6 @@ class AuthenticationController extends BaseController
 		$request->session()->invalidate();
 		$request->session()->regenerateToken();
 		
-		if ($request->user_type == "pengguna") {
-			return redirect()->route('home');
-		} else {
-			return redirect()->route('admin.login');
-		}
+		return redirect()->route('home');
 	}
 }
