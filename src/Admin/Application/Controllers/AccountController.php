@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class AccountController extends BaseController
 {
     public function index() {
-        return view('admin.others.account');
+        $admin = Auth::user()->admin;
+        return view('admin.others.account', compact(['admin']));
     }
 
     public function store(StoreAccountRequest $request) {

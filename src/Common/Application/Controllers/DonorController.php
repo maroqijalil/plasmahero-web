@@ -4,8 +4,8 @@ namespace App\Common\Controllers;
 
 use App\Controller\BaseController;
 use Illuminate\Http\Request;
-use App\Common\Interfaces\QRCodeServiceInterface;
-use App\Common\Interfaces\DonorRepositoryInterface;
+use App\Common\Repositories\QRCodeServiceInterface;
+use App\Common\Repositories\DonorRepositoryInterface;
 
 class DonorController extends BaseController
 {

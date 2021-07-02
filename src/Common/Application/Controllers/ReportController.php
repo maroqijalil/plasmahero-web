@@ -7,7 +7,7 @@ use App\User\Requests\StoreReportRequest;
 use App\Common\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Common\Interfaces\ReportRepositoryInterface;
+use App\Common\Repositories\ReportRepositoryInterface;
 
 class ReportController extends BaseController
 {
