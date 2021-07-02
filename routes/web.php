@@ -8,6 +8,7 @@ use App\Admin\Controllers\AccountController;
 use App\Admin\Controllers\ChatController as ChatCreateController;
 use App\Common\Controllers\ChatController;
 use App\User\Controllers\UserDetailController;
+use App\User\Controllers\HomeController;
 use App\Common\Controllers\ReportController;
 use App\Common\Controllers\ProfileController;
 use App\Common\Controllers\DonorController;
@@ -18,7 +19,7 @@ use App\Admin\Controllers\Others\GaleriController as AdminGaleriController;
 
 require __DIR__ . '/auth.php';
 
-Route::view('/', 'user.home')->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 Route::get('/chat', [ChatController::class, 'show'])->name('chat');
