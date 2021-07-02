@@ -12,6 +12,7 @@ use App\Common\Controllers\ReportController;
 use App\Common\Controllers\ProfileController;
 use App\Common\Controllers\DonorController;
 use App\User\Controllers\Others\CeritaController;
+use App\Admin\Controllers\Others\CeritaController as AdminCeritaController;
 
 use App\Admin\Controllers\Others\GaleriController as AdminGaleriController;
 
@@ -46,7 +47,6 @@ Route::middleware('auth.role:pengguna')->group(function () {
 
     Route::view('/buat-cerita', 'user.others.create-cerita');
     Route::post('/cerita', [CeritaController::class, 'store']);
-
 });
 
 //Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
@@ -75,6 +75,13 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function
         Route::post('/', [AdminGaleriController::class, 'store']);
         Route::put('/{id}', [AdminGaleriController::class, 'update']);
         Route::delete('/{id}', [AdminGaleriController::class, 'destroy']);
+    });
+
+    Route::group(['prefix'=>'cerita'], function() {
+        Route::get('/', [AdminCeritaController::class, 'index']);
+        Route::post('/{id}/terima', [AdminCeritaController::class, 'accept']);
+        Route::post('/{id}/tolak', [AdminCeritaController::class, 'reject']);
+        Route::get('/{id}/reset', [AdminCeritaController::class, 'reset']);
     });
 });
 

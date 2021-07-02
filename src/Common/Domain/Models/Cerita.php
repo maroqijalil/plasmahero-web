@@ -13,7 +13,7 @@ class Cerita extends Model
 
     protected $table = 'cerita';
 
-    protected $fillable = ['id_user', 'cerita'];
+    protected $fillable = ['id_user', 'cerita', 'status'];
 
     public function user()
     {

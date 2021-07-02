@@ -18,14 +18,14 @@ class CeritaController extends BaseController
 
     public function store(Request $request)
     {
-
         $request->validate([
             'cerita' => 'required',
         ]);
 
         Cerita::create([
             'id_user' => Auth::user()->id,
-            'cerita' => $request->judul,
+            'cerita' => $request->cerita,
+            'status' => 0,
         ]);
 
         return redirect('/')->with('success', 'Cerita berhasil ditambahkan. Menunggu admin untuk menyetujui untuk ditampilkan');
