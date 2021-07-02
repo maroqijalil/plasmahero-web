@@ -13,7 +13,7 @@ class ProfileController extends BaseController
     public function index(Request $request)
     {
         $userData = Auth::user();
-        return view('layouts.user.others.profile', ['userData' => $userData]);
+        return view('user.others.profile', ['userData' => $userData]);
     }
 
     public function update(UpdateProfileRequest $request)

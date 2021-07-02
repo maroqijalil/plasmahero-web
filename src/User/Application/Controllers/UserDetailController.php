@@ -12,7 +12,7 @@ class UserDetailController extends BaseController
 {
 	public function index()
 	{
-		return view('layouts.user.donor.fill-user-detail');
+		return view('user.donor.fill-user-detail');
 	}
 
 	public function store(StoreUserDetailRequest $request)
@@ -60,6 +60,6 @@ class UserDetailController extends BaseController
 	public function show()
 	{
 		$users = User::get();
-		return view('layouts.admin.donor.donor-giver', ['users' => $users]);
+		return view('admin.donor.donor-giver', ['users' => $users]);
 	}
 }

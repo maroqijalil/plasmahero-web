@@ -23,8 +23,6 @@ class DonorFactory extends Factory
     public function definition()
     {
         return [
-            // 'id_pendonor' => Pengguna::factory(), 
-            // 'id_penerima' => Pengguna::factory(),
             'id_pendonor' => Pengguna::all()->random()->id,
             'id_penerima' => Pengguna::all()->random()->id,
             'tipe' => $this->faker->randomElement(['darah merah', 'darah putih', 'plasma']),

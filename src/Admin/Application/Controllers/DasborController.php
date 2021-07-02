@@ -18,11 +18,11 @@ class DasborController extends BaseController
 
     public function showPendonor() {
         $users = $this->userRepository->getPendonor();
-        return view('layouts.admin.donor.donor-giver', ['users' => $users]);
+        return view('admin.donor.donor-giver', ['users' => $users]);
     }
 
     public function showPenerima() {
         $users = $this->userRepository->getPenerima();
-        return view('layouts.admin.donor.donor-giver', ['users' => $users]);
+        return view('admin.donor.donor-giver', ['users' => $users]);
     }
 }
