@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Common\Interfaces\UserRepositoryInterface;
+use App\Common\Repositories\UserRepositoryInterface;
 use App\Controller\BaseController;
 use Illuminate\Http\Request;
 use App\Common\Models\Pengguna;

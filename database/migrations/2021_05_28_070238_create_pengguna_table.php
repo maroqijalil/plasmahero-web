@@ -29,20 +29,21 @@ class CreatePenggunaTable extends Migration
             $table->string('rhesus')->nullable();
             $table->unsignedInteger('berat_badan')->nullable();
             $table->date('tanggal_swab')->nullable();
+            $table->string('status')->nullable();
 
-			$table->foreign('id_admin')->references('id')->on('users');
-			$table->foreign('id_user')->references('id')->on('users');
-			$table->timestamps();
-		});
-	}
+            $table->foreign('id_admin')->references('id')->on('users');
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->timestamps();
+        });
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::dropIfExists('pengguna');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pengguna');
+    }
 }

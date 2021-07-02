@@ -13,6 +13,7 @@ use App\Admin\Controllers\Auth\RegisterAdminController;
 use App\Admin\Controllers\Auth\LoginAdminController;
 use Illuminate\Support\Facades\Route;
 
+// User
 Route::group(['middleware' => 'guest.user'], function () {
 	Route::get('/daftar', [RegisterUserController::class, 'create'])->name('register');
 	Route::post('/daftar', [RegisterUserController::class, 'store'])->name('register.store');
@@ -31,6 +32,7 @@ Route::group(['middleware' => 'auth.user'], function () {
 	Route::post('/keluar', [AuthenticationController::class, 'destroy'])->name('logout');
 });
 
+// Admin
 Route::group(['middleware' => 'guest.admin', 'prefix' => '/admin'], function () {
 	Route::get('/daftar', [RegisterAdminController::class, 'create'])->name('admin.register');
 	Route::post('/daftar', [RegisterAdminController::class, 'store'])->name('admin.register.store');
@@ -49,6 +51,7 @@ Route::group(['middleware' => 'auth.admin', 'prefix' => '/admin'], function () {
 	Route::post('/keluar', [AuthenticationController::class, 'destroy'])->name('admin.logout');
 });
 
+// Common
 Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])
 	->middleware('auth')
 	->name('verification.notice');

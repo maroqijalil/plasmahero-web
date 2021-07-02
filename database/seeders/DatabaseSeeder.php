@@ -14,11 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       $this->createAdmin();
-    //    $this->createPendonor();
+        $this->createAdmin();
+        $this->createPengguna();
         // $this->call(UserSeeder::class);
         // $this->call(PencocokanSeeder::class);
-        // $this->call(DonorSeeder::class);
+        $this->call(DonorSeeder::class);
         // $this->call(ReportSeeder::class);
         // $this->call(NotifikasiSeeder::class);
         // $this->call(MenerimaSeeder::class);
@@ -31,27 +31,29 @@ class DatabaseSeeder extends Seeder
      * password :plasmahero-admin-password-is-so-long
      * @return void
      */
-    public function createAdmin() {
+    public function createAdmin()
+    {
         \App\Common\Models\User::newFactory()
-                    ->hasAdmin()
-                    ->state([
-                        'email' => 'plasmahero-admin-email@gmail.com',
-                        'role' => 'admin',
-                        'password' => bcrypt('plasmahero-admin-password-is-so-long'), // password
-                        'remember_token' => Str::random(10)
-                    ])
-                    ->create();
+            ->hasAdmin()
+            ->state([
+                'email' => 'plasmahero-admin-email@gmail.com',
+                'role' => 'admin',
+                'password' => bcrypt('plasmahero-admin-password-is-so-long'), // password
+                'remember_token' => Str::random(10)
+            ])
+            ->create();
     }
 
-    public function createPendonor() {
+    public function createPengguna()
+    {
         \App\Common\Models\User::newFactory()
-                    ->hasPengguna()
-                    ->state([
-                        'email' => 'plasmahero-user-email@gmail.com',
-                        'role' => 'pengguna',
-                        'password' => bcrypt('plasmahero-user-password-is-so-long'), // password
-                        'remember_token' => Str::random(10)
-                    ])
-                    ->create();
+            ->hasPengguna()
+            ->state([
+                'email' => 'plasmahero-user-email@gmail.com',
+                'role' => 'pengguna',
+                'password' => bcrypt('plasmahero-user-password-is-so-long'), // password
+                'remember_token' => Str::random(10)
+            ])
+            ->create();
     }
 }

@@ -24,13 +24,13 @@ class UserDetailController extends BaseController
 			'kelurahan' => $request->kelurahan,
 			'kecamatan' => $request->kecamatan,
 			'kota' => $request->kota,
-			'nama_tipe' => $request->nama_tipe,
 			'usia' => $request->usia,
 			'jenis_kelamin' => $request->jenis_kelamin,
 			'gol_darah' => $request->gol_darah,
 			'rhesus' => $request->rhesus,
 			'berat_badan' => $request->berat_badan,
 			'tanggal_swab' => $request->tanggal_swab,
+			'status' => 'i',
 		]);
 
 		return back()->with('success', 'Detail data berhasil diisi!');
@@ -45,7 +45,6 @@ class UserDetailController extends BaseController
 			'kelurahan' => $request->kelurahan,
 			'kecamatan' => $request->kecamatan,
 			'kota' => $request->kota,
-			'nama_tipe' => $request->nama_tipe,
 			'usia' => $request->usia,
 			'jenis_kelamin' => $request->jenis_kelamin,
 			'gol_darah' => $request->gol_darah,

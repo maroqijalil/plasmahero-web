@@ -13,13 +13,12 @@ use App\Admin\Controllers\Others\GaleriController as AdminGaleriController;
 
 require __DIR__ . '/auth.php';
 
-
 Route::view('/chat', 'common.layouts.chat')->name('chat');
 Route::view('/my-test-login', 'user.layouts.auth')->name('test-login');
 
 Route::view('/', 'user.home')->name('home');
 
-Route::middleware('auth.role:pengguna')->group(function () {
+Route::group(['middleware' => 'auth.role:pengguna'], function () {
 	Route::get('/detail-pengguna', [UserDetailController::class, 'index'])->name('detail-pengguna');
 	Route::patch('/detail-pengguna', [UserDetailController::class, 'update'])->name('fill-detail-giver.store');
 
@@ -31,15 +30,17 @@ Route::middleware('auth.role:pengguna')->group(function () {
 	Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 	Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-	Route::view('/carikan-plasma', 'user.donor.carikan-plasma')->name('carikan-plasma');
+	Route::get('/carikan-plasma', [DonorController::class, 'carikanidx'])->name('carikan-plasma');
+	Route::patch('/carikan-plasma', [DonorController::class, 'carikan'])->name('carikan.store');
+	Route::view('/donorkan-plasma', 'user.donor.donorkan-plasma')->name('donorkan-plasma');
 
 	Route::get('/pendonoran', [DonorController::class, 'index']);
 	Route::post('/pendonoran', [DonorController::class, 'store']);
 });
 
-Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
-	Route::view('/', 'admin.dashboard');
-
+//Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
+Route::group(['prefix' => '/admin'], function () {
+	Route::view('/', 'admin.dashboard')->name('admin.dashboard');
 	Route::get('/pendonoran', [PendonoranController::class, 'index']);
 	Route::post('/pendonoran', [PendonoranController::class, 'store'])->name('store-pencocokan');
 	Route::view('/chat', 'admin.communication.chat');

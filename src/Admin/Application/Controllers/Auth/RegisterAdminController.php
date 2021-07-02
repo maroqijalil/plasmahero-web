@@ -33,6 +33,6 @@ class RegisterAdminController extends AuthenticationController
 		]);
 		$this->registerUser($user);
 
-		return redirect('/profile')->with(['eSent' => 'Email berhasil dikirim, Periksa email Anda !']);
+		return redirect()->route('admin.dashboard');
 	}
 }

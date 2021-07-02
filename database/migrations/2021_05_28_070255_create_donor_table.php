@@ -27,8 +27,6 @@ class CreateDonorTable extends Migration
             $table->string('kelurahan')->nullable();
             $table->string('kecamatan')->nullable();
             $table->string('kota')->nullable();
-            $table->string('judul')->nullable();
-            $table->text('isi')->nullable();
 
             $table->foreign('id_pendonor')->references('id')->on('pengguna');
             $table->foreign('id_penerima')->references('id')->on('pengguna');
