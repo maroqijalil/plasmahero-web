@@ -31,6 +31,7 @@ class UserDetailController extends BaseController
 			'rhesus' => $request->rhesus,
 			'berat_badan' => $request->berat_badan,
 			'tanggal_swab' => $request->tanggal_swab,
+			'status' => 'i',
 		]);
 
 		return back()->with('success', 'Detail data berhasil diisi!');
