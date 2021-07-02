@@ -59,13 +59,38 @@ class User extends Authenticatable
 		return $this->hasMany(Report::class, 'id_user', 'id');
 	}
 
-	public function pesan()
+	
+
+
+	/* relasi chat */
+	public function pesan() //kepemilikan pesan
 	{
 		return $this->hasMany(Pesan::class, 'id_user', 'id');
 	}
+
+	//partisipasi pada grup chat
+	public function partisipan_admin()
+	{
+		return $this->hasMany(Partisipan::class, 'id_admin', 'id');
+	}
+
+	public function partisipan_pendonor()
+	{
+		return $this->hasMany(Partisipan::class, 'id_pendonor', 'id');
+	}
+
+	public function partisipan_penerima()
+	{
+		return $this->hasMany(Partisipan::class, 'id_penerima', 'id');
+	}
+	/* */
 
 	protected static function newFactory()
 	{
 		return new UserFactory();
 	}
+	
+    public function cerita() {
+        return $this->hasMany(Cerita::class, 'id_user', 'id');
+    }
 }

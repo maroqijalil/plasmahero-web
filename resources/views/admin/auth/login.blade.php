@@ -12,7 +12,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('admin.login.store') }}">
             @csrf
 
             <!-- Email Address -->
@@ -41,7 +41,7 @@
                 </label>
                 <div class="flex items-center justify-start mt-2">
                     <label for="dfatar">{{'Belum punya akun? '}}</label>
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 ml-2" href="{{ route('register') }}">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900 ml-2" href="{{ route('admin.register') }}">
                         {{ __('Daftar disini') }}
                     </a>
                 </div>

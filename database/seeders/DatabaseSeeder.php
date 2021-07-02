@@ -15,14 +15,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->createAdmin();
-        $this->createPengguna();
-        // $this->call(UserSeeder::class);
-        // $this->call(PencocokanSeeder::class);
+        $this->createPendonor();
+        $this->call(UserSeeder::class);
+        $this->call(PencocokanSeeder::class);
         $this->call(DonorSeeder::class);
-        // $this->call(ReportSeeder::class);
-        // $this->call(NotifikasiSeeder::class);
-        // $this->call(MenerimaSeeder::class);
-        // $this->call(PesanSeeder::class);
+        $this->call(ReportSeeder::class);
+        $this->call(NotifikasiSeeder::class);
+        $this->call(MenerimaSeeder::class);
+        $this->call(PesanSeeder::class);
     }
 
     /**

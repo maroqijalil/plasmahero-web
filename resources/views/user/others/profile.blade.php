@@ -16,7 +16,6 @@
   @endif
 
   <div class="row">
-
     <div class="col-md-4 kiri mb-4">
       <h2 class="text-center font-weight-bold">Dashboard</h2>
       <div class="p-1"></div>

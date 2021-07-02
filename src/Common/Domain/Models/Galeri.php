@@ -17,6 +17,6 @@ class Galeri extends BaseModel
 
 	protected static function newFactory()
 	{
-		return new GaleriFactory();
+		return new GalleryFactory();
 	}
 }

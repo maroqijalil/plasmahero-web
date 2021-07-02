@@ -12,23 +12,20 @@ use App\Common\Models\Pengguna;
 use App\Common\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Builder;
-use phpDocumentor\Reflection\Types\Mixed_;
+use Illuminate\Database\Eloquent\Model;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
-  /**
-   * @var Model
-   */
   protected $model;
 
-  /**
-   * BaseRepository constructor.
-   *
-   * @param Model $model
-   */
   public function __construct(User $model)
   {
     $this->model = $model;
+  }
+
+  public function getByEmail($email): ?Model
+  {
+    return $this->model->where('email', $email)->first();
   }
 
   public function getPenerima() : Collection {

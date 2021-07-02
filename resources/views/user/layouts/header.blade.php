@@ -30,6 +30,9 @@
             <li>
               <form method="POST" action="{{ route('logout') }}">
                 @csrf
+
+                <input type="hidden" name="user_type" value="pengguna">
+                
                 <a href="" onclick="event.preventDefault();
                     this.closest('form').submit();">
                     {{ __('Log Out') }}

@@ -35,17 +35,19 @@ class HttpKernel extends Kernel
 	];
 
 	protected $routeMiddleware = [
-		'auth' => \App\Common\Middleware\Auth\Authenticate::class,
+		// Fix auth middleware
+		'auth.role' => \App\Common\Middleware\Auth\AuthenticateRole::class,
 		'auth.user' => \App\User\Middleware\Auth\AuthenticateUser::class,
+		'auth.admin' => \App\Admin\Middleware\Auth\AuthenticateAdmin::class,
+		'guest.user' => \App\User\Middleware\Auth\RedirectUserAuthenticated::class,
+		'guest.admin' => \App\Admin\Middleware\Auth\RedirectAdminAuthenticated::class,
+		
 		'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
 		'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
 		'can' => \Illuminate\Auth\Middleware\Authorize::class,
-		'guest' => \App\Common\Middleware\Auth\RedirectIfAuthenticated::class,
-		'guest.user' => \App\User\Middleware\Auth\RedirectUserAuthenticated::class,
 		'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
 		'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
 		'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 		'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-		'auth.role' => \App\Common\Middleware\Auth\AuthRole::class,
 	];
 }

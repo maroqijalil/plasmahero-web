@@ -1,12 +1,12 @@
 <?php
 
-namespace App\User\Controllers\Auth;
+namespace App\Admin\Controllers\Auth;
 
 use App\Common\Controllers\Auth\AuthenticationController;
 use App\Common\Requests\LoginRequest;
 use App\Common\Repositories\UserRepositoryInterface;
 
-class LoginUserController extends AuthenticationController
+class LoginAdminController extends AuthenticationController
 {
 	protected $userRepository;
 
@@ -17,7 +17,7 @@ class LoginUserController extends AuthenticationController
 
 	public function create()
 	{
-		return view('user.auth.login');
+		return view('admin.auth.login');
 	}
 
 	public function store(LoginRequest $request)
@@ -25,10 +25,10 @@ class LoginUserController extends AuthenticationController
 		$user = $this->userRepository->getByEmail($request->email);
 		
 		if ($user != null) {
-			if ($user->role == "pengguna") {
-				return $this->loginUser($request, "pengguna");
+			if ($user->role == "admin") {
+				return $this->loginUser($request, "admin");
 			} else {
-				return redirect()->back()->with('error', 'Akun ini bukan Akun Pengguna');
+				return redirect()->back()->with('error', 'Akun ini bukan Akun Admin');
 			}
 		} else {
 			return redirect()->back()->with('error', 'Akun tidak ditemukan');

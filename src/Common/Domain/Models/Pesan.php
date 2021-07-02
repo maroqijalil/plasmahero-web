@@ -11,7 +11,7 @@ class Pesan extends BaseModel
 	protected $fillable = [
 		'id_partisipan',
 		'id_pengirim',
-		'pesan'
+		'isi'
 	];
 
 	public function partisipan()
