@@ -5,7 +5,6 @@ namespace App\Admin\Controllers\Donation;
 use App\Admin\Repositories\PendonoranRepositoryInterface;
 use App\Common\Repositories\UserRepositoryInterface;
 use App\Controller\BaseController;
-use App\Common\Models\User;
 use App\Common\Models\Pencocokan;
 use App\Admin\Requests\StorePendonoranRequest;
 use Illuminate\Support\Facades\App;

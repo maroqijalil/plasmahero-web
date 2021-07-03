@@ -12,10 +12,10 @@ class PenerimaController extends BaseController
 
 	public function index()
 	{
-		$userRepository = App::make(UserRepositoryInterface::class);
-		$getPenerima = new GetPenerima($userRepository);
+		$repository = App::make(UserRepositoryInterface::class);
+		$users = new GetPenerima($repository);
 		return view('admin.donor.recipient.index', [
-			'users' => $getPenerima->execute()
+			'users' => $users->execute()
 		]);
 	}
 

@@ -10,13 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class CeritaController extends BaseController
 {
-    public function index()
-    {
-//        $ceritas = Cerita::get();
-//        return view('user.others.index', compact(['ceritas']);
-    }
-
-    public function store(Request $request)
+        public function store(Request $request)
     {
         $request->validate([
             'cerita' => 'required',
@@ -29,21 +23,5 @@ class CeritaController extends BaseController
         ]);
 
         return redirect('/')->with('success', 'Cerita berhasil ditambahkan. Menunggu admin untuk menyetujui untuk ditampilkan');
-    }
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-
-    }
-
-    public function destroy($id)
-    {
-//        Galeri::findOrFail($id)->delete();
-//        return back()->with('success', 'Dokumentasi berhasil dihapus');
     }
 }

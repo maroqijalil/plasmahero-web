@@ -12,10 +12,10 @@ class PendonorController extends BaseController
 
 	public function index()
 	{
-		$userRepository = App::make(UserRepositoryInterface::class);
-		$getPendonor = new GetPendonor($userRepository);
+		$repository = App::make(UserRepositoryInterface::class);
+		$users = new GetPendonor($repository);
 		return view('admin.donor.giver.index', [
-			'users' => $getPendonor->execute()
+			'users' => $users->execute()
 		]);
 	}
 

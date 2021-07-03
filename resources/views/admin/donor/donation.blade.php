@@ -30,7 +30,7 @@ Dashboard
         <form method="post" action="{{ route('store-pencocokan') }}" class="form card p-4">
           @csrf
 
-          <input type="hidden" id="id_admin" name="id_admin" value="{{ Auth::user()->admin->id }}">
+          <input type="hidden" id="id_admin" name="id_admin" value="{{ Auth::user()->admin->id ?? '' }}">
 
           <legend class="form">Pencocokan</legend>
           <div class="form-group row mb-3">
@@ -41,7 +41,7 @@ Dashboard
 								@foreach ($users as $user)
 								@if ($user->pengguna)
 								@if ($user->pengguna->nama_tipe == 'pendonor')
-								<option value="{{$user->pengguna->id}}">{{$user->pengguna->id}}</option>
+								<option value="{{$user->pengguna->id}}">{{$user->pengguna->id}}:{{$user->name}}</option>
 								@endif
 								@endif
 								@endforeach
@@ -63,7 +63,7 @@ Dashboard
 								@foreach ($users as $user)
 								@if ($user->pengguna)
 								@if ($user->pengguna->nama_tipe == 'penerima')
-								<option value="{{$user->pengguna->id}}">{{$user->pengguna->id}}</option>
+								<option value="{{$user->pengguna->id}}">{{$user->pengguna->id}}:{{$user->name}}</option>
 								@endif
 								@endif
 								@endforeach
