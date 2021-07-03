@@ -28,7 +28,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     return $this->model->where('email', $email)->first();
   }
 
-  public function getByType($type) : Collection {
+  public function getPenggunaByType($type) : Collection {
     return $this->model->whereHas('pengguna', function (Builder $query) use($type) {
       $query->where('nama_tipe', 'like', $type);
     })->get();

@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface PenggunaRepositoryInterface extends BaseRepositoryInterface {
 
-  public function getByType($type): ?Collection;
+  public function getPenggunaByType($type): ?Collection;
 }

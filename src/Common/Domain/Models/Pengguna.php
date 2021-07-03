@@ -12,6 +12,7 @@ class Pengguna extends BaseModel
 	protected $fillable = [
 		// umum
 		'id_user',
+		'id_admin',
 		'no_hp',
 		'alamat',
 		'kelurahan',

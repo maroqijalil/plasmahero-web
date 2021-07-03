@@ -16,7 +16,7 @@ class PenggunaRepository extends BaseRepository implements PenggunaRepositoryInt
     $this->model = $model;
   }
 
-  public function getByType($type): ?Collection
+  public function getPenggunaByType($type): ?Collection
   {
     return $this->model->where('nama_tipe', 'like', $type)->get();
   }

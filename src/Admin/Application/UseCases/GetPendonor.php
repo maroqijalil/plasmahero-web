@@ -15,7 +15,7 @@ class GetPendonor
 
   public function execute()
   {
-    $pendonors = $this->repository->getByType("pendonor");
+    $pendonors = $this->repository->getPenggunaByType("pendonor");
     return $pendonors;
   }
 }

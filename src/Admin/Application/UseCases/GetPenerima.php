@@ -15,7 +15,7 @@ class GetPenerima
 
   public function execute()
   {
-    $pendonors = $this->repository->getByType("penerima");
+    $pendonors = $this->repository->getPenggunaByType("penerima");
     return $pendonors;
   }
 }

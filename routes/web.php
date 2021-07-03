@@ -52,7 +52,6 @@ Route::middleware('auth.role:pengguna')->group(function () {
 
 Route::get('/tesmail', [DonorController::class, 'tesEmail']);
 
-//Route::middleware('auth.role:admin')->prefix('/admin')->group(function () {
 Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function () {
 	Route::get('/', [DasborController::class, 'index'])->name('admin.dashboard');
 	Route::get('/pendonoran', [PendonoranController::class, 'index'])->name('index-pendonoran');
@@ -67,7 +66,12 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function
 	Route::view('/pengaturan', 'admin.others.setting');
 
 	Route::get('/pendonor', [PendonorController::class, 'index'])->name('index-pendonor');
-	Route::get('/pemohon', [PenerimaController::class, 'index'])->name('index-pemohon');
+	Route::get('/pendonor/{id}', [PendonorController::class, 'show'])->name('admin.donor.giver.show');
+	Route::put('/pendonor/{id}', [PendonorController::class, 'update'])->name('admin.donor.giver.update');
+
+	Route::get('/penerima', [PenerimaController::class, 'index'])->name('index-pemohon');
+	Route::get('/penerima/{id}', [PenerimaController::class, 'show'])->name('admin.donor.recipient.show');
+	Route::put('/penerima/{id}', [PenerimaController::class, 'update'])->name('admin.donor.recipient.update');
 
 	Route::get('/berita-acara', [ReportController::class, 'show'])->name('berita-acara.show');
 

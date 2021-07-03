@@ -49,7 +49,7 @@
             <td>{{ $user->pengguna->nama_tipe }}</td>
             <td>{{ $user->pengguna->kota }}</td>
             <td>
-              <a href="{{ url('') }}">
+              <a href="{{ route('admin.donor.giver.show', ['id' => $user->id]) }}">
                 <button type="button" class="btn btn-primary">Lihat data</button>
               </a>
             </td>
