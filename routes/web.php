@@ -1,20 +1,21 @@
 <?php
 
-use App\Common\Controllers\GalleryController;
-use Illuminate\Support\Facades\Route;
-use App\Admin\Controllers\DasborController;
-use App\Admin\Controllers\PendonoranController;
+use App\Admin\Controllers\Donation\PendonoranController;
+use App\Admin\Controllers\Donation\PendonorController;
+use App\Admin\Controllers\Donation\PenerimaController;
 use App\Admin\Controllers\AccountController;
 use App\Admin\Controllers\ChatController as ChatCreateController;
-use App\Common\Controllers\ChatController;
+use App\Admin\Controllers\Others\GaleriController as AdminGaleriController;
 use App\User\Controllers\UserDetailController;
+use App\Common\Controllers\ChatController;
+use App\Common\Controllers\GalleryController;
 use App\Common\Controllers\ReportController;
 use App\Common\Controllers\ProfileController;
 use App\Common\Controllers\DonorController;
 use App\User\Controllers\Others\CeritaController;
 use App\Admin\Controllers\Others\CeritaController as AdminCeritaController;
+use Illuminate\Support\Facades\Route;
 
-use App\Admin\Controllers\Others\GaleriController as AdminGaleriController;
 
 require __DIR__ . '/auth.php';
 
@@ -65,8 +66,8 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function
 	Route::post('/akun', [AccountController::class, 'store'])->name('store-admin-akun');
 	Route::view('/pengaturan', 'admin.others.setting');
 
-	Route::get('/pendonor', [DasborController::class, 'showPendonor'])->name('index-pendonor');
-	Route::get('/pemohon', [DasborController::class, 'showPenerima'])->name('index-pemohon');
+	Route::get('/pendonor', [PendonorController::class, 'index'])->name('index-pendonor');
+	Route::get('/pemohon', [PenerimaController::class, 'index'])->name('index-pemohon');
 
 	Route::get('/berita-acara', [ReportController::class, 'show'])->name('berita-acara.show');
 

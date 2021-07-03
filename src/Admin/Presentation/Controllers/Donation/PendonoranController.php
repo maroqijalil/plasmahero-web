@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Admin\Controllers;
+namespace App\Admin\Controllers\Donation;
 
 use App\Admin\Repositories\PendonoranRepositoryInterface;
+use App\Common\Repositories\UserRepositoryInterface;
 use App\Controller\BaseController;
 use App\Common\Models\User;
 use App\Common\Models\Pencocokan;

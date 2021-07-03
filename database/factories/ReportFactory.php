@@ -33,7 +33,6 @@ class ReportFactory extends Factory
             'foto' => Str::random(10),
             'id_pengguna' => Pengguna::where('status', 'a')->get()->random()->id,
             'id_donor' => Donor::get()->random()->id,
-
         ];
     }
 }

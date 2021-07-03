@@ -33,9 +33,8 @@
 			"App\\": "app/",
 			"Database\\Factories\\": "database/factories/",
 			"Database\\Seeders\\": "database/seeders/",
-			"App\\Admin\\Controllers\\": "src/Admin/Application/Controllers/",
-			"App\\Admin\\Middleware\\": "src/Admin/Application/Middleware/",
 			"App\\Admin\\Providers\\": "src/Admin/Application/Providers/",
+			"App\\Admin\\UseCases\\": "src/Admin/Application/UseCases/",
 			"App\\Admin\\Repositories\\": [
 				"src/Admin/Domain/Repositories/",
 				"src/Admin/Infrastructure/Repositories/"
@@ -45,6 +44,8 @@
 				"src/Admin/Domain/Services/",
 				"src/Admin/Infrastructure/Services/"
 			],
+			"App\\Admin\\Controllers\\": "src/Admin/Presentation/Controllers/",
+			"App\\Admin\\Middleware\\": "src/Admin/Presentation/Middleware/",
 
 			"App\\User\\Controllers\\": "src/User/Application/Controllers/",
 			"App\\User\\Middleware\\": "src/User/Application/Middleware/",

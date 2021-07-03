@@ -37,6 +37,7 @@
           <th scope="col">Nama</th>
           <th scope="col">Role</th>
           <th scope="col">Alamat</th>
+          <th scope="col">Aksi</th>
         </tr>
       </thead>
       <tbody>
@@ -47,6 +48,11 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->pengguna->nama_tipe }}</td>
             <td>{{ $user->pengguna->kota }}</td>
+            <td>
+              <a href="{{ url('') }}">
+                <button type="button" class="btn btn-primary">Lihat data</button>
+              </a>
+            </td>
           </tr>
           @endforeach
       </tbody>
