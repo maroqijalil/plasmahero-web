@@ -3,6 +3,7 @@
 use App\Admin\Controllers\Donation\PendonoranController;
 use App\Admin\Controllers\Donation\PendonorController;
 use App\Admin\Controllers\Donation\PenerimaController;
+use App\Admin\Controllers\Donation\UnitDonorController;
 use Illuminate\Support\Facades\Route;
 use App\Admin\Controllers\DasborController;
 use App\Admin\Controllers\AccountController;
@@ -72,6 +73,11 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function
 	Route::get('/penerima', [PenerimaController::class, 'index'])->name('index-pemohon');
 	Route::get('/penerima/{id}', [PenerimaController::class, 'show'])->name('admin.donor.recipient.show');
 	Route::put('/penerima/{id}', [PenerimaController::class, 'update'])->name('admin.donor.recipient.update');
+	
+	Route::get('/unit-donor', [UnitDonorController::class, 'index'])->name('admin.donor.unit');
+	Route::post('/unit-donor', [UnitDonorController::class, 'store'])->name('admin.donor.unit.store');
+	Route::put('/unit-donor/{id}', [UnitDonorController::class, 'update'])->name('admin.donor.unit.update');
+	Route::delete('/unit-donor/{id}', [UnitDonorController::class, 'destroy'])->name('admin.donor.unit.delete');
 
 	Route::get('/berita-acara', [ReportController::class, 'show'])->name('berita-acara.show');
 

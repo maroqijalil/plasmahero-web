@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Common\Models;
 
 use App\Eloquent\BaseModel;
 
@@ -11,6 +11,9 @@ class UnitDonor extends BaseModel
 	protected $fillable = [
 		'nama_unit',
 		'alamat',
-		'no_telp'
+		'no_telp',
+		'kelurahan',
+		'kecamatan',
+		'kota',
 	];
 }
