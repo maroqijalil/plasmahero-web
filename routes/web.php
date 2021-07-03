@@ -86,6 +86,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function
     });
 
     Route::get('/laporan', [LaporanController::class, 'index']);
+    Route::get('/laporan-tanggal', [LaporanController::class, 'index2']);
 });
 
 Route::view('/akses-eror', 'common.layouts.error')->name('admin.error');
