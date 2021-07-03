@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 class LaporanController extends BaseController
 {
     public function index() {
-        $all = DB::table('pengguna')->get();
+        $all = Pengguna::with(['user', 'report', 'menerimaDonor', 'mendonor'])->get();
+//        dd($all);
         $waitingToMatch = DB::table('pengguna')->where('status', ['s','g'])->get();
         $waitingToSchedule = DB::table('pengguna')->where('status', 'm')->get();
         $matched = DB::table('pengguna')->where('status', 'p')->get();

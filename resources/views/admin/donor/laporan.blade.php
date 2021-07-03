@@ -96,78 +96,176 @@
                 <div class="card-header border-0">
                     <div class="container-fluid">
                         <div class="row">
-                            <h3 class="my-auto">Dokumentasi kegiatan</h3>
+                            <h3 class="my-auto">Laporan Status Donor</h3>
                             <div class="ml-auto m-0">
-                                <a href="/admin/galeri/tambah" class="btn btn-primary m-0">Tambah</a>
+                                <a href="/admin/galeri/tambah" class="btn btn-primary m-0">Laporan Pendonoran</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-{{--                <div class="table-responsive">--}}
-{{--                    <table class="table align-items-center table-flush">--}}
-{{--                        <thead class="thead-light">--}}
-{{--                        <tr>--}}
-{{--                            <th scope="col" class="sort" data-sort="judul">Judul</th>--}}
-{{--                            <th scope="col" class="sort" data-sort="deskripsi">Deskripsi</th>--}}
-{{--                            <th scope="col" class="sort" data-sort="foto">Foto</th>--}}
-{{--                            <th scope="col"></th>--}}
-{{--                        </tr>--}}
-{{--                        </thead>--}}
-{{--                        <tbody class="list">--}}
-{{--                        @foreach ($all as $laporan)--}}
-{{--                            <tr>--}}
-{{--                                <td class="name">--}}
-{{--                                    <p>{{$laporan->judul}}</p>--}}
-{{--                                </td>--}}
-{{--                                <td class="title">--}}
-{{--                                    <p>{{$laporan->deskripsi}}</p>--}}
-{{--                                </td>--}}
-{{--                                <td class="deskripsi">--}}
-{{--                                    <img src="{{url(laporan->foto)}}" alt="" class="rounded img-fluid w-auto">--}}
-{{--                                </td>--}}
-{{--                                <td class="text-right">--}}
-{{--                                    <div class="dropdown">--}}
-{{--                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                                            <i class="fas fa-ellipsis-v"></i>--}}
-{{--                                        </a>--}}
-{{--                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow pl-5">--}}
-{{--                                            <!-- Button trigger modal -->--}}
-{{--                                            <a href="/admin/galeri/{{$galeri->id}}/edit" class="text-primary pr-2">--}}
-{{--                                                Edit--}}
-{{--                                            </a>--}}
-{{--                                            <a href="#" data-toggle="modal" data-target="#deleteModal{{$galeri->id}}" class="text-danger">--}}
-{{--                                                Delete--}}
-{{--                                            </a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </td>--}}
-{{--                                <!-- Delete Modal -->--}}
-{{--                                <div class="modal fade" id="deleteModal{{$galeri->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">--}}
-{{--                                    <div class="modal-dialog modal-dialog-centered" role="document">--}}
-{{--                                        <div class="modal-content">--}}
-{{--                                            <div class="modal-header">--}}
-{{--                                                <h5 class="modal-title" id="exampleModalLongTitle">Apakah anda yakin?</h5>--}}
-{{--                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-{{--                                                    <span aria-hidden="true">&times;</span>--}}
-{{--                                                </button>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="modal-footer">--}}
-{{--                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>--}}
-{{--                                                <form action="/admin/galeri/{{$galeri->id}}" method="POST">--}}
-{{--                                                    @method('DELETE')--}}
-{{--                                                    @csrf--}}
-{{--                                                    <button type="submit" class="btn btn-danger">Ya, hapus data</button>--}}
-{{--                                                </form>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </tr>--}}
-{{--                        @endforeach--}}
-{{--                        </tbody>--}}
-{{--                    </table>--}}
-{{--                </div>--}}
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col" class="sort" data-sort="judul">Nama</th>
+                            <th scope="col" class="sort" data-sort="judul">Peran</th>
+                            <th scope="col" class="sort" data-sort="deskripsi">Status</th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody class="list">
+                        @foreach ($all as $laporan)
+                            <tr>
+                                <td class="name">
+                                    <p>{{$laporan->user->name}}</p>
+                                </td>
+                                <td class="role">
+                                    <p>{{$laporan->nama_tipe}}</p>
+                                </td>
+                                <td class="status">
+                                    @if($laporan->status == 's' or $laporan->status == 's')
+                                        <p class="text-warning font-weight-bold">Menunggu dicocokkan</p>
+                                    @elseif($laporan->status == 'g')
+                                        <p class="text-warning font-weight-bold">Sedang mengatur jadwal</p>
+                                    @elseif($laporan->status == 'p')
+                                        <p class="text-warning font-weight-bold">Menunggu waktu pendonoran</p>
+                                    @else
+                                        <p class="text-warning font-weight-bold">Pendonoran selesai</p>
+                                    @endif
+                                </td>
+                                <td class="lihat-detail">
+                                    @if($laporan->status == 's' or $laporan->status == 's')
+                                        <button class="btn btn-primary">Lakukan pencocokan</button>
+                                    @elseif($laporan->status == 'g')
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#waitingForSchedule{{$laporan->id}}">Jadwalkan melalui chat</button>
+                                    @elseif($laporan->status == 'p')
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#matched{{$laporan->id}}">Lihat Jadwal</button>
+                                    @else
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#done{{$laporan->id}}">Lihat Berita Acara</button>
+                                    @endif
+                                </td>
+                            </tr>
+                            <!-- Untuk menunggu dicocokkan -->
+                            <div class="modal fade" id="matched{{$laporan->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Informasi pendonoran Sdr. {{$laporan->user->name}}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- Info detail pelaksanaan pendonoran -->
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-group row mb-3">
+                                                            <label for="tipe" class="col-3 col-form-label">Peran</label>
+                                                            <div class="col-7">
+                                                                <input disabled="true" class="form-control" type="text" id="no_hp" name="no_hp" value="{{ $laporan->nama_tipe }}">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row mb-3">
+                                                            <label for="alamat" class="col-3 col-form-label">Alamat</label>
+                                                            <div class="col-7">
+                                                                <input disabled="true" class="form-control" type="text" id="alamat" name="alamat" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->alamat ?? $laporan->mendonor[count($laporan->mendonor)-1]->alamat}}">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row mb-3">
+                                                            <label for="kelurahan" class="col-3 col-form-label">Kelurahan</label>
+                                                            <div class="col-7">
+                                                                <input disabled="true" class="form-control" type="text" id="kelurahan" name="kelurahan" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->kelurahan ?? $laporan->mendonor[count($laporan->mendonor)-1]->kelurahan }}">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row mb-3">
+                                                            <label for="kecamatan" class="col-3 col-form-label">Kecamatan</label>
+                                                            <div class="col-7">
+                                                                <input disabled="true" class="form-control" type="text" id="kecamatan" name="kecamatan" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->kecamatan ?? $laporan->mendonor[count($laporan->mendonor)-1]->kecamatan }}">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row mb-3">
+                                                            <label for="kota" class="col-3 col-form-label">Kota</label>
+                                                            <div class="col-7">
+                                                                <input disabled="true" class="form-control" type="text" id="kota" name="kota" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->kota ?? $laporan->mendonor[count($laporan->mendonor)-1]->kota }}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- End info detail pelaksanaan pendonoran -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End untuk menunggu dicocokkan -->
+
+                            <!-- Untuk pendonoran selesai -->
+                            <div class="modal fade" id="done{{$laporan->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Berita Acara Pendonoran</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-group row mb-3">
+                                                            <label for="judul" class="col-3 col-form-label">Judul</label>
+                                                            <div class="col-7">
+                                                                <input disabled="true" class="form-control" type="text" id="judul" name="judul" value="{{ $laporan->report[count($laporan->report)-1]->pesan}}">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row mb-3">
+                                                            <label for="tanggal" class="col-3 col-form-label">Tanggal</label>
+                                                            <div class="col-7">
+                                                                <input disabled="true" class="form-control" type="text" id="tanggal" name="tanggal" value="{{ $laporan->report[count($laporan->report)-1]->tgl}}">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row mb-3">
+                                                            <label for="pesan" class="col-3 col-form-label">Pesan</label>
+                                                            <div class="col-7">
+                                                                <input disabled="true" class="form-control" type="text" id="pesan" name="pesan" value="{{ $laporan->report[count($laporan->report)-1]->pesan}}">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row mb-3">
+                                                            <label for="foto" class="col-3 col-form-label">Foto</label>
+                                                            <div class="col-7">
+                                                                <img src="{{url( $laporan->report[count($laporan->report)-1]->foto)}}" alt="" class="rounded img-fluid w-auto">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End untuk pendonoran selesai -->
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
                 <div class="card-footer py-4">
                     <nav aria-label="...">
                         <ul class="pagination justify-content-end mb-0">
