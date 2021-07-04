@@ -50,10 +50,12 @@
         <div class="row">
           <div class="col-md-9">
             <div class="media align-items-center">
-            <i class="ni ni-single-02 avatar"></i>
+              <i class="ni ni-single-02 avatar mr-2"></i>
               <div class="media-body">
                 @if($show_chat)
                 <h4 class="mb-0 d-block">
+                  {{-- {{dd($show_chat->pendonor->pengguna->mendonor->first()->id)}}
+                  {{dd($show_chat->penerima->pengguna->menerimaDonor->first()->id)}} --}}
                   {{ $show_chat->admin->name }},
                   {{ $show_chat->pendonor->name }},
                   {{ $show_chat->penerima->name }}
@@ -63,11 +65,69 @@
               </div>
             </div>
           </div>
+          @if (Auth::user()->role == 'admin')
+          <div class="col-md-3">
+            <div class="btn btn-success"><a href="#" data-toggle="modal" data-target="#jadwalModal">
+              Atur Jadwal
+          </a></div>
+          </div>
+          {{-- MODAL ATUR JADWAL --}}
+          <div class="modal fade" id="jadwalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Atur Jadwal Pendonoran ID #</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                      <form action="/admin/setjadwal" method="post">
+                        @method('post')
+                        @csrf
+                        <div class="row modal-body">
+                          <div class="col">
+                            <input type="hidden" name="id_d_pendonor" id="" value="{{$show_chat->pendonor->pengguna->mendonor->first()->id}}">
+                            <input type="hidden" name="id_d_penerima" id="" value="{{$show_chat->penerima->pengguna->menerimaDonor->first()->id}}">
+                            <input type="hidden" name="pendonorId" id="" value="{{$show_chat->pendonor->pengguna->id}}">
+                            <input type="hidden" name="penerimaId" id="" value="{{$show_chat->penerima->pengguna->id}}">
+                            <div class="form-group row mb-3">
+                              <label for="tgl" class="col-6 col-form-label">Tanggal Donor</label>
+                              <div class="col-6">
+                                <input class="form-control" type="date" placeholder="Tanggal Donor" id="tgl" name="tgl" value="11-11-11">
+                    
+                                <!-- Error -->
+                                @if ($errors->has('tanggal_swab'))
+                                <div class="error text-danger" style="font-size: 12px;">
+                                    {{ $errors->first('tanggal_swab') }}
+                                </div>
+                                @endif
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <div class="row">
+                            <div class="col">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                              <button type="submit" class="btn btn-danger">Simpan</button>
+                            </div>
+                          </div>
+                      </div>
+                      </form>
+                </div>
+            </div>
+        </div>
+          @endif
         </div>
       </div>
 
       <!-- chat card -->
       <div class="card-body overflow-scroll" style="max-height: 768px; overflow-y: scroll;">
+        @if(Session::has('success'))
+        <div class="alert alert-success">
+          {{Session::get('success')}}
+        </div>
+        @endif
         @if($show_chat)
         @foreach ($show_chat->pesan as $pesan)
         <div class="row {{ $pesan->id_pengirim == Auth::user()->id ? 'justify-content-end text-right' : 'justify-content-start' }}">
