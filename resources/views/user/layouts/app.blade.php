@@ -32,6 +32,8 @@
         <!-- Template Main CSS File -->
         <link href="{{ asset("assets/css/style.css") }}" rel="stylesheet">
 
+        <link rel="stylesheet" href="{{asset("css/my.css")}}">
+
         <!-- Scripts -->
         {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     </head>

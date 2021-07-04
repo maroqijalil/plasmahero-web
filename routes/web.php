@@ -18,6 +18,7 @@ use App\Common\Controllers\ProfileController;
 use App\Common\Controllers\DonorController;
 use App\User\Controllers\Others\CeritaController;
 use App\Admin\Controllers\Others\CeritaController as AdminCeritaController;
+use App\Mail\MyTestEmail;
 
 
 require __DIR__ . '/auth.php';
@@ -73,7 +74,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function
 	Route::get('/penerima', [PenerimaController::class, 'index'])->name('index-pemohon');
 	Route::get('/penerima/{id}', [PenerimaController::class, 'show'])->name('admin.donor.recipient.show');
 	Route::put('/penerima/{id}', [PenerimaController::class, 'update'])->name('admin.donor.recipient.update');
-	
+
 	Route::get('/unit-donor', [UnitDonorController::class, 'index'])->name('admin.donor.unit');
 	Route::post('/unit-donor', [UnitDonorController::class, 'store'])->name('admin.donor.unit.store');
 	Route::put('/unit-donor/{id}', [UnitDonorController::class, 'update'])->name('admin.donor.unit.update');
@@ -102,3 +103,14 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function
 });
 
 Route::view('/akses-eror', 'common.layouts.error')->name('admin.error');
+
+Route::get('/mail', function() {
+    $details = [
+        'title' => 'Mail from ItSolutionStuff.com',
+        'body' => 'This is for testing email using smtp'
+    ];
+
+    \Mail::to('iwandepee@gmail.com')->send(new MyTestEMail($details));
+
+    dd("Email is Sent.");
+});

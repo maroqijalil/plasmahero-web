@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <title>ItsolutionStuff.com</title>
 </head>
 <body>
-  <h1>Selamat Bergabung dengan komunitas Plasmahero.id</h1>
-  <p>Hai, </p>
-  <p>
-    Selamat Datang di Plasmahero.id, Mari kita tetap waspada dengan COVID-19
-    dengan lebih mengenalnya. Bagi anda para survivor,
-    mari bantu kawan kita yang sedang berjuang dengan plasma Anda !
-  </p>
+{{--<h1>{{ $details['title'] }}</h1>--}}
+{{--<p>{{ $details['body'] }}</p>--}}
+<h1>Hello</h1>
+<p>body</p>
+
+<p>Thank you</p>
 </body>
 </html>
