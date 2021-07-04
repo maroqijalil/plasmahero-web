@@ -743,15 +743,16 @@
   'mail' => 
   array (
     'driver' => 'smtp',
-    'host' => 'smtp.mailtrap.io',
-    'port' => 2525,
+    'host' => 'smtp.gmail.com',
+    'port' => '587',
     'from' => 
     array (
-      'address' => 'from@example.com',
-      'name' => 'Example',
+      'address' => NULL,
+      'name' => 'Laravel',
     ),
-    'username' => '55e3d2254aa71f',
-    'password' => '6336f99bcbeaef',
+    'encryption' => 'tls',
+    'username' => 'erikfaderik@gmail.com',
+    'password' => 'lmmrqebrddftbhxz',
     'sendmail' => '/usr/sbin/sendmail -bs',
   ),
   'queue' => 

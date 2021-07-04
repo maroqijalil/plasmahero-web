@@ -7,12 +7,11 @@
 
     <nav class="nav-menu d-none d-lg-block">
       <ul>
-        <li class="active"><a href="{{ route('home') }}">Beranda</a></li>
-        <li class="drop-down"><a href="">Donor</a>
-          <ul>
-            <li><a href="{{route('carikan-plasma')}}">Carikan Plasma</a></li>
-            <li><a href="#">Donorkan Plasma</a></li>
-          </ul>
+        <li class="active">
+          <a href="{{ route('home') }}">Beranda</a>
+        </li>
+        <li class="">
+          <a href="{{route('donor.index')}}">Donor</a>
         </li>
         <li class="drop-down"><a href="">COVID</a>
           <ul>
@@ -20,7 +19,6 @@
             <li><a href="#">Curhat</a></li>
           </ul>
         </li>
-        <li><a href="#">Donasi</a></li>
         <li><a href="#about">FAQ</a></li>
 
         @if (Auth::check())
