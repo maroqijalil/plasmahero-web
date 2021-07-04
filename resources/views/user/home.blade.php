@@ -11,10 +11,40 @@
 @endif
 
 <main id="main">
+    <div class="container">
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Galeri Kegiatan</h2>
+                </div>
+                <div class="row no-gutters">
+
+                    @for ($i = 0; $i < 9  ; $i++)
+                        <div class="col-lg-4 col-md-4 p-1">
+                            <div class="hover gal rounded">
+                                <img src="https://picsum.photos/300/200" alt="">
+                                <div class="hover-overlay"></div>
+                                <div class="gal-content gal-description px-5 py-4">
+                                    <h3 class="gal-title text-uppercase font-weight-bold mb-0 text-shadow">
+                                        Webinar Nasional 1.0
+                                    </h3>
+                                    <p class=" font-weight-light mb-0">
+                                        <a href="" style="color: black !important;">
+                                            Selengkapnya...
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endfor
+                </div>
+            </div>
+        </section>
+    </div>
     <section id="testimonials" class="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>Cerita Covid</h2>
+                <h2>Cerita covid</h2>
             </div>
 
             <div class="owl-carousel testimonials-carousel">

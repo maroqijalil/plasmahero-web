@@ -265,13 +265,13 @@
     'name' => 'Laravel',
     'env' => 'local',
     'debug' => true,
-    'url' => 'http://localhost',
+    'url' => 'http://plasmahero-web.test',
     'asset_url' => NULL,
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:PpAY8DsC2kTckR8PcXeMIdT1ZPNe2kkdZgBaagSdZjY=',
+    'key' => 'base64:sxDHt5/MfzQtGu8FSMNa8K9U6PvGWg1E/Y/o0y5enz4=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -452,7 +452,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'D:\\Coll\\4_6-PBKK-D\\ghJalil\\plasmahero-web\\storage\\framework/cache/data',
+        'path' => '/home/maroqi/Projects/WebsiteProjects/FBPProjects/plasmahero-web/storage/framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -535,7 +535,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'plasmahero_web',
+        'database' => 'plasmahero',
         'prefix' => '',
         'foreign_key_constraints' => true,
       ),
@@ -545,9 +545,9 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'plasmahero_web',
+        'database' => 'plasmahero',
         'username' => 'root',
-        'password' => '',
+        'password' => 'root',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -565,9 +565,9 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'plasmahero_web',
+        'database' => 'plasmahero',
         'username' => 'root',
-        'password' => '',
+        'password' => 'root',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -580,9 +580,9 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'plasmahero_web',
+        'database' => 'plasmahero',
         'username' => 'root',
-        'password' => '',
+        'password' => 'root',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -623,13 +623,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\Coll\\4_6-PBKK-D\\ghJalil\\plasmahero-web\\storage\\app',
+        'root' => '/home/maroqi/Projects/WebsiteProjects/FBPProjects/plasmahero-web/storage/app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\Coll\\4_6-PBKK-D\\ghJalil\\plasmahero-web\\storage\\app/public',
-        'url' => 'http://localhost/storage',
+        'root' => '/home/maroqi/Projects/WebsiteProjects/FBPProjects/plasmahero-web/storage/app/public',
+        'url' => 'http://plasmahero-web.test/storage',
         'visibility' => 'public',
       ),
       's3' => 
@@ -645,7 +645,7 @@
     ),
     'links' => 
     array (
-      'D:\\Coll\\4_6-PBKK-D\\ghJalil\\plasmahero-web\\public\\storage' => 'D:\\Coll\\4_6-PBKK-D\\ghJalil\\plasmahero-web\\storage\\app/public',
+      '/home/maroqi/Projects/WebsiteProjects/FBPProjects/plasmahero-web/public/storage' => '/home/maroqi/Projects/WebsiteProjects/FBPProjects/plasmahero-web/storage/app/public',
     ),
   ),
   'hashing' => 
@@ -679,13 +679,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\Coll\\4_6-PBKK-D\\ghJalil\\plasmahero-web\\storage\\logs/laravel.log',
+        'path' => '/home/maroqi/Projects/WebsiteProjects/FBPProjects/plasmahero-web/storage/logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'D:\\Coll\\4_6-PBKK-D\\ghJalil\\plasmahero-web\\storage\\logs/laravel.log',
+        'path' => '/home/maroqi/Projects/WebsiteProjects/FBPProjects/plasmahero-web/storage/logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -736,7 +736,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'D:\\Coll\\4_6-PBKK-D\\ghJalil\\plasmahero-web\\storage\\logs/laravel.log',
+        'path' => '/home/maroqi/Projects/WebsiteProjects/FBPProjects/plasmahero-web/storage/logs/laravel.log',
       ),
     ),
   ),
@@ -747,12 +747,12 @@
     'port' => '587',
     'from' => 
     array (
-      'address' => NULL,
-      'name' => 'Laravel',
+      'address' => 'from@example.com',
+      'name' => 'Example',
     ),
     'encryption' => 'tls',
     'username' => 'erikfaderik@gmail.com',
-    'password' => 'lmmrqebrddftbhxz',
+    'password' => 'tchdwocxboyjpfqr',
     'sendmail' => '/usr/sbin/sendmail -bs',
   ),
   'queue' => 
@@ -818,7 +818,7 @@
       2 => '127.0.0.1',
       3 => '127.0.0.1:8000',
       4 => '::1',
-      5 => 'localhost',
+      5 => 'plasmahero-web.test',
     ),
     'expiration' => NULL,
     'middleware' => 
@@ -852,7 +852,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'D:\\Coll\\4_6-PBKK-D\\ghJalil\\plasmahero-web\\storage\\framework/sessions',
+    'files' => '/home/maroqi/Projects/WebsiteProjects/FBPProjects/plasmahero-web/storage/framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -872,9 +872,9 @@
   array (
     'paths' => 
     array (
-      0 => 'D:\\Coll\\4_6-PBKK-D\\ghJalil\\plasmahero-web\\resources\\views',
+      0 => '/home/maroqi/Projects/WebsiteProjects/FBPProjects/plasmahero-web/resources/views',
     ),
-    'compiled' => 'D:\\Coll\\4_6-PBKK-D\\ghJalil\\plasmahero-web\\storage\\framework\\views',
+    'compiled' => '/home/maroqi/Projects/WebsiteProjects/FBPProjects/plasmahero-web/storage/framework/views',
   ),
   'flare' => 
   array (

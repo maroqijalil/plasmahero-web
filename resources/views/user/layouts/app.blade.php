@@ -44,7 +44,7 @@
         <main id="main">
 
           <!-- ======= Breadcrumbs Section ======= -->
-          <section class="breadcrumbs" style="background-color: rgba(255, 234, 167, 0.5);">
+          <section class="breadcrumbs">
             <div class="container">
               <div class="d-flex justify-content-between align-items-center">
                 <h2>@yield('title')</h2>
