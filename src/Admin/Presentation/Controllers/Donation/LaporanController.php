@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Admin\Controllers;
+namespace App\Admin\Controllers\Donation;
 
 use App\Controller\BaseController;
 use App\Common\Models\Pengguna;

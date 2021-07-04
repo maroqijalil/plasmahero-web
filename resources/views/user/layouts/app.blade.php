@@ -32,8 +32,7 @@
         <!-- Template Main CSS File -->
         <link href="{{ asset("assets/css/style.css") }}" rel="stylesheet">
 
-        <link rel="stylesheet" href="{{asset("css/my.css")}}">
-
+        @yield('css')
         <!-- Scripts -->
         {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     </head>
@@ -83,6 +82,6 @@
 
         <!-- Template Main JS File -->
         <script src="{{ asset("assets/js/main.js") }}"></script>
-
+        @yield('js')
     </body>
 </html>

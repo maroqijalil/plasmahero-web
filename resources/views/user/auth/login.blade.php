@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
   <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
   <title>
-    Soft UI Dashboard by Creative Tim
+    PLasmahero | Masuk
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -37,7 +37,7 @@
                 @endif
 
                 <div class="card-header pb-0 text-left bg-transparent">
-                  <h3 class="font-weight-bolder text-info text-gradient">Selamat datang kembali</h3>
+                  <h3 class="font-weight-bolder text-danger text-gradient">Selamat datang kembali</h3>
                   <p class="mb-0">Masukkan email dan password Anda!</p>
                 </div>
                 <div class="card-body">
@@ -67,21 +67,21 @@
                         @endif
                     </div>
                     <div class="text-center">
-                      <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Masuk</button>
+                      <button type="submit" class="btn bg-gradient-danger w-100 mt-4 mb-0">Masuk</button>
                     </div>
                   </form>
                 </div>
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-4 text-sm mx-auto">
                     Belum punya Akun?
-                    <a href="{{ route('register') }}" class="text-info text-gradient font-weight-bold">Daftar</a>
+                    <a href="{{ route('register') }}" class="text-danger text-gradient font-weight-bold">Daftar</a>
                   </p>
                 </div>
               </div>
             </div>
             <div class="col-md-6">
               <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('{{ asset('assets/img/curved-images/curved6.jpg') }}')"></div>
+                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('{{ asset('img/dashboard/foto_3.png') }}');"></div>
               </div>
             </div>
           </div>
