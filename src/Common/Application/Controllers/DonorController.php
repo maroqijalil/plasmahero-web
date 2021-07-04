@@ -25,7 +25,10 @@ class DonorController extends BaseController
   public function index()
   {
     $pengguna = Auth::user()->pengguna;
-    return view('user.donor.prosesdonor', compact('pengguna'));
+    $isDataDiriComplete = $pengguna->no_hp && $pengguna->alamat && $pengguna->kelurahan && $pengguna->kecamatan && $pengguna->kota;
+    $isDataDonorComplete = $pengguna->usia && $pengguna->jenis_kelamin && $pengguna->gol_darah && $pengguna->rhesus && $pengguna->berat_badan && $pengguna->tanggal_swab;
+    $isAllComplete = $isDataDiriComplete && $isDataDiriComplete && $pengguna->nama_tipe;
+    return view('user.donor.prosesdonor', compact(['pengguna', 'isDataDiriComplete', 'isDataDonorComplete', 'isAllComplete']));
   }
 
   public function store(Request $request)

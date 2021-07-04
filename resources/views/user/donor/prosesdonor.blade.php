@@ -38,19 +38,21 @@
 
       <div class="form-group">
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" readonly>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima aut dolores rem maiores, dicta repudiandae blanditiis fugiat impedit tenetur debitis consequatur sint natus quia incidunt nemo laborum deserunt officiis doloribus illo cum similique? Molestiae ex numquam ullam, maiores delectus cum labore quam? Earum voluptatum rem facilis, a ex dolores ad temporibus sit odio tempore molestias. Repudiandae, veniam, vero hic atque modi provident optio eligendi velit sint sed asperiores ipsa reprehenderit repellat recusandae aliquid ducimus quia ipsum debitis? Obcaecati numquam non doloribus quas explicabo distinctio, a corrupti, quo cum impedit excepturi architecto ab! Perspiciatis doloribus ducimus ipsam. Voluptas voluptatem suscipit laudantium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam consequuntur nemo, ullam omnis eum necessitatibus adipisci nam facere ipsum consequatur. Sequi eaque iste aliquid omnis autem ea non tenetur aut minus veritatis tempora amet illo quis animi quae perspiciatis vol
+          Ini Syarat yang Harus Dipenuhi Sebelum Donor Darah, Berikut ini syarat umum yang harus dipenuhi sebelum melakukan donor darah: 1. Kondisi fisik harus dalam keadaan sehat, jasmani maupun rohani. 2. Berusia 17-60 tahun. Namun, untuk remaja usia 17 tahun diperbolehkan menjadi donor darah, bila mendapat izin tertulis dari orangtua dan memenuhi persyaratan lain. 3. Memiliki berat badan minimal 45 kilogram. 4. Suhu tubuh 36,6-37,5 derajat Celcius. 5. Tekanan darah harus berada di angka 100-160 untuk sistolik dan 70-100 untuk diastolik. 6. Saat pemeriksaan, denyut nadi harus sekitar 50-100 kali per menit. 7. Kadar hemoglobin minimal 12 gr/dl untuk wanita, dan minimal 12,5 gr/dl untuk pria.
         </textarea>
       </div>
 
       <br>
       <br>
+      @if (!$isAllComplete)
       <h3 class="text-center font-weight-bold">Form Data Diri</h3>
       <br>
 
       <form action="" method="post" action="{{ route('donor.store') }}">
         @method('patch')
         @csrf
-
+        
+        @if (!$pengguna->nama_tipe ?? true)
         <legend class="form">Partisipasi</legend>
         <div class="form-group row mb-3">
           <label for="no_hp" class="col-2 col-form-label">Sebagai</label>
@@ -68,8 +70,10 @@
             @endif
           </div>
         </div>
+        @endif
 
         <!-- data diri -->
+        @if (!$isDataDiriComplete)
         <legend class="form">Data Diri</legend>
         <div class="form-group row mb-3">
           <label for="no_hp" class="col-2 col-form-label">No. WhatsApp</label>
@@ -140,8 +144,10 @@
             @endif
           </div>
         </div>
+        @endif
 
         <!-- keperluan donor -->
+        @if (!$isDataDonorComplete)
         <legend>Keperluan Donor</legend>
         <div class="form-group row mb-3">
           <label for="usia" class="col-2 col-form-label">Usia</label>
@@ -230,10 +236,23 @@
             @endif
           </div>
         </div>
+        @endif
 
         <input type="submit" name="send" value="Simpan" class="btn mt-4 btn-primary ml-50 float-right">
       </form>
-
+      @else
+      <div class="container-fluid">
+        <div class="row justify-content-between align-items-center alert alert-success">
+          <div style="margin-right: 18px;">
+            <p>
+              Anda telah mengisi data untuk keperluan donor Anda! <br>
+              Silahkan menuju menu profil untuk melanjutkan proses pendonoran Anda!
+            </p>
+          </div>
+          <a href="{{ route('profile') }}"><button class="btn btn-primary">Lihat Profil >></button></a>
+        </div>
+      </div>
+      @endif
     </div>
   </div>
 

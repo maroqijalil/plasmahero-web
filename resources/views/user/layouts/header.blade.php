@@ -13,7 +13,7 @@
         <li class="">
           <a href="{{route('donor.index')}}">Donor</a>
         </li>
-        <li class="drop-down"><a href="">COVID</a>
+        <li class="drop-down"><a href="#">COVID</a>
           <ul>
             <li><a href="#">Berita</a></li>
             <li><a href="#">Curhat</a></li>
@@ -22,9 +22,9 @@
         <li><a href="#about">FAQ</a></li>
 
         @if (Auth::check())
-        <li class="drop-down"><a href="">{{ Auth::user()->name }}</a>
+        <li class="drop-down"><a href="#">{{ Auth::user()->name }}</a>
           <ul>
-            <li><a href="{{route('profile')}}">Profil</a></li>
+            <li><a href="{{route('profile')}}">Dasbor</a></li>
             <li>
               <form method="POST" action="{{ route('logout') }}">
                 @csrf
