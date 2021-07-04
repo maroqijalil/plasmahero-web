@@ -47,7 +47,7 @@ class ChatController extends BaseController {
   }
 
   public function getPartisipans($id) {
-    return Partisipan::where('id_admin', '=', $id)
+    return Partisipan::orWhere('id_admin', '=', $id)
                       ->orWhere('id_pendonor', '=', $id)
                       ->orWhere('id_penerima', '=', $id)
                       ->get();

@@ -19,6 +19,12 @@
                         @include('common.layouts.menu-admin')
                     @endif
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('profile') }}">
+                            <i class="ni ni-single-02 text-primary"></i>
+                            <span class="nav-link-text">Profil</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('chat', ['id' => 1]) }}">
                             <i class="ni ni-chat-round text-primary"></i>
                             <span class="nav-link-text">Chat</span>

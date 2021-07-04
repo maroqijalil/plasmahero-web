@@ -25,6 +25,7 @@
         <li class="drop-down"><a href="#">{{ Auth::user()->name }}</a>
           <ul>
             <li><a href="{{route('profile')}}">Dasbor</a></li>
+            <li><a href="{{route('chat', ['id'=>Auth::user()->id])}}">Chat</a></li>
             <li>
               <form method="POST" action="{{ route('logout') }}">
                 @csrf

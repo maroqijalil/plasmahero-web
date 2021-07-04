@@ -84,6 +84,12 @@
                             <span>My profile</span>
                         </a>
                         @endif
+                        @if(Auth::user()->pengguna)
+                        <a href="{{ route('profile') }}" class="dropdown-item">
+                            <i class="ni ni-single-02"></i>
+                            <span>My profile</span>
+                        </a>
+                        @endif
                         <div class="dropdown-divider"></div>
                         <form action="{{ route('logout') }}" class="dropdown-item" method="POST">
                             @csrf

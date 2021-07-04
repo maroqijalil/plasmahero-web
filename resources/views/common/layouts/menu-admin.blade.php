@@ -22,3 +22,33 @@
         <span class="nav-link-text">Pemohon</span>
     </a>
 </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('admin.donor.unit') }}">
+        <i class="ni ni-building text-primary"></i>
+        <span class="nav-link-text">Unit Donor</span>
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('laporan-status') }}">
+        <i class="ni ni-archive-2 text-primary"></i>
+        <span class="nav-link-text">Laporan Status</span>
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('laporan-tanggal') }}">
+        <i class="ni ni-archive-2 text-primary"></i>
+        <span class="nav-archive-2">Laporan Tanggal</span>
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('galeri') }}">
+        <i class="ni ni-album-2 text-primary"></i>
+        <span class="nav-link-text">Galeri</span>
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('cerita') }}">
+        <i class="ni ni-ruler-pencil text-primary"></i>
+        <span class="nav-link-text">Cerita</span>
+    </a>
+</li>
