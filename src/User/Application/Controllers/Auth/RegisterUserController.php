@@ -51,6 +51,6 @@ class RegisterUserController extends AuthenticationController
 		];
 		$this->mailSender->sendMail($data);
 
-		return redirect()->route('user-detail', ['first' => true])->with(['email_verif' => 'Email berhasil dikirim, Periksa email Anda !']);
+		return redirect()->route('donor.index', ['first' => true])->with(['email_verif' => 'Email berhasil dikirim, Periksa email Anda !']);
 	}
 }

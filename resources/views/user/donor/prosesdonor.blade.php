@@ -16,6 +16,14 @@
       <div class="alert alert-danger">
         {{Session::get('already')}}
       </div>
+      @elseif(Session::has('email_verif'))
+      <div class="alert alert-success">
+        {{Session::get('email_verif')}}
+      </div>
+      @elseif(Session::has('error'))
+      <div class="alert alert-danger">
+        {{Session::get('error')}}
+      </div>
       @endif
 
       <br>
@@ -255,7 +263,48 @@
       @endif
     </div>
   </div>
+  @if(Session::has('email_verif'))
+  <div class="modal fade" id="firstModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Selamat Datang di Plasmahero</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <h4>Ingin berpartisipasi dalam pendonoran?</h4>
+            <p>Anda dapat memilih apakah anda ingin mendonorkan plasma anda atau mencari donor plasma.</p>
+          </div>
 
+          <div class="mt-4">
+            <div class="row align-items-center">
+              <div class="col-10">
+                <h6>Anda dapat Melakukan Pengisian detail data partisipasi Anda sekarang atau lain kali.</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="{{ route('home') }}">
+            <button type="button" class="btn btn-secondary">Lain kali</button>
+          </a>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Isi Sekarang >></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  @endif
 </div>
 
+@endsection
+
+@section('js')
+<script>
+  $(document).ready(function(){
+    $("#firstModal").modal('show');
+  });
+</script>
 @endsection

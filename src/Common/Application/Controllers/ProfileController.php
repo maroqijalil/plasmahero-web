@@ -15,8 +15,11 @@ class ProfileController extends BaseController
 	{
 		$userData = Auth::user();
 		$donorall = Auth::user()->pengguna->mendonor->where('tanggal', '<', Carbon::now()->format('Y-m-d'))->where('d_penerima', '<>', null);
-
-		return view('user.others.profile', ['userData' => $userData, 'donorall' => $donorall]);
+    $pengguna = Auth::user()->pengguna;
+    $isDataDiriComplete = $pengguna->no_hp && $pengguna->alamat && $pengguna->kelurahan && $pengguna->kecamatan && $pengguna->kota;
+    $isDataDonorComplete = $pengguna->usia && $pengguna->jenis_kelamin && $pengguna->gol_darah && $pengguna->rhesus && $pengguna->berat_badan && $pengguna->tanggal_swab;
+    $isAllComplete = $isDataDiriComplete && $isDataDiriComplete && $pengguna->nama_tipe;
+		return view('user.others.profile', compact(['userData', 'donorall', 'isDataDiriComplete', 'isDataDonorComplete', 'isAllComplete']));
 	}
 
 	public function update(UpdateProfileRequest $request)

@@ -13,6 +13,14 @@
     <div class="alert alert-success">
       {{Session::get('report')}}
     </div>
+  @elseif(Session::has('success'))
+  <div class="alert alert-success">
+    {{Session::get('success')}}
+  </div>
+  @elseif(Session::has('error'))
+  <div class="alert alert-danger">
+    {{Session::get('error')}}
+  </div>
   @endif
 
   <div class="row">
@@ -130,171 +138,201 @@
               $pengguna = Auth::user()->pengguna ?? '';
             @endphp
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              @if ($isDataDiriComplete)
               <form role="form" method="POST" action="{{ route('user-detail.store') }}">
                 @csrf
-  
-                <div class="form-group col-md-12">
-                  <div class="py-3"></div>
-                  <label for="no_hp">No. WhatsApp</label>
-                  <input class="form-control {{ $errors->has('no_hp') ? 'error' : '' }}" type="text" placeholder="Nomor WhatsApp" id="no_hp" name="no_hp" value="{{ $pengguna->no_hp ?? old('no_hp') }}">
-  
-                  <!-- Error -->
-                  @if ($errors->has('no_hp'))
-                  <div class="error text-danger" style="font-size: 12px;">
-                      {{ $errors->first('no_hp') }}
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <div class="py-3"></div>
+                    <label for="no_hp">No. WhatsApp</label>
+                    <input class="form-control {{ $errors->has('no_hp') ? 'error' : '' }}" type="text" placeholder="Nomor WhatsApp" id="no_hp" name="no_hp" value="{{ $pengguna->no_hp ?? old('no_hp') }}">
+    
+                    <!-- Error -->
+                    @if ($errors->has('no_hp'))
+                    <div class="error text-danger" style="font-size: 12px;">
+                        {{ $errors->first('no_hp') }}
+                    </div>
+                    @endif
                   </div>
-                  @endif
+    
+                  <div class="form-group col-md-12">
+                    <label for="alamat">Alamat</label>
+                    <input class="form-control {{ $errors->has('alamat') ? 'error' : '' }}" type="text" placeholder="alamat" id="alamat" name="alamat" value="{{ $pengguna->alamat ?? old('alamat') }}">
+    
+                    <!-- Error -->
+                    @if ($errors->has('alamat'))
+                    <div class="error text-danger" style="font-size: 12px;">
+                        {{ $errors->first('alamat') }}
+                    </div>
+                    @endif
+                  </div>
+    
+                  <div class="form-group col-md-12">
+                    <label for="kelurahan">Kelurahan</label>
+                    <input class="form-control {{ $errors->has('kelurahan') ? 'error' : '' }}" type="text" placeholder="Kelurahan" id="kelurahan" name="kelurahan" value="{{ $pengguna->kelurahan ?? old('kelurahan') }}">
+    
+                    <!-- Error -->
+                    @if ($errors->has('kelurahan'))
+                    <div class="error text-danger" style="font-size: 12px;">
+                        {{ $errors->first('kelurahan') }}
+                    </div>
+                    @endif
+                  </div>
+    
+                  <div class="form-group col-md-12">
+                    <label for="kecamatan">Kecamatan</label>
+                    <input class="form-control {{ $errors->has('kecamatan') ? 'error' : '' }}" type="text" placeholder="Kecamatan" id="kecamatan" name="kecamatan" value="{{ $pengguna->kecamatan ?? old('kecamatan') }}">
+    
+                    <!-- Error -->
+                    @if ($errors->has('kecamatan'))
+                    <div class="error text-danger" style="font-size: 12px;">
+                        {{ $errors->first('kecamatan') }}
+                    </div>
+                    @endif
+                  </div>
+    
+                  <div class="form-group col-md-12">
+                    <label for="kota">Kota</label>
+                    <input class="form-control {{ $errors->has('kota') ? 'error' : '' }}" type="text" placeholder="Kota" id="kota" name="kota" value="{{ $pengguna->kota ?? old('kota') }}">
+    
+                    <!-- Error -->
+                    @if ($errors->has('kota'))
+                    <div class="error text-danger" style="font-size: 12px;">
+                        {{ $errors->first('kota') }}
+                    </div>
+                    @endif
+                  </div>
                 </div>
   
-                <div class="form-group col-md-12">
-                  <label for="alamat">Alamat</label>
-                  <input class="form-control {{ $errors->has('alamat') ? 'error' : '' }}" type="text" placeholder="alamat" id="alamat" name="alamat" value="{{ $pengguna->alamat ?? old('alamat') }}">
-  
-                  <!-- Error -->
-                  @if ($errors->has('alamat'))
-                  <div class="error text-danger" style="font-size: 12px;">
-                      {{ $errors->first('alamat') }}
-                  </div>
-                  @endif
-                </div>
-  
-                <div class="form-group col-md-12">
-                  <label for="kelurahan">Kelurahan</label>
-                  <input class="form-control {{ $errors->has('kelurahan') ? 'error' : '' }}" type="text" placeholder="Kelurahan" id="kelurahan" name="kelurahan" value="{{ $pengguna->kelurahan ?? old('kelurahan') }}">
-  
-                  <!-- Error -->
-                  @if ($errors->has('kelurahan'))
-                  <div class="error text-danger" style="font-size: 12px;">
-                      {{ $errors->first('kelurahan') }}
-                  </div>
-                  @endif
-                </div>
-  
-                <div class="form-group col-md-12">
-                  <label for="kecamatan">Kecamatan</label>
-                  <input class="form-control {{ $errors->has('kecamatan') ? 'error' : '' }}" type="text" placeholder="Kecamatan" id="kecamatan" name="kecamatan" value="{{ $pengguna->kecamatan ?? old('kecamatan') }}">
-  
-                  <!-- Error -->
-                  @if ($errors->has('kecamatan'))
-                  <div class="error text-danger" style="font-size: 12px;">
-                      {{ $errors->first('kecamatan') }}
-                  </div>
-                  @endif
-                </div>
-  
-                <div class="form-group col-md-12">
-                  <label for="kota">Kota</label>
-                  <input class="form-control {{ $errors->has('kota') ? 'error' : '' }}" type="text" placeholder="Kota" id="kota" name="kota" value="{{ $pengguna->kota ?? old('kota') }}">
-  
-                  <!-- Error -->
-                  @if ($errors->has('kota'))
-                  <div class="error text-danger" style="font-size: 12px;">
-                      {{ $errors->first('kota') }}
-                  </div>
-                  @endif
-                </div>
-  
-                <input type="submit" name="send" value="Simpan" class="btn mt-4 btn-primary ml-50 float-right">
+                <button type="submit" class="btn mt-4 btn-primary ml-50 float-right">Perbarui Data</button>
               </form>
+              @else
+              <div class="container-fluid">
+                <div class="py-3"></div>
+                <div class="alert alert-warning">
+                  <div style="margin-right: 18px;">
+                    <p>
+                      Anda belum mengisi Data Diri! Silahkan isi pada menu Donor
+                    </p>
+                  </div>
+                  <a href="{{ route('donor.index') }}"><button class="btn btn-primary">Isi Data >></button></a>
+                </div>
+              </div>
+              @endif
             </div>
             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+              @if ($isDataDonorComplete)
               <form role="form" method="POST" action="{{ route('user-detail.store') }}">
                 @csrf
-  
-                <div class="form-group col-md-12">
-                  <div class="py-3"></div>
-                  <label for="no_hp">Sebagai</label>
-                  <select class="form-control {{ $errors->has('nama_tipe') ? 'error' : '' }}" id="nama_tipe" name="nama_tipe">
-                    <option value="pendonor" {{ strtolower($pengguna->nama_tipe) == 'pendonor' ? 'selected' : '' }}>Pendonor</option>
-                    <option value="penerima" {{ strtolower($pengguna->nama_tipe) == 'penerima' ? 'selected' : '' }}>Pencari Donor</option>
-                  </select>
-  
-                  <!-- Error -->
-                  @if ($errors->has('nama_tipe'))
-                  <div class="error text-danger" style="font-size: 12px;">
-                    {{ $errors->first('nama_tipe') }}
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <div class="py-3"></div>
+                    <label for="no_hp">Sebagai</label>
+                    <select class="form-control {{ $errors->has('nama_tipe') ? 'error' : '' }}" id="nama_tipe" name="nama_tipe">
+                      <option value="pendonor" {{ strtolower($pengguna->nama_tipe) == 'pendonor' ? 'selected' : '' }}>Pendonor</option>
+                      <option value="penerima" {{ strtolower($pengguna->nama_tipe) == 'penerima' ? 'selected' : '' }}>Pencari Donor</option>
+                    </select>
+    
+                    <!-- Error -->
+                    @if ($errors->has('nama_tipe'))
+                    <div class="error text-danger" style="font-size: 12px;">
+                      {{ $errors->first('nama_tipe') }}
+                    </div>
+                    @endif
                   </div>
-                  @endif
-                </div>
-  
-                <div class="form-group col-md-12">
-                  <label for="usia">Usia</label>
-                  <input class="form-control {{ $errors->has('usia') ? 'error' : '' }}" type="number" placeholder="Usia Pendonor" id="usia" name="usia" value="{{ $pengguna->usia ?? old('usia') }}">
-  
-                  <!-- Error -->
-                  @if ($errors->has('usia'))
-                  <div class="error text-danger" style="font-size: 12px;">
-                      {{ $errors->first('usia') }}
+    
+                  <div class="form-group col-md-12">
+                    <label for="usia">Usia</label>
+                    <input class="form-control {{ $errors->has('usia') ? 'error' : '' }}" type="number" placeholder="Usia Pendonor" id="usia" name="usia" value="{{ $pengguna->usia ?? old('usia') }}">
+    
+                    <!-- Error -->
+                    @if ($errors->has('usia'))
+                    <div class="error text-danger" style="font-size: 12px;">
+                        {{ $errors->first('usia') }}
+                    </div>
+                    @endif
                   </div>
-                  @endif
-                </div>
-  
-                <div class="form-group col-md-12">
-                  <label for="jenis_kelamin">Jenis Kelamin</label>
-                  <select id="jenis_kelamin" name="jenis_kelamin" class="form-control">
-                    <option value="l" {{ strtolower($pengguna->jenis_kelamin) == 'laki-laki' || strtolower($pengguna->jenis_kelamin) == 'l' ? 'selected' : ''}}>Laki-laki</option>
-                    <option value="p" {{ strtolower($pengguna->jenis_kelamin) == 'perempuan' || strtolower($pengguna->jenis_kelamin) == 'p' ? 'selected' : ''}}>Perempuan</option>
-                  </select>
-                </div>
-  
-                <div class="form-group col-md-12">
-                  <label for="gol_darah">Golongan Darah</label>
-                  <select class="form-control {{ $errors->has('gol_darah') ? 'error' : '' }}" id="gol_darah" name="gol_darah">
-                    <option value="a" {{ strtolower($pengguna->gol_darah) == 'a' ? 'selected' : ''}}>A</option>
-                    <option value="b" {{ strtolower($pengguna->gol_darah) == 'b' ? 'selected' : ''}}>B</option>
-                    <option value="ab" {{ strtolower($pengguna->gol_darah) == 'ab' ? 'selected' : ''}}>AB</option>
-                    <option value="o" {{ strtolower($pengguna->gol_darah) == 'o' ? 'selected' : ''}}>O</option>
-                  </select>
-  
-                  <!-- Error -->
-                  @if ($errors->has('gol_darah'))
-                  <div class="error text-danger" style="font-size: 12px;">
-                      {{ $errors->first('gol_darah') }}
+    
+                  <div class="form-group col-md-12">
+                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                    <select id="jenis_kelamin" name="jenis_kelamin" class="form-control">
+                      <option value="l" {{ strtolower($pengguna->jenis_kelamin) == 'laki-laki' || strtolower($pengguna->jenis_kelamin) == 'l' ? 'selected' : ''}}>Laki-laki</option>
+                      <option value="p" {{ strtolower($pengguna->jenis_kelamin) == 'perempuan' || strtolower($pengguna->jenis_kelamin) == 'p' ? 'selected' : ''}}>Perempuan</option>
+                    </select>
                   </div>
-                  @endif
-                </div>
-  
-                <div class="form-group col-md-12">
-                  <label for="rhesus">Rhesus</label>
-                  <select class="form-control {{ $errors->has('rhesus') ? 'error' : '' }}" id="rhesus" name="rhesus">
-                    <option value="+" {{ strtolower($pengguna->rhesus) == '+' ? 'selected' : ''}}>Positif</option>
-                    <option value="-" {{ strtolower($pengguna->rhesus) == '-' ? 'selected' : ''}}>Negatif</option>
-                  </select>
-  
-                  <!-- Error -->
-                  @if ($errors->has('rhesus'))
-                  <div class="error text-danger" style="font-size: 12px;">
-                      {{ $errors->first('rhesus') }}
+    
+                  <div class="form-group col-md-12">
+                    <label for="gol_darah">Golongan Darah</label>
+                    <select class="form-control {{ $errors->has('gol_darah') ? 'error' : '' }}" id="gol_darah" name="gol_darah">
+                      <option value="a" {{ strtolower($pengguna->gol_darah) == 'a' ? 'selected' : ''}}>A</option>
+                      <option value="b" {{ strtolower($pengguna->gol_darah) == 'b' ? 'selected' : ''}}>B</option>
+                      <option value="ab" {{ strtolower($pengguna->gol_darah) == 'ab' ? 'selected' : ''}}>AB</option>
+                      <option value="o" {{ strtolower($pengguna->gol_darah) == 'o' ? 'selected' : ''}}>O</option>
+                    </select>
+    
+                    <!-- Error -->
+                    @if ($errors->has('gol_darah'))
+                    <div class="error text-danger" style="font-size: 12px;">
+                        {{ $errors->first('gol_darah') }}
+                    </div>
+                    @endif
                   </div>
-                  @endif
-                </div>
-  
-                <div class="form-group col-md-12">
-                  <label for="berat_badan">Berat Badan</label>
-                  <input class="form-control {{ $errors->has('berat_badan') ? 'error' : '' }}" type="number" placeholder="Berat Badan" id="berat_badan" name="berat_badan" value="{{ $pengguna->berat_badan ?? old('berat_badan') }}">
-  
-                  <!-- Error -->
-                  @if ($errors->has('berat_badan'))
-                  <div class="error text-danger" style="font-size: 12px;">
-                      {{ $errors->first('berat_badan') }}
+    
+                  <div class="form-group col-md-12">
+                    <label for="rhesus">Rhesus</label>
+                    <select class="form-control {{ $errors->has('rhesus') ? 'error' : '' }}" id="rhesus" name="rhesus">
+                      <option value="+" {{ strtolower($pengguna->rhesus) == '+' ? 'selected' : ''}}>Positif</option>
+                      <option value="-" {{ strtolower($pengguna->rhesus) == '-' ? 'selected' : ''}}>Negatif</option>
+                    </select>
+    
+                    <!-- Error -->
+                    @if ($errors->has('rhesus'))
+                    <div class="error text-danger" style="font-size: 12px;">
+                        {{ $errors->first('rhesus') }}
+                    </div>
+                    @endif
                   </div>
-                  @endif
-                </div>
-  
-                <div class="form-group col-md-12">
-                  <label for="tanggal_swab">Tanggal Swab</label>
-                  <input class="form-control {{ $errors->has('tanggal_swab') ? 'error' : '' }}" type="date" placeholder="Tanggal Swab" id="tanggal_swab" name="tanggal_swab" value="{{ $pengguna->tanggal_swab ?? old('tanggal_swab') }}">
-  
-                  <!-- Error -->
-                  @if ($errors->has('tanggal_swab'))
-                  <div class="error text-danger" style="font-size: 12px;">
-                      {{ $errors->first('tanggal_swab') }}
+    
+                  <div class="form-group col-md-12">
+                    <label for="berat_badan">Berat Badan</label>
+                    <input class="form-control {{ $errors->has('berat_badan') ? 'error' : '' }}" type="number" placeholder="Berat Badan" id="berat_badan" name="berat_badan" value="{{ $pengguna->berat_badan ?? old('berat_badan') }}">
+    
+                    <!-- Error -->
+                    @if ($errors->has('berat_badan'))
+                    <div class="error text-danger" style="font-size: 12px;">
+                        {{ $errors->first('berat_badan') }}
+                    </div>
+                    @endif
                   </div>
-                  @endif
+    
+                  <div class="form-group col-md-12">
+                    <label for="tanggal_swab">Tanggal Swab</label>
+                    <input class="form-control {{ $errors->has('tanggal_swab') ? 'error' : '' }}" type="date" placeholder="Tanggal Swab" id="tanggal_swab" name="tanggal_swab" value="{{ $pengguna->tanggal_swab ?? old('tanggal_swab') }}">
+    
+                    <!-- Error -->
+                    @if ($errors->has('tanggal_swab'))
+                    <div class="error text-danger" style="font-size: 12px;">
+                        {{ $errors->first('tanggal_swab') }}
+                    </div>
+                    @endif
+                  </div>
                 </div>
   
-                <input type="submit" name="send" value="Simpan" class="btn mt-4 btn-primary ml-50 float-right">
+                <button type="submit" class="btn mt-4 btn-primary ml-50 float-right">Perbarui Data</button>
               </form>
+              @else
+              <div class="container-fluid">
+                <div class="py-3"></div>
+                <div class="alert alert-warning">
+                  <div style="margin-right: 18px;">
+                    <p>
+                      Anda belum mengisi Data Donor! Silahkan isi pada menu Donor
+                    </p>
+                  </div>
+                  <a href="{{ route('donor.index') }}"><button class="btn btn-primary">Isi Data >></button></a>
+                </div>
+              </div>
+              @endif
             </div>
           </div>
         </div>
