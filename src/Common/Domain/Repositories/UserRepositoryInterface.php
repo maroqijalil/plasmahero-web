@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 interface UserRepositoryInterface extends BaseRepositoryInterface {
 
+  public function getPenggunaByType($type): ?Collection;
+
   public function getByEmail($email): ?Model;
 
   public function searchByName($name): ?Collection;

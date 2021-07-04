@@ -6,13 +6,14 @@
 <nav class="mb-2" aria-label="breadcumb" style="font-size: 14px;">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">Donor</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Pendonor</li>
+    <li class="breadcrumb-item active" aria-current="page">Penerima</li>
   </ol>
 </nav>
-<h3 class="font-weight-bold">Data Pendonor</h3>
+<h3 class="font-weight-bold">Data Penerima</h3>
 @stop
 
 @section('content')
+    
 <div class="card">
   <div class="card-header">
     <div class="row">
@@ -37,23 +38,35 @@
           <th scope="col">Nama</th>
           <th scope="col">Role</th>
           <th scope="col">Alamat</th>
+          <th scope="col">Aksi</th>
         </tr>
       </thead>
       <tbody>
           <?php $counter=1; ?>
           @foreach ($users as $user)
-          <tr>
-            <th scope="row">{{$user->pengguna->id}}</th> <?php $counter++; ?>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->pengguna->nama_tipe }}</td>
-            <td>{{ $user->pengguna->kota }}</td>
-          </tr>
+            @if ($user->pengguna)
+              @if ($user->pengguna->nama_tipe == 'penerima')
+              <tr>
+                <th scope="row">{{ $user->pengguna->id }}</th> <?php $counter++; ?>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->pengguna->nama_tipe }}</td>
+                <td>{{ $user->pengguna->kota }}</td>
+                <td>
+                  <a href="{{ route('admin.donor.recipient.show', ['id' => $user->id]) }}">
+                    <button type="button" class="btn btn-primary">Lihat data</button>
+                  </a>
+                </td>
+              </tr>
+              @endif
+            @endif
           @endforeach
       </tbody>
     </table>
     <div></div>
   </div>
 </div>
+
+
 @stop
 
 @section('css')

@@ -2,25 +2,11 @@
 
 @section('title', 'Detail diri')
 
-@section('breadcrumbs-addition')
-<div class="mt-4">
-  <div class="row align-items-center">
-    <div class="col-8">
-      <h6>Anda dapat Melakukan Pengisian detail data Anda sekarang atau lain kali.</h6>
-    </div>
-    <div class="col-4 text-right">
-      <a href="{{ route('home') }}">
-        <button type="button" class="btn btn-warning">Lain kali >></button>
-      </a>
-    </div>
-  </div>
-</div>
-@endsection
-
 @section('content')
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-12">
+
       {{-- if succes --}}
       @if(Session::has('email_verif'))
       <div class="alert alert-success">
@@ -35,11 +21,6 @@
         {{Session::get('error')}}
       </div>
       @endif
-
-      <div>
-        <h4>Ingin berpartisipasi dalam pendonoran?</h4>
-        <p>Anda dapat memilih apakah anda ingin mendonorkan plasma anda atau mencari donor plasma.</p>
-      </div>
 
       <form role="form" method="POST" action="{{ route('user-detail.store') }}">
         @csrf
@@ -229,6 +210,48 @@
         <input type="submit" name="send" value="Simpan" class="btn mt-4 btn-primary ml-50 float-right">
       </form>
     </div>
+    @if(Session::has('email_verif'))
+    <div class="modal fade" id="firstModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Selamat Datang di Plasmahero</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <h4>Ingin berpartisipasi dalam pendonoran?</h4>
+              <p>Anda dapat memilih apakah anda ingin mendonorkan plasma anda atau mencari donor plasma.</p>
+            </div>
+
+            <div class="mt-4">
+              <div class="row align-items-center">
+                <div class="col-10">
+                  <h6>Anda dapat Melakukan Pengisian detail data partisipasi Anda sekarang atau lain kali.</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="{{ route('home') }}">
+              <button type="button" class="btn btn-secondary">Lain kali</button>
+            </a>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Isi Sekarang >></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    @endif
   </div>
 </div>
+@endsection
+
+@section('js')
+<script>
+  $(document).ready(function(){
+    $("#firstModal").modal('show');
+  });
+</script>
 @endsection

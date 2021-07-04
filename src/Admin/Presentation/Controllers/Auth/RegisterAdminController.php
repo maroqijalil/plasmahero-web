@@ -3,11 +3,12 @@
 namespace App\Admin\Controllers\Auth;
 
 use App\Common\Controllers\Auth\AuthenticationController;
-use App\Common\Models\User;
-use App\Common\Services\MailServiceInterface;
+use App\Common\Repositories\AdminRepositoryInterface;
 use App\Common\Repositories\UserRepositoryInterface;
 use App\Common\Requests\StoreUserRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\App;
 
 class RegisterAdminController extends AuthenticationController
 {
@@ -32,6 +33,12 @@ class RegisterAdminController extends AuthenticationController
 			'role' => 'admin',
 		]);
 		$this->registerUser($user);
+
+		$adminRepository = App::make(AdminRepositoryInterface::class);
+		$admin = $adminRepository->create([
+			'id_user' => Auth::user()->id
+		]);
+		$user->admin()->save($admin);
 
 		return redirect()->route('admin.dashboard');
 	}

@@ -48,6 +48,12 @@
                             <span class="nav-link-text">Chat</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.donor.unit') }}">
+                            <i class="ni ni-building text-primary"></i>
+                            <span class="nav-link-text">Unit Donor</span>
+                        </a>
+                    </li>
 {{--                    <li class="nav-item">--}}
 {{--                        <a class="nav-link" href="examples/tables.html">--}}
 {{--                            <i class="ni ni-bullet-list-67 text-default"></i>--}}

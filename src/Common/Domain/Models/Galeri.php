@@ -8,7 +8,7 @@ use App\Eloquent\BaseModel;
 
 class Galeri extends BaseModel
 {
-  protected $table = 'Galeri';
+  protected $table = 'galeri';
 
   protected $fillable = [
     'judul',

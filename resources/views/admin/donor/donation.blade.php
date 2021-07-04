@@ -30,7 +30,7 @@ Dashboard
         <form method="post" action="{{ route('store-pencocokan') }}" class="form card p-4">
           @csrf
 
-          <input type="hidden" id="id_admin" name="id_admin" value="{{ Auth::user()->admin->id }}">
+          <input type="hidden" id="id_admin" name="id_admin" value="{{ Auth::user()->admin->id ?? '' }}">
 
           <legend class="form">Pencocokan</legend>
           <div class="form-group row mb-3">
