@@ -92,7 +92,7 @@
         </div>
         @else
         <div class="card-body">
-          <div class="alert alert-danger text-center">Anda belum memngisi detail pengguna. Isi <a href="{{ route('user-detail') }}">disini</a> </div>
+          <div class="alert alert-danger text-center">Anda belum memngisi detail pengguna. Isi <a href="{{ route('donor.index') }}">disini</a> </div>
         </div>
         @endif
       </div>
