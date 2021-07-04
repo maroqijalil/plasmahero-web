@@ -10,19 +10,22 @@ use Illuminate\Support\Facades\DB;
 
 class LaporanController extends BaseController
 {
-	public function index()
+	public function getLaporanStatus()
 	{
-		$all = Pengguna::with(['user', 'report', 'menerimaDonor', 'mendonor'])->get();
-		//        dd($all);
+		$all = Pengguna::with(['user', 'report', 'menerimaDonor', 'mendonor'])
+            ->get()
+            ->reject(function($data) {
+                return $data->status == 'i';
+            });
 		$waitingToMatch = DB::table('pengguna')->where('status', ['s', 'g'])->get();
 		$waitingToSchedule = DB::table('pengguna')->where('status', 'm')->get();
 		$matched = DB::table('pengguna')->where('status', 'p')->get();
 		$done = DB::table('pengguna')->where('status', 'a')->get();
 
-		return view('admin.donor.laporan', compact(['all', 'waitingToMatch', 'waitingToSchedule', 'matched', 'done']));
+		return view('admin.donor.laporan-status', compact(['all', 'waitingToMatch', 'waitingToSchedule', 'matched', 'done']));
 	}
 
-	public function index2()
+	public function getLaporanTanggal()
 	{
 		$all = Donor::with(['penerima', 'pendonor'])
 			->get()

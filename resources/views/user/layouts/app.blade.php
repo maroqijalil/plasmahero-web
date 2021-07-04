@@ -32,6 +32,8 @@
         <!-- Template Main CSS File -->
         <link href="{{ asset("assets/css/style.css") }}" rel="stylesheet">
 
+        <link href="{{ asset("css/my.css") }}" rel="stylesheet">
+
         @yield('css')
         <!-- Scripts -->
         {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
@@ -44,7 +46,7 @@
         <main id="main">
 
           <!-- ======= Breadcrumbs Section ======= -->
-          <section class="breadcrumbs" style="background-color: rgba(255, 234, 167, 0.5);">
+          <section class="breadcrumbs">
             <div class="container">
               <div class="d-flex justify-content-between align-items-center">
                 <h2>@yield('title')</h2>

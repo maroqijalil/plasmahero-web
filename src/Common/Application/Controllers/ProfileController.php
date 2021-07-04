@@ -14,6 +14,7 @@ class ProfileController extends BaseController
 	public function index(Request $request)
 	{
 		$userData = Auth::user();
+		// dd(Auth::user()->pengguna);
 		$donorall = Auth::user()->pengguna->mendonor->where('tanggal', '<', Carbon::now()->format('Y-m-d'))->where('d_penerima', '<>', null);
     $pengguna = Auth::user()->pengguna;
     $isDataDiriComplete = $pengguna->no_hp && $pengguna->alamat && $pengguna->kelurahan && $pengguna->kecamatan && $pengguna->kota;

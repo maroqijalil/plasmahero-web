@@ -61,11 +61,11 @@
           <div class="alert alert-danger" id="status">
             Pendonoran telah dicocokan, atur jadwal anda!
 
-          @elseif(Auth::user()->pengguna->status == 'p' && Auth::user()->pengguna->mendonor->first()->tanggal != null)
+          @elseif(Auth::user()->pengguna->status == 'p' && Auth::user()->pengguna->nama_tipe == 'pendonor')
           <div class="alert alert-danger" id="status">
             Jadwal donor anda : {{Auth::user()->pengguna->mendonor->first()->tanggal}}
 
-          @elseif(Auth::user()->pengguna->status == 'p' && Auth::user()->pengguna->menerimaDonor->first()->tanggal != null)
+          @elseif(Auth::user()->pengguna->status == 'p' && Auth::user()->pengguna->nama_tipe == 'penerima')
           <div class="alert alert-danger" id="status">
             Jadwal donor anda : {{Auth::user()->pengguna->menerimaDonor->first()->tanggal}}
 
@@ -79,6 +79,14 @@
           @if(Auth::user()->pengguna->status == 'a')
           <a href="/berita-acara">
             <div class="btn rounded-pill shadow mt-2 font-weight-bold" style="background-color:#DE4F28">Isi Laporan</div>
+          </a>
+          @elseif(Auth::user()->pengguna->status == 'm')
+          <a href="/chat">
+            <div class="btn rounded-pill shadow mt-2 font-weight-bold" style="background-color:#DE4F28">Chat & Atur Jadwal</div>
+          </a>
+          @elseif(Auth::user()->pengguna->status == 'p')
+          <a href="/chat">
+            <div class="btn rounded-pill shadow mt-2 font-weight-bold" style="background-color:#DE4F28">Donor Selesai</div>
           </a>
           @endif
         </div>
