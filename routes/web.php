@@ -55,6 +55,8 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function
     Route::post('/pendonoran', [PendonoranController::class, 'store'])->name('store-pencocokan');
     Route::get('/pendonoran/{id}', [ChatCreateController::class, 'create'])->name('chat-create');
 
+    Route::post('/setjadwal', [PendonoranController::class, 'setJadwal'])->name('setJadwal');
+
     Route::get('/chat', [ChatController::class, 'index'])->name('chat-view-admin');
 
     Route::view('/konsultasi', 'admin.communication.consultation');
