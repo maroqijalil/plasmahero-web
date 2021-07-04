@@ -1,22 +1,23 @@
 <?php
 
 namespace App\Common\Models;
+
 use Database\Factories\GalleryFactory;
 
 use App\Eloquent\BaseModel;
 
 class Galeri extends BaseModel
 {
-    protected $table = 'Galeri';
+  protected $table = 'Galeri';
 
-	protected $fillable = [
-		'judul',
-		'deskripsi',
-		'foto'
-	];
+  protected $fillable = [
+    'judul',
+    'deskripsi',
+    'foto'
+  ];
 
-	protected static function newFactory()
-	{
-		return new GalleryFactory();
-	}
+  protected static function newFactory()
+  {
+    return new GalleryFactory();
+  }
 }

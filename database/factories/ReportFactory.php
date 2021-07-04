@@ -31,7 +31,7 @@ class ReportFactory extends Factory
             'tgl' => $this->faker->date('Y-m-d', 'now'),
             'pesan' => $this->faker->sentence(),
             'foto' => Str::random(10),
-            'id_pengguna' => Pengguna::where('status', 'a')->get()->random()->id,
+            'id_pengguna' => Pengguna::all()->random()->id,
             'id_donor' => Donor::get()->random()->id,
 
         ];
