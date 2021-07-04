@@ -97,9 +97,6 @@
                     <div class="container-fluid">
                         <div class="row">
                             <h3 class="my-auto">Laporan Status Donor</h3>
-                            <div class="ml-auto m-0">
-                                <a href="/admin/galeri/tambah" class="btn btn-primary m-0">Laporan Pendonoran</a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -115,6 +112,7 @@
                         </tr>
                         </thead>
                         <tbody class="list">
+
                         @foreach ($all as $laporan)
                             <tr>
                                 <td class="name">
@@ -157,7 +155,6 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <!-- Info detail pelaksanaan pendonoran -->
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col">
@@ -171,35 +168,42 @@
                                                         <div class="form-group row mb-3">
                                                             <label for="alamat" class="col-3 col-form-label">Alamat</label>
                                                             <div class="col-7">
-                                                                <input disabled="true" class="form-control" type="text" id="alamat" name="alamat" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->alamat ?? $laporan->mendonor[count($laporan->mendonor)-1]->alamat}}">
+                                                                @if(count($laporan->menerimaDonor) > 0)
+                                                                    <input disabled="true" class="form-control" type="text" id="alamat" name="alamat" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->alamat ?? $laporan->mendonor[count($laporan->mendonor)-1]->alamat}}">
+                                                                @endif
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group row mb-3">
                                                             <label for="kelurahan" class="col-3 col-form-label">Kelurahan</label>
                                                             <div class="col-7">
+                                                                @if(count($laporan->menerimaDonor) > 0)
                                                                 <input disabled="true" class="form-control" type="text" id="kelurahan" name="kelurahan" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->kelurahan ?? $laporan->mendonor[count($laporan->mendonor)-1]->kelurahan }}">
+                                                                @endif
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group row mb-3">
                                                             <label for="kecamatan" class="col-3 col-form-label">Kecamatan</label>
                                                             <div class="col-7">
+                                                                @if(count($laporan->menerimaDonor) > 0)
                                                                 <input disabled="true" class="form-control" type="text" id="kecamatan" name="kecamatan" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->kecamatan ?? $laporan->mendonor[count($laporan->mendonor)-1]->kecamatan }}">
+                                                                @endif
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group row mb-3">
                                                             <label for="kota" class="col-3 col-form-label">Kota</label>
                                                             <div class="col-7">
+                                                                @if(count($laporan->menerimaDonor) > 0)
                                                                 <input disabled="true" class="form-control" type="text" id="kota" name="kota" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->kota ?? $laporan->mendonor[count($laporan->mendonor)-1]->kota }}">
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                             </div>
-                                            <!-- End info detail pelaksanaan pendonoran -->
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -226,28 +230,36 @@
                                                         <div class="form-group row mb-3">
                                                             <label for="judul" class="col-3 col-form-label">Judul</label>
                                                             <div class="col-7">
-                                                                <input disabled="true" class="form-control" type="text" id="judul" name="judul" value="{{ $laporan->report[count($laporan->report)-1]->pesan}}">
+                                                                @if(count($laporan->report) > 0)
+                                                                    <input disabled="true" class="form-control" type="text" id="judul" name="judul" value="{{ $laporan->report[count($laporan->report)-1]->pesan}}">
+                                                                @endif
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group row mb-3">
                                                             <label for="tanggal" class="col-3 col-form-label">Tanggal</label>
                                                             <div class="col-7">
-                                                                <input disabled="true" class="form-control" type="text" id="tanggal" name="tanggal" value="{{ $laporan->report[count($laporan->report)-1]->tgl}}">
+                                                                @if(count($laporan->report) > 0)
+                                                                    <input disabled="true" class="form-control" type="text" id="tanggal" name="tanggal" value="{{ $laporan->report[count($laporan->report)-1]->tgl}}">
+                                                                @endif
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group row mb-3">
                                                             <label for="pesan" class="col-3 col-form-label">Pesan</label>
                                                             <div class="col-7">
+                                                                @if(count($laporan->report) > 0)
                                                                 <input disabled="true" class="form-control" type="text" id="pesan" name="pesan" value="{{ $laporan->report[count($laporan->report)-1]->pesan}}">
+                                                                @endif
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group row mb-3">
                                                             <label for="foto" class="col-3 col-form-label">Foto</label>
                                                             <div class="col-7">
-                                                                <img src="{{url( $laporan->report[count($laporan->report)-1]->foto)}}" alt="" class="rounded img-fluid w-auto">
+                                                                @if(count($laporan->report) > 0)
+                                                                    <img src="{{url( $laporan->report[count($laporan->report)-1]->foto)}}" alt="" class="rounded img-fluid w-auto">
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>

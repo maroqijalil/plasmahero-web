@@ -7,7 +7,7 @@ use App\Admin\Controllers\Donation\UnitDonorController;
 use Illuminate\Support\Facades\Route;
 use App\Admin\Controllers\DasborController;
 use App\Admin\Controllers\AccountController;
-use App\Admin\Controllers\LaporanController;
+use App\Admin\Controllers\Donation\LaporanController;
 use App\Admin\Controllers\ChatController as ChatCreateController;
 use App\Admin\Controllers\Others\GaleriController as AdminGaleriController;
 use App\User\Controllers\UserDetailController;
@@ -77,24 +77,20 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth.role:admin'], function
 
     Route::get('/berita-acara', [ReportController::class, 'show'])->name('berita-acara.show');
 
-    Route::group(['prefix' => 'galeri'], function () {
-        Route::get('/', [AdminGaleriController::class, 'index'])->name('galeri');
-        Route::view('/tambah', 'admin.others.gallery.add');
-        Route::get('/{id}/edit', [AdminGaleriController::class, 'edit']);
-        Route::post('/', [AdminGaleriController::class, 'store']);
-        Route::put('/{id}', [AdminGaleriController::class, 'update']);
-        Route::delete('/{id}', [AdminGaleriController::class, 'destroy']);
-    });
+    Route::get('/galeri', [AdminGaleriController::class, 'index'])->name('galeri');
+    Route::view('/galeri/tambah', 'admin.others.gallery.add');
+    Route::get('/galeri/{id}/edit', [AdminGaleriController::class, 'edit']);
+    Route::post('/galeri/', [AdminGaleriController::class, 'store']);
+    Route::put('/galeri/{id}', [AdminGaleriController::class, 'update']);
+    Route::delete('/galeri/{id}', [AdminGaleriController::class, 'destroy']);
 
-    Route::group(['prefix' => 'cerita'], function () {
-        Route::get('/', [AdminCeritaController::class, 'index'])->name('galeri');
-        Route::post('/{id}/terima', [AdminCeritaController::class, 'accept']);
-        Route::post('/{id}/tolak', [AdminCeritaController::class, 'reject']);
-        Route::get('/{id}/reset', [AdminCeritaController::class, 'reset']);
-    });
+    Route::get('/cerita/', [AdminCeritaController::class, 'index'])->name('cerita');
+    Route::post('/cerita/{id}/terima', [AdminCeritaController::class, 'accept']);
+    Route::post('/cerita/{id}/tolak', [AdminCeritaController::class, 'reject']);
+    Route::get('/cerita/{id}/reset', [AdminCeritaController::class, 'reset']);
 
-    Route::get('/laporan', [LaporanController::class, 'index']);
-    Route::get('/laporan-tanggal', [LaporanController::class, 'index2']);
+    Route::get('/laporan-status', [LaporanController::class, 'getLaporanStatus'])->name('laporan-status');
+    Route::get('/laporan-tanggal', [LaporanController::class, 'getLaporanTanggal'])->name('laporan-tanggal');
 });
 
 Route::view('/akses-eror', 'common.layouts.error')->name('admin.error');
