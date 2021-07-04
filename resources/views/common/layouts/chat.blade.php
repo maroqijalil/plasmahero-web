@@ -37,8 +37,8 @@
             </div>
           </div>
         </a>
-        @endforeach
-        @endif
+      @endforeach
+      @endif
       </div>
     </div>
   </div>
@@ -86,10 +86,16 @@
                         @csrf
                         <div class="row modal-body">
                           <div class="col">
-                            <input type="hidden" name="id_d_pendonor" id="" value="{{$show_chat->pendonor->pengguna->mendonor->first()->id}}">
-                            <input type="hidden" name="id_d_penerima" id="" value="{{$show_chat->penerima->pengguna->menerimaDonor->first()->id}}">
-                            <input type="hidden" name="pendonorId" id="" value="{{$show_chat->pendonor->pengguna->id}}">
-                            <input type="hidden" name="penerimaId" id="" value="{{$show_chat->penerima->pengguna->id}}">
+                            @if($show_chat)
+                              <input type="hidden" name="id_d_pendonor" id="" value="{{$show_chat->pendonor->pengguna->mendonor->first()->id}}">
+                              <input type="hidden" name="id_d_penerima" id="" value="{{$show_chat->penerima->pengguna->menerimaDonor->first()->id}}">
+                              <input type="hidden" name="pendonorId" id="" value="{{$show_chat->pendonor->pengguna->id}}">
+                              <input type="hidden" name="penerimaId" id="" value="{{$show_chat->penerima->pengguna->id}}">
+
+                              <!-- chat handler -->
+                              <input type="hidden" name="id_partisipan" value="{{ $show_chat->id }}">
+                              <input type="hidden" name="id_pengirim" value="{{ Auth::user()->id }}">
+                            @endif
                             <div class="form-group row mb-3">
                               <label for="tgl" class="col-6 col-form-label">Tanggal Donor</label>
                               <div class="col-6">

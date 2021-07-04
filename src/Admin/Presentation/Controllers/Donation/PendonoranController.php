@@ -7,13 +7,23 @@ use App\Common\Repositories\UserRepositoryInterface;
 use App\Controller\BaseController;
 use App\Common\Models\Pencocokan;
 use App\Admin\Requests\StorePendonoranRequest;
+use App\Common\Controllers\ChatController;
 use App\Common\Models\Pengguna;
+use App\Common\Models\Pesan;
+use App\Common\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class PendonoranController extends BaseController
 {
+
+	private $chat_controller;
+
+	public function __construct (ChatController $chat_controller) {
+		$this->chat_controller = $chat_controller;
+	}
 
 	public function index()
 	{
@@ -33,6 +43,13 @@ class PendonoranController extends BaseController
 			'id_penerima' => $request->id_penerima
 		]);
 
+		DB::table('donor')->where('id_pendonor', $request->id_pendonor)->update([
+			'id_penerima' => $request->id_penerima,
+		]);
+		DB::table('donor')->where('id_penerima', $request->id_penerima)->update([
+			'id_pendonor' => $request->id_pendonor,
+		]);
+
 		DB::table('pengguna')->where('id', $request->id_pendonor)->update(['status' => 'm']);
 		DB::table('pengguna')->where('id', $request->id_penerima)->update(['status' => 'm']);
 
@@ -47,6 +64,14 @@ class PendonoranController extends BaseController
 
 		DB::table('pengguna')->where('id', $request->pendonorId)->update(['status' => 'p']);
 		DB::table('pengguna')->where('id', $request->penerimaId)->update(['status' => 'p']);
+
+		$pengirim = User::findOrFail($request->id_pengirim);
+		$pesan = Pesan::create([
+      'id_partisipan' => $request->id_partisipan,
+      'id_pengirim' => $request->id_pengirim,
+      'isi' => $pengirim->name . ' telah menetapkan jadwal pendonoran ' . $request->tgl,
+      'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+    ]);
 
 		return back()->with('success', 'Tanggal berhasil diatur');
 	}

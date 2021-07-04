@@ -14,25 +14,11 @@ use Exception;
 class ChatController extends BaseController {
   
   public function show() {
-    $partisipans = $this->getPartisipans(Auth::user()->id);
-    $pesan = new Collection;
-    foreach($partisipans as $partisipan) {
-      $pesan = $pesan->union($partisipan->pesan->where('id_pengirim', '!=', Auth::user()->id));
-    }
-    $pesan = $pesan->sortBy([['updated_at', 'desc']]);
-    $pesan = $pesan->take(10);
-    return $this->nullHandlePartisipans(null, $pesan, 'notifikasi_pesan');
+    return $this->printChatData(null);
   }
 
   public function index($active_chat) {
-    $partisipans = $this->getPartisipans(Auth::user()->id);
-    $pesan = new Collection;
-    foreach($partisipans as $partisipan) {
-      $pesan = $pesan->union($partisipan->pesan->where('id_pengirim', '!=', Auth::user()->id));
-    }
-    $pesan = $pesan->sortBy([['updated_at', 'desc']]);
-    $pesan = $pesan->take(10);
-    return $this->nullHandlePartisipans($active_chat, $pesan, 'notifikasi_pesan');
+    return $this->printChatData($active_chat);
   }
 
   public function store(Request $request) {
@@ -49,6 +35,17 @@ class ChatController extends BaseController {
 
 
   /* utility */
+  public function printChatData($active_chat) {
+    $partisipans = $this->getPartisipans(Auth::user()->id);
+    $pesan = new Collection;
+    foreach($partisipans as $partisipan) {
+      $pesan = $pesan->union($partisipan->pesan->where('id_pengirim', '!=', Auth::user()->id));
+    }
+    $pesan = $pesan->sortBy([['updated_at', 'desc']]);
+    $pesan = $pesan->take(10);
+    return $this->nullHandlePartisipans($active_chat, $pesan, 'notifikasi_pesan');
+  }
+
   public function getPartisipans($id) {
     return Partisipan::where('id_admin', '=', $id)
                       ->orWhere('id_pendonor', '=', $id)

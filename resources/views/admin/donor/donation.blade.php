@@ -103,7 +103,7 @@ Dashboard
 				</div>
 				<div class="col-3">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Cari sesuatu ..." aria-describedby="search-btn"/>
+						<input id="search-pendonor" onkeyup="searchPendonor()" type="text" class="form-control" placeholder="Cari sesuatu ..." aria-describedby="search-btn"/>
 						<button class="btn btn-primary" id="search-btn">
 							<i class="fas fa-search"></i>
 						</button>
@@ -112,7 +112,7 @@ Dashboard
 			</div>
 		</div>
 		<div class="card-body">
-			<table class="table table-striped">
+			<table class="table table-striped" id="table-pendonor">
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col">ID</th>
@@ -138,7 +138,7 @@ Dashboard
 				</tbody>
 			</table>
 			<br>
-			<div>total <?php echo ($counter-1); ?></div>
+			<div id="total-pendonor">total <?php echo ($counter-1); ?></div>
 		</div>
 	</div>
 
@@ -150,7 +150,7 @@ Dashboard
 				</div>
 				<div class="col-3">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Cari sesuatu ..." aria-describedby="search-btn"/>
+						<input id="search-penerima" onkeyup="searchPenerima()" type="text" class="form-control" placeholder="Cari sesuatu ..." aria-describedby="search-btn"/>
 						<button class="btn btn-primary" id="search-btn">
 							<i class="fas fa-search"></i>
 						</button>
@@ -159,7 +159,7 @@ Dashboard
 			</div>
 		</div>
 		<div class="card-body">
-			<table class="table table-striped">
+			<table class="table table-striped" id="table-penerima">
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col">ID</th>
@@ -203,7 +203,7 @@ Dashboard
 					</div>
 					<div class="col-3">
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Cari sesuatu ..." aria-describedby="search-btn"/>
+							<input id="search-pencocokan" onkeyup="searchPencocokan()" type="text" class="form-control" placeholder="Cari sesuatu ..." aria-describedby="search-btn"/>
 							<button class="btn btn-primary" id="search-btn">
 								<i class="fas fa-search"></i>
 							</button>
@@ -212,7 +212,7 @@ Dashboard
 				</div>
 			</div>
 			<div class="card-body">
-				<table class="table table-striped">
+				<table id="table-pencocokan" class="table table-striped">
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col">No</th>
@@ -248,9 +248,44 @@ Dashboard
 @stop
 
 @section('css')
-    
-@stop
 
-@section('js')
-    
-@stop
+
+@section('script')
+<script>
+function searchPencocokan() {
+	searchMyTable("search-pencocokan", "table-pencocokan");
+}
+
+function searchPenerima() {
+	searchMyTable("search-penerima", "table-penerima")
+}
+
+function searchPendonor() {
+	searchMyTable("search-pendonor", "table-pendonor");
+}
+
+function searchMyTable(input_id, table_id) {
+	var input, filter, table, tr, td, it1, txtValue, total = 0;
+	input = document.getElementById(input_id);
+	filter = input.value.toUpperCase();
+	table = document.getElementById(table_id);
+	tr = table.getElementsByTagName("tr");
+	for (it1 = 0; it1 < tr.length; it1++) {
+		td = tr[it1].getElementsByTagName("td");
+		for (it2 = 0; it2 < td.length; it2++) {
+			if (td[it2]) {
+				txtValue = td[it2].textContent || td[it2].innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[it1].style.display = "";
+					total++;
+					break;
+				} else {
+					tr[it1].style.display = "none";
+				}
+			}
+		}
+	}
+	document.getElementById("total-pendonor").innerText = total;
+}
+</script>
+@endsection
