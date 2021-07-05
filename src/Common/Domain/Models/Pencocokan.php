@@ -29,4 +29,8 @@ class Pencocokan extends BaseModel
 	{
 		return new PencocokanFactory();
 	}
+
+	public function donor() {
+		return $this->hasOne(Donor::class, 'id_pencocoka', 'id');
+	}
 }

@@ -43,14 +43,18 @@ class PendonoranController extends BaseController
 
 	public function store(StorePendonoranRequest $request)
 	{
-		Pencocokan::create([
+		$pencocokan = Pencocokan::create([
 			'id_admin' => $request->id_admin,
 			'id_pendonor' => $request->id_pendonor,
 			'id_penerima' => $request->id_penerima
 		]);
 
-		$this->dbUpdate('donor', 'id_pendonor', $request->id_pendonor, ['id_penerima' => $request->id_penerima]);
-		$this->dbUpdate('donor', 'id_penerima', $request->id_penerima, ['id_pendonor' => $request->id_pendonor]);
+		$donors = Donor::orWhere('id_pendonor', $request->id_pendonor)
+					->orWhere('id_penerima', $request->id_penerima)->get();
+		foreach($donors as $donor) {
+			$donor->update(['id_pencocokan' => $pencocokan->id]);
+		}
+
 		$this->dbUpdate('pengguna', 'id', $request->id_pendonor, ['status' => 'm']);
 		$this->dbUpdate('pengguna', 'id', $request->id_penerima, ['status' => 'm']);
 
@@ -59,8 +63,9 @@ class PendonoranController extends BaseController
 
 	public function setJadwal(Request $request)
 	{
-		$all = Donor::where('id', $request->id_d_pendonor)->get();
-		$all = $all->union(Donor::where('id', $request->id_d_penerima)->get());
+		$all_pendonor = Donor::where('id_pendonor', $request->pendonorId)->get();
+		$all_penerima = Donor::where('id_penerima', $request->penerimaId)->get();
+		$all = $all_penerima->merge($all_pendonor);
 		foreach($all as $one) {
 			$one->update(['tanggal' => $request->tgl, 'id_udd' => $request->id_udd]);
 		}

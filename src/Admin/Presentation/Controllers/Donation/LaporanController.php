@@ -44,13 +44,18 @@ class LaporanController extends BaseController
 
 	public function getLaporanTanggal()
 	{
-		$all_penerima = $this->getLaporanByRole('penerima');
-		$all_pendonor = $this->getLaporanByRole('pendonor');
+		// $all_penerima = $this->getLaporanByRole('penerima');
+		// $all_pendonor = $this->getLaporanByRole('pendonor');
 
-		$all = new Collection();
-		$all = $all->union($all_pendonor);
-		$all = $all->union($all_penerima);
+		// $all = new Collection();
+		// $all = $all->union($all_pendonor);
+		// $all = $all->union($all_penerima);
+		$all = Donor::all()->unique('id_pencocokan');
 		$allData = $all;
+
+		// $allData = $allData->unique(function ($item){
+		// 	return $item['id_pendonor '] . $item['id_penerima'] . $item['tanggal'];
+		// });
 
 		return view('admin.donor.laporan-tanggal', compact(['allData']));
 	}

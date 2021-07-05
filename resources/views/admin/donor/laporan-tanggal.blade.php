@@ -38,12 +38,14 @@
                         <tbody class="list">
 
                         @foreach ($allData as $laporan)
+                        @if($laporan->pencocokan)
+                        @if($laporan->pencocokan->pendonor)
                             <tr>
                                 <td class="name">
-                                    <p>{{$laporan->pendonor->user->name}}</p>
+                                    <p>{{$laporan->pencocokan->pendonor->user->name}}</p>
                                 </td>
                                 <td class="name">
-                                    <p>{{$laporan->penerima->user->name}}</p>
+                                    <p>{{$laporan->pencocokan->penerima->user->name}}</p>
                                 </td>
                                 <td class="role">
                                     <p>{{$laporan->tanggal}}</p>
@@ -92,6 +94,8 @@
 {{--                                    </div>--}}
 {{--                                </div>--}}
 {{--                            </div>--}}
+                        @endif
+                        @endif
                         @endforeach
                         </tbody>
                     </table>

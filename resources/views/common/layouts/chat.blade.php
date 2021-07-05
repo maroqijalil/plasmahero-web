@@ -86,7 +86,9 @@
                         @csrf
                         <div class="row modal-body">
                           <div class="col">
-                            @if($show_chat)
+                            @if($show_chat 
+                                && $show_chat->pendonor->pengguna->mendonor
+                                && $show_chat->pendonor->pengguna->mendonor->first())
                               <input type="hidden" name="id_d_pendonor" id="" value="{{$show_chat->pendonor->pengguna->mendonor->first()->id}}">
                               <input type="hidden" name="id_d_penerima" id="" value="{{$show_chat->penerima->pengguna->menerimaDonor->first()->id}}">
                               <input type="hidden" name="pendonorId" id="" value="{{$show_chat->pendonor->pengguna->id}}">

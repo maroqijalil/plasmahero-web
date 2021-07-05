@@ -20,7 +20,8 @@ class Donor extends BaseModel
 		'kecamatan',
 		'kota',
 		'judul',
-		'isi'
+		'isi',
+		'id_pencocokan'
 	];
 
 	public function pendonor()
@@ -45,5 +46,9 @@ class Donor extends BaseModel
 
 	public function unitDonor() {
 		return $this->belongsTo(UnitDonor::class, 'id_udd', 'id');
+	}
+
+	public function pencocokan() {
+		return $this->belongsTo(Pencocokan::class, 'id_pencocokan', 'id');
 	}
 }
