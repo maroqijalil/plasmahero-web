@@ -30,16 +30,25 @@ class LaporanController extends BaseController
 		$all = Donor::with(['penerima', 'pendonor'])
 			->get()
 			->reject(function ($data) {
-				return $data->penerima->status != 'a';
+			    if ($data->penerima == null)
+			        return false;
+			    return $data->penerima->status != 'p';;
 			});
 
+		$allData = [];
 		$userPendonor = [];
 		$userPenerima = [];
 		foreach ($all as $laporan) {
-			array_push($userPendonor, User::findOrFail($laporan->pendonor->id_user));
-			array_push($userPenerima, User::findOrFail($laporan->penerima->id_user));
+		    if($laporan->pendonor != null)
+		        continue;
+		    if($laporan->penerima != null)
+		        continue;
+
+		    array_push($allData, $laporan);
+            array_push($userPendonor, User::findOrFail($laporan->pendonor->id_user));
+            array_push($userPenerima, User::findOrFail($laporan->penerima->id_user));
 		}
 
-		return view('admin.donor.laporan-tanggal', compact(['all', 'userPendonor', 'userPenerima']));
+		return view('admin.donor.laporan-tanggal', compact(['allData', 'userPendonor', 'userPenerima']));
 	}
 }

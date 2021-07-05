@@ -133,14 +133,14 @@
                                     @endif
                                 </td>
                                 <td class="lihat-detail">
-                                    @if($laporan->status == 's' or $laporan->status == 's')
+                                    @if($laporan->status == 's' or $laporan->status == 'g')
                                         <a href="/admin/pendonoran" class="btn btn-primary">Lakukan pencocokan</a>
+                                    @elseif($laporan->status == 'm')
+                                        <a href="/admin/{{Auth::User()->id}}" class="btn btn-primary">Jadwalkan lewat chat</a>
                                     @elseif($laporan->status == 'g')
                                         <button class="btn btn-primary" data-toggle="modal" data-target="#waitingForSchedule{{$laporan->id}}">Jadwalkan melalui chat</button>
                                     @elseif($laporan->status == 'p')
                                         <button class="btn btn-primary" data-toggle="modal" data-target="#matched{{$laporan->id}}">Lihat Jadwal</button>
-                                    @else
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#done{{$laporan->id}}">Lihat Berita Acara</button>
                                     @endif
                                 </td>
                             </tr>
