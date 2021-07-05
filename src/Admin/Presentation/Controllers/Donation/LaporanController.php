@@ -19,10 +19,10 @@ class LaporanController extends BaseController
             });
 		$waitingToMatch = DB::table('pengguna')->where('status', ['s', 'g'])->get();
 		$waitingToSchedule = DB::table('pengguna')->where('status', 'm')->get();
-		$matched = DB::table('pengguna')->where('status', 'p')->get();
+		$planned = DB::table('pengguna')->where('status', 'p')->get();
 		$done = DB::table('pengguna')->where('status', 'a')->get();
 
-		return view('admin.donor.laporan-status', compact(['all', 'waitingToMatch', 'waitingToSchedule', 'matched', 'done']));
+		return view('admin.donor.laporan-status', compact(['all', 'waitingToMatch', 'waitingToSchedule', 'planned', 'done']));
 	}
 
 	public function getLaporanTanggal()
