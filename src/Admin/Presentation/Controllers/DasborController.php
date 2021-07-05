@@ -32,6 +32,7 @@ class DasborController extends BaseController
 		return view('admin.dashboard', compact(['new_users', 'new_pencocokan', 'my_labels', 'pendonor', 'penerima', 'pencocokan', 'udd']));
 	}
 
+	/* pindah ke repo */
 	/* get 7 last days */
 	public function getSevenDates($format)
 	{

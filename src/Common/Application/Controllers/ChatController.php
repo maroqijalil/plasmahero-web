@@ -34,7 +34,7 @@ class ChatController extends BaseController {
   }
 
 
-  /* utility */
+  /* pindah ke repo */
   public function printChatData($active_chat) {
     $partisipans = $this->getPartisipans(Auth::user()->id);
     $pesan = new Collection;

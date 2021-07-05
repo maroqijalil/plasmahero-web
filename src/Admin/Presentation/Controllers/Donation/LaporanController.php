@@ -29,34 +29,8 @@ class LaporanController extends BaseController
 
 	public function getLaporanTanggal()
 	{
-		$all = Donor::with(['penerima', 'pendonor'])
-			->get()
-			->reject(function ($data) {
-			    if ($data->penerima == null)
-			        return false;
-			    return $data->penerima->status != 'p';;
-			});
-
-		$allData = [];
-		$userPendonor = [];
-		$userPenerima = [];
-		foreach ($all as $laporan) {
-		    if($laporan->pendonor == null)
-		        continue;
-		    if($laporan->penerima == null)
-		        continue;
-
-		    array_push($allData, $laporan);
-            array_push($userPendonor, User::findOrFail($laporan->pendonor->id_user));
-            array_push($userPenerima, User::findOrFail($laporan->penerima->id_user));
-		}
-
-		$all_penerima = Donor::whereHas('penerima', function (Builder $query) {
-      $query->where('status', 'like', 'p');
-    })->get();
-		$all_pendonor = Donor::whereHas('pendonor', function (Builder $query) {
-      $query->where('status', 'like', 'p');
-    })->get();
+		$all_penerima = $this->getLaporanByRole('penerima');
+		$all_pendonor = $this->getLaporanByRole('pendonor');
 
 		$all = new Collection();
 		$all = $all->union($all_pendonor);
@@ -65,6 +39,13 @@ class LaporanController extends BaseController
 
 		// dd($allData);
 
-		return view('admin.donor.laporan-tanggal', compact(['allData', 'userPendonor', 'userPenerima']));
+		return view('admin.donor.laporan-tanggal', compact(['allData']));
+	}
+
+	/* pindah ke repo */
+	public function getLaporanByRole($role) {
+		return Donor::whereHas($role, function (Builder $query) {
+      $query->where('status', 'like', 'p');
+    })->get();
 	}
 }

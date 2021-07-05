@@ -43,15 +43,10 @@ class PendonoranController extends BaseController
 			'id_penerima' => $request->id_penerima
 		]);
 
-		DB::table('donor')->where('id_pendonor', $request->id_pendonor)->update([
-			'id_penerima' => $request->id_penerima,
-		]);
-		DB::table('donor')->where('id_penerima', $request->id_penerima)->update([
-			'id_pendonor' => $request->id_pendonor,
-		]);
-
-		DB::table('pengguna')->where('id', $request->id_pendonor)->update(['status' => 'm']);
-		DB::table('pengguna')->where('id', $request->id_penerima)->update(['status' => 'm']);
+		$this->dbUpdate('donor', 'id_pendonor', $request->id_pendonor, ['id_penerima' => $request->id_penerima]);
+		$this->dbUpdate('donor', 'id_penerima', $request->id_penerima, ['id_pendonor' => $request->id_pendonor]);
+		$this->dbUpdate('pengguna', 'id', $request->id_pendonor, ['status' => 'm']);
+		$this->dbUpdate('pengguna', 'id', $request->id_penerima, ['status' => 'm']);
 
 		return back()->with('success', 'Pencocokan Berhasil ditambahkan');
 	}
@@ -59,11 +54,10 @@ class PendonoranController extends BaseController
 	public function setJadwal(Request $request)
 	{
 		// dd($request->penerimaId);
-		DB::table('donor')->where('id', $request->id_d_pendonor)->update(['tanggal' => $request->tgl]);
-		DB::table('donor')->where('id', $request->id_d_penerima)->update(['tanggal' => $request->tgl]);
-
-		DB::table('pengguna')->where('id', $request->pendonorId)->update(['status' => 'p']);
-		DB::table('pengguna')->where('id', $request->penerimaId)->update(['status' => 'p']);
+		$this->dbUpdate('donor', 'id', $request->id_d_pendonor, ['tanggal' => $request->tgl]);
+		$this->dbUpdate('donor', 'id', $request->id_d_penerima, ['tanggal' => $request->tgl]);
+		$this->dbUpdate('pengguna', 'id', $request->pendonorId, ['status' => 'p']);
+		$this->dbUpdate('pengguna', 'id', $request->penerimaId, ['status' => 'p']);
 
 		$pengirim = User::findOrFail($request->id_pengirim);
 		$pesan = Pesan::create([
@@ -80,5 +74,10 @@ class PendonoranController extends BaseController
 	{
 		$pendonoranRepository = App::make(PendonoranRepositoryInterface::class);
 		return $this->sendResponse($pendonoranRepository->all(), "Daftar pendonoran berhasil di dapatkan");
+	}
+
+	/* pindah ke repo */
+	public function dbUpdate($table_name, $condition_col, $condition_val, $update) {
+		return DB::table($table_name)->where($condition_col, $condition_val)->update($update);
 	}
 }
