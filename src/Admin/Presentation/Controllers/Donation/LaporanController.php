@@ -39,9 +39,9 @@ class LaporanController extends BaseController
 		$userPendonor = [];
 		$userPenerima = [];
 		foreach ($all as $laporan) {
-		    if($laporan->pendonor != null)
+		    if($laporan->pendonor == null)
 		        continue;
-		    if($laporan->penerima != null)
+		    if($laporan->penerima == null)
 		        continue;
 
 		    array_push($allData, $laporan);
