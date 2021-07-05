@@ -7,6 +7,8 @@ use App\Common\Models\Pengguna;
 use App\Common\Models\User;
 use App\Common\Models\Donor;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 class LaporanController extends BaseController
 {
@@ -48,6 +50,20 @@ class LaporanController extends BaseController
             array_push($userPendonor, User::findOrFail($laporan->pendonor->id_user));
             array_push($userPenerima, User::findOrFail($laporan->penerima->id_user));
 		}
+
+		$all_penerima = Donor::whereHas('penerima', function (Builder $query) {
+      $query->where('status', 'like', 'p');
+    })->get();
+		$all_pendonor = Donor::whereHas('pendonor', function (Builder $query) {
+      $query->where('status', 'like', 'p');
+    })->get();
+
+		$all = new Collection();
+		$all = $all->union($all_pendonor);
+		$all = $all->union($all_penerima);
+		$allData = $all;
+
+		// dd($allData);
 
 		return view('admin.donor.laporan-tanggal', compact(['allData', 'userPendonor', 'userPenerima']));
 	}

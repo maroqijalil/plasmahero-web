@@ -40,10 +40,10 @@
                         @foreach ($allData as $laporan)
                             <tr>
                                 <td class="name">
-                                    <p>{{$userPenerima[$loop->index]->name}}</p>
+                                    <p>{{$laporan->pendonor->user->name}}</p>
                                 </td>
                                 <td class="name">
-                                    <p>{{$userPendonor[$loop->index]->name}}</p>
+                                    <p>{{$laporan->penerima->user->name}}</p>
                                 </td>
                                 <td class="role">
                                     <p>{{$laporan->tanggal}}</p>
