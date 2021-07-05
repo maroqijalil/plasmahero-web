@@ -135,17 +135,20 @@
                                 <td class="lihat-detail">
                                     @if($laporan->status == 's' or $laporan->status == 'g')
                                         <a href="/admin/pendonoran" class="btn btn-primary">Lakukan pencocokan</a>
-                                    @elseif($laporan->status == 'm')
-                                        <a href="/admin/{{Auth::User()->id}}" class="btn btn-primary">Jadwalkan lewat chat</a>
                                     @elseif($laporan->status == 'g')
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#waitingForSchedule{{$laporan->id}}">Jadwalkan melalui chat</button>
-                                    @elseif($laporan->status == 'p')
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#matched{{$laporan->id}}">Lihat Jadwal</button>
+                                        <a class="btn btn-primary">Lakukan pencocokan</a>
+                                    @elseif($laporan->status == 'm')
+                                        <a href="{{ route('chat', ['id' => 1]) }}" class="btn btn-primary">Jadwalkan lewat chat</a>
+                                    @elseif($laporan->status == 'p' && $laporan->nama_tipe == 'pendonor')
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#plannedPendonor{{$laporan->id}}">Lihat Detail</button>
+                                    @elseif($laporan->status == 'p' && $laporan->nama_tipe == 'penerima')
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#plannedPenerima{{$laporan->id}}">Lihat Detail</button>
                                     @endif
                                 </td>
                             </tr>
-                            <!-- Untuk menunggu dicocokkan -->
-                            <div class="modal fade" id="matched{{$laporan->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+
+                            <!-- Untuk melihat lihat detail pendonor -->
+                            <div class="modal fade" id="plannedPendonor{{$laporan->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -166,10 +169,19 @@
                                                         </div>
 
                                                         <div class="form-group row mb-3">
+                                                            <label for="alamat" class="col-3 col-form-label">Jadwal</label>
+                                                            <div class="col-7">
+                                                                @if(count($laporan->mendonor) > 0)
+                                                                    <input disabled="true" class="form-control" type="text" id="alamat" name="alamat" value="{{ $laporan->mendonor[count($laporan->mendonor)-1]->tanggal}}">
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row mb-3">
                                                             <label for="alamat" class="col-3 col-form-label">Alamat</label>
                                                             <div class="col-7">
-                                                                @if(count($laporan->menerimaDonor) > 0)
-                                                                    <input disabled="true" class="form-control" type="text" id="alamat" name="alamat" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->alamat ?? $laporan->mendonor[count($laporan->mendonor)-1]->alamat}}">
+                                                                @if(count($laporan->mendonor) > 0)
+                                                                    <input disabled="true" class="form-control" type="text" id="alamat" name="alamat" value="{{ $laporan->mendonor[count($laporan->mendonor)-1]->alamat}}">
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -177,8 +189,8 @@
                                                         <div class="form-group row mb-3">
                                                             <label for="kelurahan" class="col-3 col-form-label">Kelurahan</label>
                                                             <div class="col-7">
-                                                                @if(count($laporan->menerimaDonor) > 0)
-                                                                <input disabled="true" class="form-control" type="text" id="kelurahan" name="kelurahan" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->kelurahan ?? $laporan->mendonor[count($laporan->mendonor)-1]->kelurahan }}">
+                                                                @if(count($laporan->mendonor) > 0)
+                                                                <input disabled="true" class="form-control" type="text" id="kelurahan" name="kelurahan" value="{{ $laporan->mendonor[count($laporan->mendonor)-1]->kelurahan}}">
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -186,8 +198,8 @@
                                                         <div class="form-group row mb-3">
                                                             <label for="kecamatan" class="col-3 col-form-label">Kecamatan</label>
                                                             <div class="col-7">
-                                                                @if(count($laporan->menerimaDonor) > 0)
-                                                                <input disabled="true" class="form-control" type="text" id="kecamatan" name="kecamatan" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->kecamatan ?? $laporan->mendonor[count($laporan->mendonor)-1]->kecamatan }}">
+                                                                @if(count($laporan->mendonor) > 0)
+                                                                <input disabled="true" class="form-control" type="text" id="kecamatan" name="kecamatan" value="{{ $laporan->mendonor[count($laporan->mendonor)-1]->kecamatan}}">
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -195,8 +207,8 @@
                                                         <div class="form-group row mb-3">
                                                             <label for="kota" class="col-3 col-form-label">Kota</label>
                                                             <div class="col-7">
-                                                                @if(count($laporan->menerimaDonor) > 0)
-                                                                <input disabled="true" class="form-control" type="text" id="kota" name="kota" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->kota ?? $laporan->mendonor[count($laporan->mendonor)-1]->kota }}">
+                                                                @if(count($laporan->mendonor) > 0)
+                                                                <input disabled="true" class="form-control" type="text" id="kota" name="kota" value="{{ $laporan->mendonor[count($laporan->mendonor)-1]->kota}}">
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -211,14 +223,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End untuk menunggu dicocokkan -->
+                            <!-- End untuk melihat lihat detail pendonor-->
 
-                            <!-- Untuk pendonoran selesai -->
-                            <div class="modal fade" id="done{{$laporan->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <!-- Untuk melihat lihat detail penerima -->
+                            <div class="modal fade" id="plannedPenerima{{$laporan->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Berita Acara Pendonoran</h5>
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Informasi pendonoran Sdr. {{$laporan->user->name}}</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -228,37 +240,53 @@
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="form-group row mb-3">
-                                                            <label for="judul" class="col-3 col-form-label">Judul</label>
+                                                            <label for="tipe" class="col-3 col-form-label">Peran</label>
                                                             <div class="col-7">
-                                                                @if(count($laporan->report) > 0)
-                                                                    <input disabled="true" class="form-control" type="text" id="judul" name="judul" value="{{ $laporan->report[count($laporan->report)-1]->pesan}}">
+                                                                <input disabled="true" class="form-control" type="text" id="no_hp" name="no_hp" value="{{ $laporan->nama_tipe }}">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row mb-3">
+                                                            <label for="alamat" class="col-3 col-form-label">Jadwal</label>
+                                                            <div class="col-7">
+                                                                @if(count($laporan->menerimaDonor) > 0)
+                                                                    <input disabled="true" class="form-control" type="text" id="alamat" name="alamat" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->tanggal}}">
                                                                 @endif
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group row mb-3">
-                                                            <label for="tanggal" class="col-3 col-form-label">Tanggal</label>
+                                                            <label for="alamat" class="col-3 col-form-label">Alamat</label>
                                                             <div class="col-7">
-                                                                @if(count($laporan->report) > 0)
-                                                                    <input disabled="true" class="form-control" type="text" id="tanggal" name="tanggal" value="{{ $laporan->report[count($laporan->report)-1]->tgl}}">
+                                                                @if(count($laporan->menerimaDonor) > 0)
+                                                                    <input disabled="true" class="form-control" type="text" id="alamat" name="alamat" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->alamat}}">
                                                                 @endif
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group row mb-3">
-                                                            <label for="pesan" class="col-3 col-form-label">Pesan</label>
+                                                            <label for="kelurahan" class="col-3 col-form-label">Kelurahan</label>
                                                             <div class="col-7">
-                                                                @if(count($laporan->report) > 0)
-                                                                <input disabled="true" class="form-control" type="text" id="pesan" name="pesan" value="{{ $laporan->report[count($laporan->report)-1]->pesan}}">
+                                                                @if(count($laporan->menerimaDonor) > 0)
+                                                                    <input disabled="true" class="form-control" type="text" id="kelurahan" name="kelurahan" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->kelurahan}}">
                                                                 @endif
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group row mb-3">
-                                                            <label for="foto" class="col-3 col-form-label">Foto</label>
+                                                            <label for="kecamatan" class="col-3 col-form-label">Kecamatan</label>
                                                             <div class="col-7">
-                                                                @if(count($laporan->report) > 0)
-                                                                    <img src="{{url( $laporan->report[count($laporan->report)-1]->foto)}}" alt="" class="rounded img-fluid w-auto">
+                                                                @if(count($laporan->menerimaDonor) > 0)
+                                                                    <input disabled="true" class="form-control" type="text" id="kecamatan" name="kecamatan" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->kecamatan}}">
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row mb-3">
+                                                            <label for="kota" class="col-3 col-form-label">Kota</label>
+                                                            <div class="col-7">
+                                                                @if(count($laporan->menerimaDonor) > 0)
+                                                                    <input disabled="true" class="form-control" type="text" id="kota" name="kota" value="{{ $laporan->menerimaDonor[count($laporan->menerimaDonor)-1]->kota}}">
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -273,36 +301,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End untuk pendonoran selesai -->
+                            <!-- End untuk melihat lihat detail penerima -->
                         @endforeach
                         </tbody>
                     </table>
                 </div>
-{{--                <div class="card-footer py-4">--}}
-{{--                    <nav aria-label="...">--}}
-{{--                        <ul class="pagination justify-content-end mb-0">--}}
-{{--                            <li class="page-item disabled">--}}
-{{--                                <a class="page-link" href="#" tabindex="-1">--}}
-{{--                                    <i class="fas fa-angle-left"></i>--}}
-{{--                                    <span class="sr-only">Previous</span>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                            <li class="page-item active">--}}
-{{--                                <a class="page-link" href="#">1</a>--}}
-{{--                            </li>--}}
-{{--                            <li class="page-item">--}}
-{{--                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>--}}
-{{--                            </li>--}}
-{{--                            <li class="page-item"><a class="page-link" href="#">3</a></li>--}}
-{{--                            <li class="page-item">--}}
-{{--                                <a class="page-link" href="#">--}}
-{{--                                    <i class="fas fa-angle-right"></i>--}}
-{{--                                    <span class="sr-only">Next</span>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </nav>--}}
-{{--                </div>--}}
             </div>
         </div>
     </div>

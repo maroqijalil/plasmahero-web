@@ -19,10 +19,25 @@ class LaporanController extends BaseController
             ->reject(function($data) {
                 return $data->status == 'i';
             });
-		$waitingToMatch = DB::table('pengguna')->where('status', ['s', 'g'])->get();
-		$waitingToSchedule = DB::table('pengguna')->where('status', 'm')->get();
-		$planned = DB::table('pengguna')->where('status', 'p')->get();
-		$done = DB::table('pengguna')->where('status', 'a')->get();
+
+//		dd($all);
+
+		$waitingToMatch = DB::table('pengguna')
+            ->where('status', 's')
+            ->orWhere('status', 'g')
+            ->get();
+
+		$waitingToSchedule = DB::table('pengguna')
+            ->where('status', 'm')
+            ->get();
+
+		$planned = DB::table('pengguna')
+            ->where('status', 'p')
+            ->get();
+
+		$done = DB::table('pengguna')
+            ->where('status', 'a')
+            ->get();
 
 		return view('admin.donor.laporan-status', compact(['all', 'waitingToMatch', 'waitingToSchedule', 'planned', 'done']));
 	}
@@ -37,15 +52,13 @@ class LaporanController extends BaseController
 		$all = $all->union($all_penerima);
 		$allData = $all;
 
-		// dd($allData);
-
 		return view('admin.donor.laporan-tanggal', compact(['allData']));
 	}
 
 	/* pindah ke repo */
 	public function getLaporanByRole($role) {
 		return Donor::whereHas($role, function (Builder $query) {
-      $query->where('status', 'like', 'p');
-    })->get();
+          $query->where('status', 'like', 'p');
+        })->get();
 	}
 }
