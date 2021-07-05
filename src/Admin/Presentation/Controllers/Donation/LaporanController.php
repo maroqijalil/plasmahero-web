@@ -7,6 +7,8 @@ use App\Common\Models\Pengguna;
 use App\Common\Models\User;
 use App\Common\Models\Donor;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 class LaporanController extends BaseController
 {
@@ -27,28 +29,23 @@ class LaporanController extends BaseController
 
 	public function getLaporanTanggal()
 	{
-		$all = Donor::with(['penerima', 'pendonor'])
-			->get()
-			->reject(function ($data) {
-			    if ($data->penerima == null)
-			        return false;
-			    return $data->penerima->status != 'p';;
-			});
+		$all_penerima = $this->getLaporanByRole('penerima');
+		$all_pendonor = $this->getLaporanByRole('pendonor');
 
-		$allData = [];
-		$userPendonor = [];
-		$userPenerima = [];
-		foreach ($all as $laporan) {
-		    if($laporan->pendonor != null)
-		        continue;
-		    if($laporan->penerima != null)
-		        continue;
+		$all = new Collection();
+		$all = $all->union($all_pendonor);
+		$all = $all->union($all_penerima);
+		$allData = $all;
 
-		    array_push($allData, $laporan);
-            array_push($userPendonor, User::findOrFail($laporan->pendonor->id_user));
-            array_push($userPenerima, User::findOrFail($laporan->penerima->id_user));
-		}
+		// dd($allData);
 
-		return view('admin.donor.laporan-tanggal', compact(['allData', 'userPendonor', 'userPenerima']));
+		return view('admin.donor.laporan-tanggal', compact(['allData']));
+	}
+
+	/* pindah ke repo */
+	public function getLaporanByRole($role) {
+		return Donor::whereHas($role, function (Builder $query) {
+      $query->where('status', 'like', 'p');
+    })->get();
 	}
 }
