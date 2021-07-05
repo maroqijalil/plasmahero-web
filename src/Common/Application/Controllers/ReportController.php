@@ -22,7 +22,7 @@ class ReportController extends BaseController
 
     public function index(Request $request)
     {
-        if (Auth::user()->pengguna->status != 'a')
+        if (Auth::user()->pengguna->status != 'p')
             return abort(403, "Anda tidak memiliki akses halaman ini");
         return view('user.donor.fill-report');
     }

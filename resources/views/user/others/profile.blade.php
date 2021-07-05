@@ -31,7 +31,7 @@
         @if(Auth::user()->pengguna)
         <div class="card-body">
           <label for="tipe" class="font-weight-bold mr-4">Tipe   : </label>
-          <div class="alert alert-success" id="tipe">{{ Auth::user()->pengguna->nama_tipe ? Auth::user()->pengguna->nama_tipe : 'Anda belum mengisi detail pengguna' }}</div>
+          <div class="alert alert-success" id="tipe">{{ Auth::user()->pengguna->nama_tipe ? Auth::user()->pengguna->nama_tipe : 'Anda belum mendaftar pendonoran' }}</div>
 
           <br>
           <label for="status" class="font-weight-bold mr-4">Status Verifikasi  : </label>
@@ -76,7 +76,8 @@
           @endif
           </div>
 
-          @if(Auth::user()->pengguna->status == 'a')
+          @if(Auth::user()->pengguna->status == 'p')
+          <p>Jika anda telah selesai melakukan pendonoran, silahkan isi laporan berita acara berikut!</p>
           <a href="/berita-acara">
             <div class="btn rounded-pill shadow mt-2 font-weight-bold" style="background-color:#DE4F28">Isi Laporan</div>
           </a>
@@ -84,10 +85,10 @@
           <a href="/chat">
             <div class="btn rounded-pill shadow mt-2 font-weight-bold" style="background-color:#DE4F28">Chat & Atur Jadwal</div>
           </a>
-          @elseif(Auth::user()->pengguna->status == 'p')
+          {{-- @elseif(Auth::user()->pengguna->status == 'p')
           <a href="/chat">
             <div class="btn rounded-pill shadow mt-2 font-weight-bold" style="background-color:#DE4F28">Donor Selesai</div>
-          </a>
+          </a> --}}
           @endif
         </div>
         @else

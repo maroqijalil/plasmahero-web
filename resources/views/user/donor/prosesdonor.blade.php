@@ -57,10 +57,10 @@
       <br>
 
       <form action="" method="post" action="{{ route('donor.store') }}">
-        @method('patch')
+        @method('put')
         @csrf
         
-        @if (!$pengguna->nama_tipe ?? true)
+        {{-- @if (!$pengguna->nama_tipe ?? true) --}}
         <legend class="form">Partisipasi</legend>
         <div class="form-group row mb-3">
           <label for="no_hp" class="col-2 col-form-label">Sebagai</label>
@@ -78,10 +78,10 @@
             @endif
           </div>
         </div>
-        @endif
+        {{-- @endif --}}
 
         <!-- data diri -->
-        @if (!$isDataDiriComplete)
+        {{-- @if (!$isDataDiriComplete) --}}
         <legend class="form">Data Diri</legend>
         <div class="form-group row mb-3">
           <label for="no_hp" class="col-2 col-form-label">No. WhatsApp</label>
@@ -152,10 +152,10 @@
             @endif
           </div>
         </div>
-        @endif
+        {{-- @endif --}}
 
         <!-- keperluan donor -->
-        @if (!$isDataDonorComplete)
+        {{-- @if (!$isDataDonorComplete) --}}
         <legend>Keperluan Donor</legend>
         <div class="form-group row mb-3">
           <label for="usia" class="col-2 col-form-label">Usia</label>
@@ -244,7 +244,7 @@
             @endif
           </div>
         </div>
-        @endif
+        {{-- @endif --}}
 
         <input type="submit" name="send" value="Simpan" class="btn mt-4 btn-primary ml-50 float-right">
       </form>
