@@ -57,7 +57,7 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Menunggu waktu pendonoran</h5>
-                            <span class="h2 font-weight-bold mb-0">{{count($matched)}}</span>
+                            <span class="h2 font-weight-bold mb-0">{{count($planned)}}</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -122,9 +122,9 @@
                                     <p>{{$laporan->nama_tipe}}</p>
                                 </td>
                                 <td class="status">
-                                    @if($laporan->status == 's' or $laporan->status == 's')
+                                    @if($laporan->status == 's' or $laporan->status == 'g')
                                         <p class="text-warning font-weight-bold">Menunggu dicocokkan</p>
-                                    @elseif($laporan->status == 'g')
+                                    @elseif($laporan->status == 'm')
                                         <p class="text-warning font-weight-bold">Sedang mengatur jadwal</p>
                                     @elseif($laporan->status == 'p')
                                         <p class="text-warning font-weight-bold">Menunggu waktu pendonoran</p>
@@ -134,7 +134,7 @@
                                 </td>
                                 <td class="lihat-detail">
                                     @if($laporan->status == 's' or $laporan->status == 's')
-                                        <button class="btn btn-primary">Lakukan pencocokan</button>
+                                        <a href="/admin/pendonoran" class="btn btn-primary">Lakukan pencocokan</a>
                                     @elseif($laporan->status == 'g')
                                         <button class="btn btn-primary" data-toggle="modal" data-target="#waitingForSchedule{{$laporan->id}}">Jadwalkan melalui chat</button>
                                     @elseif($laporan->status == 'p')
