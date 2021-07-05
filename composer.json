@@ -31,8 +31,10 @@
 	"autoload": {
 		"psr-4": {
 			"App\\": "app/",
+			
 			"Database\\Factories\\": "database/factories/",
 			"Database\\Seeders\\": "database/seeders/",
+
 			"App\\Admin\\Providers\\": "src/Admin/Application/Providers/",
 			"App\\Admin\\UseCases\\": "src/Admin/Application/UseCases/",
 			"App\\Admin\\Repositories\\": [
@@ -47,8 +49,6 @@
 			"App\\Admin\\Controllers\\": "src/Admin/Presentation/Controllers/",
 			"App\\Admin\\Middleware\\": "src/Admin/Presentation/Middleware/",
 
-			"App\\User\\Controllers\\": "src/User/Application/Controllers/",
-			"App\\User\\Middleware\\": "src/User/Application/Middleware/",
 			"App\\User\\Providers\\": "src/User/Application/Providers/",
 			"App\\User\\Repositories\\": [
 				"src/User/Domain/Repositories/",
@@ -59,9 +59,9 @@
 				"src/User/Domain/Services/",
 				"src/User/Infrastructure/Services/"
 			],
+			"App\\User\\Controllers\\": "src/User/Presentation/Controllers/",
+			"App\\User\\Middleware\\": "src/User/Presentation/Middleware/",
 
-			"App\\Common\\Controllers\\": "src/Common/Application/Controllers/",
-			"App\\Common\\Middleware\\": "src/Common/Application/Middleware/",
 			"App\\Common\\Providers\\": "src/Common/Application/Providers/",
 			"App\\Common\\Models\\": "src/Common/Domain/Models/",
 			"App\\Common\\Repositories\\": [
@@ -72,7 +72,9 @@
 			"App\\Common\\Services\\": [
 				"src/Common/Domain/Services/",
 				"src/Common/Infrastructure/Services/"
-			]
+			],
+			"App\\Common\\Controllers\\": "src/Common/Presentation/Controllers/",
+			"App\\Common\\Middleware\\": "src/Common/Presentation/Middleware/"
 		}
 	},
 	"autoload-dev": {
