@@ -41,7 +41,7 @@ Route::middleware('auth.role:pengguna')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::get('/donor', [DonorController::class, 'index'])->name('donor.index');
-    Route::patch('/donor', [DonorController::class, 'store'])->name('donor.store');
+    Route::put('/donor', [DonorController::class, 'store'])->name('donor.store');
 
     Route::view('/buat-cerita', 'user.others.create-cerita');
     Route::post('/cerita', [CeritaController::class, 'store']);
