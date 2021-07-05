@@ -37,7 +37,7 @@
                         </thead>
                         <tbody class="list">
 
-                        @foreach ($all as $laporan)
+                        @foreach ($allData as $laporan)
                             <tr>
                                 <td class="name">
                                     <p>{{$userPenerima[$loop->index]->name}}</p>
