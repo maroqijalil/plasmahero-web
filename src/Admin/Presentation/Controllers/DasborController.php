@@ -28,7 +28,7 @@ class DasborController extends BaseController
 		$new_pencocokan = $this->getNewPencocokanCount();
 		$my_labels = $this->getSevenDates('m/d');
 		$pencocokan = Pencocokan::all()->count();
-		$udd = \DB::table('donor')->distinct()->get(['nama_udd'])->count();
+		$udd = \DB::table('unit_donor')->count();
 		return view('admin.dashboard', compact(['new_users', 'new_pencocokan', 'my_labels', 'pendonor', 'penerima', 'pencocokan', 'udd']));
 	}
 

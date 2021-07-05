@@ -4,6 +4,7 @@ namespace App\Common\Controllers;
 
 use App\Common\Models\Partisipan;
 use App\Common\Models\Pesan;
+use App\Common\Models\UnitDonor;
 use App\Controller\BaseController;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -55,12 +56,14 @@ class ChatController extends BaseController {
 
   public function nullHandlePartisipans($active_chat, $notifikasi_pesan, $var_name) {
     $partisipans = $this->getPartisipans(Auth::user()->id);
+    $udds = UnitDonor::all();
+    if (!Auth::user()->admin) $udds = null; //misal bukan admin tidak bisa menentukan tempat udd
     try {
       $show_chat = $partisipans->where('id', '=', $active_chat)->first(); //grup yang aktif
-      return view('common.layouts.chat', compact(['partisipans', 'active_chat', 'show_chat', $var_name]));
+      return view('common.layouts.chat', compact(['partisipans', 'active_chat', 'show_chat', $var_name, 'udds']));
     } catch (Exception $e) {
       $show_chat = null;
-      return view('common.layouts.chat', compact(['partisipans', 'active_chat', 'show_chat', $var_name]));
+      return view('common.layouts.chat', compact(['partisipans', 'active_chat', 'show_chat', $var_name, 'udds']));
     }
   }
 }

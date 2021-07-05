@@ -72,6 +72,12 @@
                             <span class="nav-link-text">Cerita</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('profile') }}">
+                            <i class="ni ni-single-02 text-primary"></i>
+                            <span class="nav-link-text">Profil</span>
+                        </a>
+                    </li>
                 </ul>
                 <hr class="my-3">
             </div>

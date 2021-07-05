@@ -16,4 +16,8 @@ class UnitDonor extends BaseModel
 		'kecamatan',
 		'kota',
 	];
+
+	public function donor() {
+		return $this->hasMany(Donor::class, 'id_udd', 'id');
+	}
 }

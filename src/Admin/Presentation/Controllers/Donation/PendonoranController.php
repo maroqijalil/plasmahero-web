@@ -8,13 +8,17 @@ use App\Controller\BaseController;
 use App\Common\Models\Pencocokan;
 use App\Admin\Requests\StorePendonoranRequest;
 use App\Common\Controllers\ChatController;
+use App\Common\Models\Donor;
+use App\Common\Models\Partisipan;
 use App\Common\Models\Pengguna;
 use App\Common\Models\Pesan;
+use App\Common\Models\UnitDonor;
 use App\Common\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PendonoranController extends BaseController
 {
@@ -29,9 +33,11 @@ class PendonoranController extends BaseController
 	{
 		$userRepository = App::make(UserRepositoryInterface::class);
 		$pendonoranRepository = App::make(PendonoranRepositoryInterface::class);
+		$partisipans = Partisipan::where('id_admin', Auth::user()->id)->get();
 		return view('admin.donor.donation', [
 			'users' => $userRepository->all(),
-			'pencocokans' => $pendonoranRepository->all()
+			'pencocokans' => $pendonoranRepository->all(),
+			'partisipans' => $partisipans
 		]);
 	}
 
@@ -53,17 +59,21 @@ class PendonoranController extends BaseController
 
 	public function setJadwal(Request $request)
 	{
-		// dd($request->penerimaId);
-		$this->dbUpdate('donor', 'id', $request->id_d_pendonor, ['tanggal' => $request->tgl]);
-		$this->dbUpdate('donor', 'id', $request->id_d_penerima, ['tanggal' => $request->tgl]);
+		$all = Donor::where('id', $request->id_d_pendonor)->get();
+		$all = $all->union(Donor::where('id', $request->id_d_penerima)->get());
+		foreach($all as $one) {
+			$one->update(['tanggal' => $request->tgl, 'id_udd' => $request->id_udd]);
+		}
+
 		$this->dbUpdate('pengguna', 'id', $request->pendonorId, ['status' => 'p']);
 		$this->dbUpdate('pengguna', 'id', $request->penerimaId, ['status' => 'p']);
 
 		$pengirim = User::findOrFail($request->id_pengirim);
+		$udd = UnitDonor::findOrFail($request->id_udd);
 		$pesan = Pesan::create([
       'id_partisipan' => $request->id_partisipan,
       'id_pengirim' => $request->id_pengirim,
-      'isi' => $pengirim->name . ' telah menetapkan jadwal pendonoran ' . $request->tgl,
+      'isi' => $pengirim->name . ' telah menetapkan jadwal pendonoran ' . $request->tgl . ' di ' . $udd->nama_unit,
       'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
     ]);
 

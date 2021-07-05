@@ -233,7 +233,21 @@ Dashboard
 							<td>{{$pencocokan->pendonor->user->name}}</td>
 							<td>{{$pencocokan->penerima->user->name}}</td>
 							<td>
-								<a href="{{ route('chat-create', ['id' => $pencocokan->id]) }}" class="btn btn-primary"><i class="ni ni-chat-round"></i> Buat Chat</a>
+								<?php $flag = true;
+									foreach ($partisipans as $partisipan){
+										if($partisipan->id_admin == $pencocokan->admin->user->id
+												&& $partisipan->id_pendonor == $pencocokan->pendonor->user->id
+												&& $partisipan->id_penerima == $pencocokan->penerima->user->id){
+													$flag = false; 
+													break;
+												}
+									}
+								?>
+								@if($flag)
+									<a href="{{ route('chat-create', ['id' => $pencocokan->id]) }}" class="btn btn-primary"><i class="ni ni-chat-round"></i> Buat Chat</a>
+								@else
+									<a href="{{ route('chat', ['id' => $partisipan->id]) }}">Buka Chat</a>
+								@endif
 							</td>
 						</tr>
 						@endforeach

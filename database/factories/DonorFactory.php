@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Common\Models\Donor;
 use App\Common\Models\Pengguna;
+use App\Common\Models\UnitDonor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DonorFactory extends Factory
@@ -28,7 +29,7 @@ class DonorFactory extends Factory
             'tipe' => $this->faker->randomElement(['darah merah', 'darah putih', 'plasma']),
             'tanggal' => $this->faker->date('Y-m-d', 'now'),
             'waktu' => $this->faker->time('H:i:s', 'now'),
-            'nama_udd' => $this->faker->randomElement(['PMI', 'puskemas', 'RS']),
+            'nama_udd' => UnitDonor::all()->random()->id,
             'alamat' => $this->faker->address,
             'kelurahan' => $this->faker->address,
             'kecamatan' => $this->faker->address,

@@ -92,6 +92,20 @@
                               <input type="hidden" name="pendonorId" id="" value="{{$show_chat->pendonor->pengguna->id}}">
                               <input type="hidden" name="penerimaId" id="" value="{{$show_chat->penerima->pengguna->id}}">
 
+                              <div class="row form-group">
+                                <label class="col-form-label col-6" for="id_udd">UDD</label>
+                                <div class="col-6">
+                                  <select class="form-control" id="id_udd" name="id_udd">
+                                    @if($udds)
+                                      @foreach ($udds as $udd)
+                                      <option value="{{$udd->id}}">{{$udd->id}}:{{$udd->nama_unit}}</option>
+                                      @endforeach
+                                    @endif
+                                  </select>
+                                </div>
+                              </div>
+
+
                               <!-- chat handler -->
                               <input type="hidden" name="id_partisipan" value="{{ $show_chat->id }}">
                               <input type="hidden" name="id_pengirim" value="{{ Auth::user()->id }}">

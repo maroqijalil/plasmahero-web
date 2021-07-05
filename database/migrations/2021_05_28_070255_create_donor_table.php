@@ -22,7 +22,7 @@ class CreateDonorTable extends Migration
             $table->string('tipe')->nullable();
             $table->date('tanggal')->nullable();
             $table->time('waktu')->nullable();
-            $table->string('nama_udd')->nullable();
+            $table->unsignedBigInteger('id_udd')->nullable();
             $table->string('alamat')->nullable();
             $table->string('kelurahan')->nullable();
             $table->string('kecamatan')->nullable();
@@ -30,6 +30,7 @@ class CreateDonorTable extends Migration
 
             $table->foreign('id_pendonor')->references('id')->on('pengguna');
             $table->foreign('id_penerima')->references('id')->on('pengguna');
+            $table->foreign('id_udd')->references('id')->on('unit_donor');
 
             $table->timestamps();
         });

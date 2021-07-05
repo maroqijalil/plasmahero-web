@@ -14,7 +14,7 @@ class Donor extends BaseModel
 		'tipe',
 		'tanggal',
 		'waktu',
-		'nama_udd',
+		'id_udd',
 		'alamat',
 		'kelurahan',
 		'kecamatan',
@@ -41,5 +41,9 @@ class Donor extends BaseModel
 	protected static function newFactory()
 	{
 		return new DonorFactory();
+	}
+
+	public function unitDonor() {
+		return $this->belongsTo(UnitDonor::class, 'id_udd', 'id');
 	}
 }
