@@ -53,8 +53,7 @@ class ReportController extends BaseController
 
         Report::create($data);
         Auth::user()->pengguna->update([
-            'status' => 'i',
-            'nama_tipe' => null
+            'status' => 'i'
         ]);
 
         return Redirect::route('profile')->with('report', 'Berita acara ditambahkan !');

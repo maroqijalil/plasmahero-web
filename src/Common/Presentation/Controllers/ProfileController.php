@@ -15,7 +15,8 @@ class ProfileController extends BaseController
 	{
 		$userData = Auth::user();
 		// dd(Auth::user()->pengguna);
-		$donorall = Auth::user()->pengguna->mendonor->where('tanggal', '<', Carbon::now()->format('Y-m-d'))->where('d_penerima', '<>', null);
+		$donorall = Auth::user()->pengguna->mendonor->where('tanggal', '<', Carbon::now()->format('Y-m-d'));
+		// dd(Auth::user()->pengguna->mendonor->where('tanggal', '<', Carbon::now()->format('Y-m-d')));
     $pengguna = Auth::user()->pengguna;
     $isDataDiriComplete = $pengguna->no_hp && $pengguna->alamat && $pengguna->kelurahan && $pengguna->kecamatan && $pengguna->kota;
     $isDataDonorComplete = $pengguna->usia && $pengguna->jenis_kelamin && $pengguna->gol_darah && $pengguna->rhesus && $pengguna->berat_badan && $pengguna->tanggal_swab;

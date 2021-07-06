@@ -372,20 +372,23 @@
           <tr data-toggle="collapse" data-target="{{'#dt'.$loop->iteration}}" class="clickable">
             <th scope="row">{{$loop->iteration}}</th>
             <td>{{$donor->id}}</td>
-            <td>{{$donor->penerima->user->name}}</td>
+            <td>{{$donor->pencocokan->penerima->user->name}}</td>
             <td>{{$donor->tanggal}}</td>
             <td>{{$donor->nama_udd}}</td>
           </tr>
           <tr>
+            @if($donor->report
+                && $donor->report->where('id_donor', $donor->id)
+                && $donor->report->where('id_donor', $donor->id)->first())
             <td colspan="5" class="py-3">
                 <div id="{{'dt'.$loop->iteration}}" class="collapse text-center">
                   <h6 class="font-weight-bold">{{$donor->report->where('id_donor', $donor->id)->first()->judul}}</h6>
                   <p>{{$donor->report->where('id_donor', $donor->id)->first()->tgl}}</p>
                   <img src="{{(url($donor->report->where('id_donor', $donor->id)->first()->foto))}}" alt="" style="height:150px;" class="" >
                   <p>{{$donor->report->where('id_donor', $donor->id)->first()->pesan}}</p>
-
                 </div>
             </td>
+            @endif
           </tr>
           @endforeach
         </tbody>
